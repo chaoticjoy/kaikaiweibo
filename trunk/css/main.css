@@ -1,0 +1,376 @@
+*{
+	padding:0;
+	margin:0;
+}
+ 
+body {
+	font-family: "Helvetica";
+	font-size:13px;
+	-webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+	background:#f1f1f1;
+	color:#666;
+}
+
+a {
+	color:#446aab;
+	text-decoration: none;
+	font-weight:bold;
+}
+
+a:visited {
+	color:#446aab;
+	text-decoration: none;
+	font-weight:bold;
+}
+
+
+#header {
+	width:100%;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#6e84c6), color-stop(0.5, #446aab), color-stop(0.5, #4063a2));
+	background:-moz-linear-gradient(top, #6e84c6,#446aab 50%,#4063a2 50%);
+	text-align:center;
+	font-weight:bold;
+	font-size:18px;
+	color:#f1f1f1;
+	position:relative;
+	height:30px;
+	padding-top:3px;
+}
+
+#header .back{
+	position:absolute;
+	left:13px;
+	top:7px;
+	height:15px;
+	cursor:pointer;
+	display:none;
+}
+
+#header .forward{
+	position:absolute;
+	right:13px;
+	top:7px;
+	height:15px;
+	cursor:pointer;
+	display:none;
+}
+
+
+#main-menu {
+	width:100%;
+	height:40px;
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#535353), color-stop(0.5, #292929), color-stop(0.5, #000));
+	background:-moz-linear-gradient(top,#535353,#292929 50%,#000 50%);
+	border-top:1px solid #000;
+}
+
+
+#main-menu li{
+	float:left;
+	width:20%;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	text-align:center;
+	padding:8px 0px;
+	list-style-type:none;
+	cursor:pointer;
+}
+
+#main-menu img{
+	height:22px;
+}
+
+
+#main-menu .on{
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#666), color-stop(0.5, #444), color-stop(0.5, #333));
+	background:-moz-linear-gradient(top,#666,#444 50%,#333 50%);
+	height:40px;
+}
+
+
+.events-wrapper {
+	position:relative;	/* On older OS versions "position" and "z-index" must be defined (absolute | relative), */
+}
+
+
+.loginform{
+	margin-bottom: 0;
+	padding: 10px 8px;
+	color:#666;
+}
+
+
+.loginform p{
+	margin:20px 0px;
+}
+
+
+.main-field {
+	width:100%;
+	font-size: 18px;
+	outline:none;
+	color:#72A6FC;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+	padding: 10px 8px 8px 50px;
+	border: 3px solid #e0e0e0;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+.username-label, .password-label{
+	position: absolute;
+	margin: 13px 9px 9px 12px;
+	color: #aaa;
+	font-size: 18px;
+}
+
+.main-button{
+	width:100%;
+	border-style:none;
+	-moz-box-shadow:0 1px 4px #AAAAAA;
+	-webkit-box-shadow: 0px 1px 4px #AAAAAA;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#6e84c6), color-stop(0.5, #446aab), color-stop(0.5, #4063a2));
+	background:-moz-linear-gradient(top, #6e84c6,#446aab 50%,#4063a2 50%);
+	border-radius: 20px;
+	text-align:center;
+	padding:10px 0px;
+	color:#fafafa;
+	font-size:18px;
+	font-weight: bold;
+	margin-top:10px;
+	cursor:pointer;
+}
+
+
+.more-button{
+	width:100%;
+	border-style:none;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#6e84c6), color-stop(0.5, #446aab), color-stop(0.5, #4063a2));
+	background:-moz-linear-gradient(top, #6e84c6,#446aab 50%,#4063a2 50%);
+	color:#f1f1f1;
+	text-align:center;
+	font-size:18px;
+	padding:10px 0px;
+	border-top:1px solid #ccc;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+input:focus{ 
+	border-color:#C4D1FF; 
+}
+
+
+.tab-bar{
+	width:100%;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#e1e1e1), color-stop(0.5, #ccc), color-stop(0.5, #c7c7c7));
+	background:-moz-linear-gradient(top, #e1e1e1,#ccc 50%,#c7c7c7 50%);
+}
+
+.tab-bar li{
+	float:left;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	font-size:18px;
+	text-align:center;
+	padding:8px 0px;
+	list-style-type:none;
+	color:#aaa;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+#eventsTagWidth{
+	width:50%;
+}
+
+.tab-bar .on{
+	color:#9a9a9a;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), color-stop(0.5, #ececec), color-stop(0.5, #e7e7e7));
+	background:-moz-linear-gradient(top, #fafafa,#ececec 50%,#e7e7e7 50%);
+}
+
+
+.single{
+	clear:both;
+	padding:20px 20px 30px 20px;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#fafafa),to( #eaeaea));
+	background:-moz-linear-gradient(top, #fafafa,#eaeaea);
+	position:relative;
+}
+
+
+.single-avatar{
+	position:absolute;
+	width:50px;
+	height:50px;
+	left:17px;
+	cursor:pointer;
+}
+
+
+.single-date{
+	position:absolute;
+	right:20px;
+	color:#999999;
+}
+
+
+.single-name{
+	margin-left:60px;
+	font-size:15px;
+	font-weight:bold;
+	color:#446aab;
+}
+
+
+.single-operate{
+	position:absolute;
+	right:20px;
+	bottom:12px;
+	font-weight:bold;
+	color:#999999;
+}
+
+.single-operate span{
+	text-align:center;
+	padding:0px 5px;
+	cursor:pointer;
+}
+
+
+
+.single p{
+	margin:5px 0px 0px 60px;
+	line-height:150%;
+}
+
+.single .quote{
+	background:#cddbfa;
+	border:1px solid #b7caf1;
+	margin:10px 0px 0px 60px;
+	padding:10px;
+	border-radius: 10px;
+	line-height:150%;
+}
+
+.single .thumbnail{
+	margin:5px 0px;
+	cursor:pointer;
+	padding:2px;
+	background:#fafafa;
+	border:1px solid #9eb0d5;
+}
+
+.comments,.retweet{
+	clear:both;
+	padding:20px 20px 20px 20px;
+	background:#b4c6ec;
+	position:relative;
+}
+
+
+.comments textarea,.retweet textarea{
+	width:100%;
+	font-size: 18px;
+	outline:none;
+	color:#72A6FC;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+	border: 3px solid #acbee5;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	padding: 10px 60px 10px 10px;
+}
+
+.submit-button{
+	height:45px;
+	width:45px;
+	position: absolute;
+	top:30px;
+	right:40px;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#6e84c6), color-stop(0.5, #446aab), color-stop(0.5, #4063a2));
+	background:-moz-linear-gradient(top, #6e84c6,#446aab 50%,#4063a2 50%);
+	border-style:none;
+	border-radius: 5px;
+	text-align:center;
+	color:#fafafa;
+	cursor:pointer;
+}
+
+.comments p{
+	margin:10px;
+	border-bottom:1px dashed #9bafd9;
+	padding-bottom:5px;
+	color:#333;
+	position:relative��
+}
+
+.comments .author{
+	font-weight:bold;
+	color:#4063a2;
+	padding-right:10px;
+	cursor:pointer;
+}
+
+.comments .reply{
+	position: absolute;
+	right:30px;
+	color:#666;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+
+
+.clean{
+	clear:both;
+}
+/*
+ * the following is added by welling
+ * 
+ * */
+/*  弹出发微博时的遮罩框     */
+#mask{
+	left:0;
+	top:0;
+	position:absolute;
+	background:#ccc;
+	opacity:0.5;
+	z-index:1;
+	display:none;
+}
+#send{
+	position:absolute;
+	z-index:2;
+	display:none;
+	
+	border:1px black solid;
+	width:100px;
+	height:100px;
+	margin:0 auto;
+	background:#000;
+}
