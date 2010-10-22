@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<script src="js/jquery/jquery-1.4.2.js" language="JavaScript"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		
+		<title>test</title>
+		
+	</head>
+	<body onload="more()">
+		<div class="tab">1</div>
+		<div class="tab">2</div>
+		<div class="tab">3</div>
+		<div class="tab">4</div>
+		<div class="tab">5</div>
+		<div class="tab">6</div>
+		<button class="btn" value='0'>1</button>
+		<button class="btn" value='1'>2</button>
+		<button class="btn" value='2'>3</button>
+		<button class="btn" value='3'>4</button>
+		<button id="open1" >_self</button>
+		<button id="open2" >_blank</button>
+		<button id="open3" >_parent</button>
+		<button id="open4" >_top</button>
+		<button id="open5" >target</button>
+	</body>
+	<script language="JavaScript">
+		
+		var $tabs=$('.tab');
+		//alert($tabs.length);
+		$tabs.hide(); 
+		$('.btn').click(function(){
+			$tabs.hide();
+			var $tab=$('.tab:eq('+this.value+')');
+			$tab.show();
+			
+			$tab.append($("<span>added</span></br>"));
+		});
+		
+		function more(){
+			/*
+			window.open=function(){
+			alert('d');
+		}*/
+			alert('start');
+		}
+		$(document).ready(function(){
+			//alert('d');
+			//window.open('k.html');
+			
+		});
+		var url='k.html';
+		$('#open1')[0].onclick=function(){
+			//alert(this.innerHTML);
+			//window.resizeTo(500,500);
+			window.open(url,'_self');
+		}
+		$('#open2')[0].onclick=function(){
+			//alert(this.innerHTML);
+			//window.resizeTo(500,500);
+			window.open(url,'_blank','menubar=no,toolbar=no');
+		}
+		window.open(url,'_blank','menubar=no,toolbar=no');
+		$('#open3')[0].onclick=function(){
+			//alert(this.innerHTML);
+			//window.resizeTo(500,500);
+			window.open(url,'_parent');
+		}
+		$('#open4')[0].onclick=function(){
+			//alert(this.innerHTML);
+			//window.resizeTo(500,500);
+			window.open(url,'_top');
+		}
+		$('#open5')[0].onclick=function(){
+			//alert(this.innerHTML);
+			//window.resizeTo(500,500);
+			//window.open(url,'target');
+			alert('web page msg');
+		}
+		
+	//	document.writeln('<script>window.open("k.html","_blank","menubar=no,toolbar=no")\<\/script>');
+		document.getElementsByTagName('body')[0].onclick=function(){
+			//window.open(url,'_blank','menubar=no,toolbar=no');
+			//alert('s');
+		}
+		//alert('d');
+		/*
+		var str='';
+		for(var i in document){
+			str+= ' '+i;
+		}
+		alert(str);*/
+		
+	</script>
+</html>
