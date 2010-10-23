@@ -137,8 +137,8 @@ a:visited {
 .main-button{
 	width:100%;
 	border-style:none;
-	-moz-box-shadow:0 1px 4px #AAAAAA;
-	-webkit-box-shadow: 0px 1px 4px #AAAAAA;
+	-moz-box-shadow:0 1px 4px #4063a2;
+	-webkit-box-shadow: 0px 1px 4px #4063a2;
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
 	background:-webkit-gradient(linear, 0 0, 0 100%, from(#6e84c6), color-stop(0.5, #446aab), color-stop(0.5, #4063a2));
@@ -297,8 +297,8 @@ input:focus{
 	box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
-	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
-	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+	background: -webkit-gradient(linear, left top, left 25, from(#CCC), color-stop(5%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #CCC, #EEEEEE 5%, #FFFFFF);
 	border: 3px solid #acbee5;
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
@@ -326,7 +326,7 @@ input:focus{
 	border-bottom:1px dashed #9bafd9;
 	padding-bottom:5px;
 	color:#333;
-	position:relative��
+	position:relative;
 }
 
 .comments .author{
@@ -363,14 +363,62 @@ input:focus{
 	z-index:1;
 	display:none;
 }
+
+
 #send{
+	width:90%;
 	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-45%;
+	margin-top:-100px;
 	z-index:2;
 	display:none;
-	
 	border:1px black solid;
-	width:100px;
-	height:100px;
-	margin:0 auto;
-	background:#000;
+	background:#222;
+	opacity:0.85;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	padding:35px 10px 15px 10px;
 }
+
+#send textarea{
+	width:100%;
+	font-size: 18px;
+	outline:none;
+	color:#72A6FC;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#CCC), color-stop(5%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #CCC, #EEEEEE 5%, #FFFFFF);
+	border: 2px solid #ccc;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-weight:bold;
+	padding:5px;
+}
+
+#send .close{
+	position:absolute;
+	top:8px;
+	right:13px;
+	height:20px;
+	cursor:pointer;
+}
+
+#send .tips{
+	position:absolute;
+	top:8px;
+	left:13px;
+	font-size:16px;
+	color:#f1f1f1;
+	font-weight:bold;
+}
+
+
