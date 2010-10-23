@@ -17,21 +17,26 @@ var kkwb={//kaikai weibo
 	},
 	changePanel:function(tid,bid){//tid target panel's id;need to add a '#' before ids
 		if(tid==(this.currentPanel))return;
-		
+		var docw=$(document).width();
 		var cpanel = $(this.currentPanel);
 		var tpanel = $(tid);
-		cpanel.css('z-index', '2');//当前的在上
-		tpanel.css('z-index', '1');//目标在下
+		//cpanel.css('z-index', '2');//当前的在上
+		//tpanel.css('z-index', '1');//目标在下
 		tpanel.show();
+		
 		cpanel.animate({
-			right:""+ $(document).width() + 'px',
-			left:'-'+ $(document).width() + 'px'
+			right:""+ docw + 'px',
+			left:'-'+ docw + 'px'
 		}, {
 			duration:600,
 			complete:function(){
 				cpanel.hide().css('right','0').css('left','0');
 			}
 		});//向左滑动一个屏幕宽度
+		tpanel.css('left',docw+'px').css('right','-'+docw+'px');
+		tpanel.animate({
+			left:'0px',right:'0px'
+		},600);
 		//
 		this.currentPanel = tid;
 		//把按钮样式设置为on
