@@ -4,7 +4,8 @@
 var toggle=1;
 var kkwb={//kaikai weibo
 	history:[],
-	currentPanel:null,//当前显示的Panel
+	currentPanel:'#events-panel',//当前Tab的ID
+	currentBtn:'#events-btn',
 	onClickPostBtn:function(){
 		//设置遮罩的高宽为当前文档的高宽,开启遮罩,弹出编辑框
 		var docHeight=$(document).height(); 
@@ -14,24 +15,41 @@ var kkwb={//kaikai weibo
 				  .show();
 		$("#send").show();
 	},
-	onClickEventBtn:function(){
-		if (toggle == 1) {
-			$("#wrapper").hide(200);
-			toggle=0;
-		}else {
-			$("#wrapper").show(200);
-			toggle=1;
-		}
+	changePanel:function(tid,bid){//tid target panel's id;need to add a '#' before ids
+		if(tid==(this.currentPanel))return;
 		
+		var cpanel = $(this.currentPanel);
+		var tpanel = $(tid);
+		cpanel.css('z-index', '2');//当前的在上
+		tpanel.css('z-index', '1');//目标在下
+		tpanel.show();
+		cpanel.animate({
+			right:""+ $(document).width() + 'px',
+			left:'-'+ $(document).width() + 'px'
+		}, {
+			duration:600,
+			complete:function(){
+				cpanel.hide().css('right','0').css('left','0');
+			}
+		});//向左滑动一个屏幕宽度
+		//
+		this.currentPanel = tid;
+		//把按钮样式设置为on
+		$(this.currentBtn).removeClass('on');
+		$(bid).addClass('on');
+		this.currentBtn=bid;
 	},
-	onClickCheckBtn:function(){
-		
+	onClickEventBtn:function(id){
+		this.changePanel('#events-panel','#events-btn');
 	},
-	onClickCityBtn:function(){
-		
+	onClickCheckinBtn:function(id){
+		this.changePanel('#checkin-panel','#checkin-btn');
 	},
-	onClickUserBtn:function(){
-		
+	onClickCityBtn:function(id){
+		this.changePanel('#city-panel','#city-btn');
+	},
+	onClickUserBtn:function(id){
+		this.changePanel('#user-panel','#user-btn');
 	}
 };
 
@@ -43,11 +61,11 @@ function onLoad(){
 	$("#post-btn").click(function(){
 		kkwb.onClickPostBtn();
 	});
-	$("#event-btn").click(function(){
+	$("#events-btn").click(function(){
 		kkwb.onClickEventBtn();
 	});
-	$("#check-btn").click(function(){
-		kkwb.onClickCheckBtn();
+	$("#checkin-btn").click(function(){
+		kkwb.onClickCheckinBtn();
 	});
 	$("#city-btn").click(function(){
 		kkwb.onClickCityBtn();
@@ -55,9 +73,17 @@ function onLoad(){
 	$("#user-btn").click(function(){
 		kkwb.onClickUserBtn();
 	});
-	//send btn
-	$("#send").click(function(){
-		$(this).hide();
+	
+	//发布界面的关闭按钮
+	$("#close-btn").click(function(){
+		$("#send").hide();
 		$("#mask").hide();
-	})
+	});
+	//发布按钮
+	$("#send-btn").click(function(){
+		alert($("#send-content").val());
+	});
+	//初始化时只显示第一个Tab
+	$("#tabpanel").css('position','relative');
+	$("#tabpanel :first-child").show();
 }

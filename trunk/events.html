@@ -14,11 +14,11 @@
 <body onLoad="onLoad()">
 	
 <div id="send">
-<img src="image/close.png" class="close" />
+<img id="close-btn" src="image/close.png" class="close" />
 <div class="tips">说说你的新鲜事</div>
 <form>
-	<textarea rows="5"></textarea>
-	<input type="submit" class="main-button" value="发布围脖" />
+	<textarea id="send-content" rows="5"></textarea>
+	<input id="send-btn" type="button" class="main-button" value="发布围脖" />
 </form>
 </div>
 <div id="mask"></div>
@@ -32,83 +32,281 @@
 
 <ul id="main-menu">
 		<li id="post-btn"><img src="image/post.png" /></li>
-        <li id="event-btn" class="on"><img src="image/events.png" /></li>        
-        <li id="check-btn"><img src="image/checkin.png" /></li> 
+        <li id="events-btn" class="on"><img src="image/events.png" /></li>        
+        <li id="checkin-btn"><img src="image/checkin.png" /></li> 
 		<li id="city-btn"><img src="image/city.png" /></li> 
 		<li id="user-btn"><img src="image/user.png" /></li> 	 
 		<div class="clean"></div>
 </ul>
 <div class="clean"></div>
-<div class="events-wrapper"> 
-	<ul class="tab-bar"> 
-        <li class="on" id="eventsTagWidth">围脖动态</li>        
-        <li id="eventsTagWidth">开开动态</li> 
-		<div class="clean"></div>
-    </ul> 
+<div id="tabpanel" >
+	
+	<div id="events-panel"  class="wrapper"> 
+		<ul class="tab-bar"> 
+	        <li class="on" id="eventsTagWidth">围脖动态</li>        
+	        <li id="eventsTagWidth">开开动态</li> 
+			<div class="clean"></div>
+	    </ul> 
+		<div class="timeline">
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<div class="quote">转发 <a href="#">@经纬张颖</a> : 要想在创业板上市的创业者们可以认真读下这篇文章。虽然有些细节过于夸张，但总体来说，在国内上市，不管是创业板，中小板还是主板，都是“千军万马过独木桥”的艰难和未知！其过程对老总的综合素质，全面化，应急，执行和变通能力要求都非常高！《我是这样闯过创业板的》http://sinaurl.cn/h9BiCk<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail" /></div>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			<div class="comments">
+				<form>
+				<textarea rows="2"></textarea>
+				<input type="submit" class="submit-button" value="评论" />
+				</form>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<div class="main-button">更多评论</div>
+			</div>
+			
+			
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU
+			<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			<div class="retweet">
+				<form>
+				<textarea rows="2">测试测试测试转发。</textarea>
+				<input type="submit" class="submit-button" value="转发" />
+				</form>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# <a href="#" target="_blank">http://sinaurl.cn/h67KnU</a></p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+		</div>
+		<div class="more-button">更多动态</div>
+	</div> 
+	
+	<div id="checkin-panel" class="wrapper"> 
+		<div class="timeline">
+			<div class="single">
+			<div class="single-date">23 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">VVVV</div>
+			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<div class="quote">转发 <a href="#">@经纬张颖</a> : 要想在创业板上市的创业者们可以认真读下这篇文章。虽然有些细节过于夸张，但总体来说，在国内上市，不管是创业板，中小板还是主板，都是“千军万马过独木桥”的艰难和未知！其过程对老总的综合素质，全面化，应急，执行和变通能力要求都非常高！《我是这样闯过创业板的》http://sinaurl.cn/h9BiCk<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail" /></div>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			<div class="comments">
+				<form>
+				<textarea rows="2"></textarea>
+				<input type="submit" class="submit-button" value="评论" />
+				</form>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<div class="main-button">更多评论</div>
+			</div>
+			
+			
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU
+			<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			<div class="retweet">
+				<form>
+				<textarea rows="2">测试测试测试转发。</textarea>
+				<input type="submit" class="submit-button" value="转发" />
+				</form>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# <a href="#" target="_blank">http://sinaurl.cn/h67KnU</a></p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+		</div>
+		<div class="more-button">更多动态</div>
+		
+	</div> 
+	
+	<div id="city-panel" class="wrapper"> 
 	<div class="timeline">
-		<div class="single">
-		<div class="single-date">1 mins</div>
-		<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-		<div class="single-name">Kavin</div>
-		<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
-		<div class="quote">转发 <a href="#">@经纬张颖</a> : 要想在创业板上市的创业者们可以认真读下这篇文章。虽然有些细节过于夸张，但总体来说，在国内上市，不管是创业板，中小板还是主板，都是“千军万马过独木桥”的艰难和未知！其过程对老总的综合素质，全面化，应急，执行和变通能力要求都非常高！《我是这样闯过创业板的》http://sinaurl.cn/h9BiCk<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail" /></div>
-		<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-		<br class="clean"/></div>
-		
-		<div class="single">
-		<div class="single-date">1 mins</div>
-		<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-		<div class="single-name">Kavin</div>
-		<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
-		<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-		<br class="clean"/></div>
-		<div class="comments">
-			<form>
-			<textarea rows="2"></textarea>
-			<input type="submit" class="submit-button" value="评论" />
-			</form>
-			<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-			<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-			<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-			<div class="main-button">更多评论</div>
+			<div class="single">
+			<div class="single-date">23 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">VVVV</div>
+			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<div class="quote">转发 <a href="#">@经纬张颖</a> : 要想在创业板上市的创业者们可以认真读下这篇文章。虽然有些细节过于夸张，但总体来说，在国内上市，不管是创业板，中小板还是主板，都是“千军万马过独木桥”的艰难和未知！其过程对老总的综合素质，全面化，应急，执行和变通能力要求都非常高！《我是这样闯过创业板的》http://sinaurl.cn/h9BiCk<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail" /></div>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			<div class="comments">
+				<form>
+				<textarea rows="2"></textarea>
+				<input type="submit" class="submit-button" value="评论" />
+				</form>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<div class="main-button">更多评论</div>
+			</div>
+			
+			
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU
+			<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			<div class="retweet">
+				<form>
+				<textarea rows="2">测试测试测试转发。</textarea>
+				<input type="submit" class="submit-button" value="转发" />
+				</form>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# <a href="#" target="_blank">http://sinaurl.cn/h67KnU</a></p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
 		</div>
-		
-		
-		
-		<div class="single">
-		<div class="single-date">1 mins</div>
-		<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-		<div class="single-name">Kavin</div>
-		<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU
-		<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
-		<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-		<br class="clean"/></div>
-		<div class="retweet">
-			<form>
-			<textarea rows="2">测试测试测试转发。</textarea>
-			<input type="submit" class="submit-button" value="转发" />
-			</form>
+		<div class="more-button">更多动态</div>
+	</div> 
+	
+<div id="user-panel" class="wrapper"> 
+<div class="timeline">
+			<div class="single">
+			<div class="single-date">23 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">VVVV</div>
+			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<div class="quote">转发 <a href="#">@经纬张颖</a> : 要想在创业板上市的创业者们可以认真读下这篇文章。虽然有些细节过于夸张，但总体来说，在国内上市，不管是创业板，中小板还是主板，都是“千军万马过独木桥”的艰难和未知！其过程对老总的综合素质，全面化，应急，执行和变通能力要求都非常高！《我是这样闯过创业板的》http://sinaurl.cn/h9BiCk<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail" /></div>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			<div class="comments">
+				<form>
+				<textarea rows="2"></textarea>
+				<input type="submit" class="submit-button" value="评论" />
+				</form>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<div class="main-button">更多评论</div>
+			</div>
+			
+			
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU
+			<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			<div class="retweet">
+				<form>
+				<textarea rows="2">测试测试测试转发。</textarea>
+				<input type="submit" class="submit-button" value="转发" />
+				</form>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# <a href="#" target="_blank">http://sinaurl.cn/h67KnU</a></p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
 		</div>
-		
-		<div class="single">
-		<div class="single-date">1 mins</div>
-		<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-		<div class="single-name">Kavin</div>
-		<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU</p>
-		<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-		<br class="clean"/></div>
-		
-		<div class="single">
-		<div class="single-date">1 mins</div>
-		<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-		<div class="single-name">Kavin</div>
-		<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# <a href="#" target="_blank">http://sinaurl.cn/h67KnU</a></p>
-		<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-		<br class="clean"/></div>
-	</div>
-	<div class="more-button">更多动态</div>
-</div> 
+		<div class="more-button">更多动态</div>
+	</div> 
 
-
+</div>
 </body>
 </html>
