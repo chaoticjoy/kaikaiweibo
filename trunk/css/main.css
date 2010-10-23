@@ -383,7 +383,7 @@ input:focus{
 	box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
-	padding:35px 10px 15px 10px;
+	padding:45px 10px 15px 10px;
 }
 
 #send textarea{
@@ -408,15 +408,15 @@ input:focus{
 	position:absolute;
 	top:8px;
 	right:13px;
-	height:20px;
+	height:24px;
 	cursor:pointer;
 }
 
 #send .tips{
 	position:absolute;
-	top:8px;
+	top:9px;
 	left:13px;
-	font-size:16px;
+	font-size:18px;
 	color:#f1f1f1;
 	font-weight:bold;
 }
