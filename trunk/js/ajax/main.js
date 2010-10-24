@@ -4,8 +4,10 @@
 var toggle=1;
 var kkwb={//kaikai weibo
 	history:[],
-	currentPanel:'#events-panel',//当前Tab的ID
+	currentPanel:0,//
 	currentBtn:'#events-btn',
+	panels:["#events-panel","#checkin-panel","#city-panel","#user-panel"],
+	
 	onClickPostBtn:function(){
 		//设置遮罩的高宽为当前文档的高宽,开启遮罩,弹出编辑框
 		var docHeight=$(document).height(); 
@@ -15,46 +17,64 @@ var kkwb={//kaikai weibo
 				  .show();
 		$("#send").show();
 	},
-	changePanel:function(tid,bid){//tid target panel's id;need to add a '#' before ids
-		if(tid==(this.currentPanel))return;
+	//tid target panel's id;need to add a '#' before ids. buttonid 
+	changePanel:function(tid,bid){
+		if(tid==this.currentPanel)return;
+		
+		var speed=200;
 		var docw=$(document).width();
-		var cpanel = $(this.currentPanel);
-		var tpanel = $(tid);
+		var cpanel =$(this.panels[this.currentPanel]);
+		var tpanel = $(this.panels[tid]);
 		//cpanel.css('z-index', '2');//当前的在上
 		//tpanel.css('z-index', '1');//目标在下
+		
+		//判断向左还是向右滑
+		var moveoption={};
+		if(tid>this.currentPanel){
+			moveoption={
+				right:""+ docw + 'px',
+				left:'-'+ docw + 'px'
+			}
+			tpanel.css('left',docw+'px').css('right','-'+docw+'px');
+		}else{
+			moveoption={
+				right:"-"+ docw + 'px',
+				left:''+ docw + 'px'
+			}
+			tpanel.css('left',-docw+'px').css('right',+docw+'px');
+		}
+		//结束
 		tpanel.show();
 		
-		cpanel.animate({
-			right:""+ docw + 'px',
-			left:'-'+ docw + 'px'
-		}, {
-			duration:600,
+		cpanel.animate(moveoption, {
+			duration:speed,
 			complete:function(){
 				cpanel.hide().css('right','0').css('left','0');
 			}
 		});//向左滑动一个屏幕宽度
-		tpanel.css('left',docw+'px').css('right','-'+docw+'px');
+		
 		tpanel.animate({
 			left:'0px',right:'0px'
-		},600);
+		},speed);
 		//
-		this.currentPanel = tid;
+		
 		//把按钮样式设置为on
 		$(this.currentBtn).removeClass('on');
 		$(bid).addClass('on');
 		this.currentBtn=bid;
+		this.currentPanel = tid;
 	},
 	onClickEventBtn:function(id){
-		this.changePanel('#events-panel','#events-btn');
+		this.changePanel(0,'#events-btn');
 	},
 	onClickCheckinBtn:function(id){
-		this.changePanel('#checkin-panel','#checkin-btn');
+		this.changePanel(1,'#checkin-btn');
 	},
 	onClickCityBtn:function(id){
-		this.changePanel('#city-panel','#city-btn');
+		this.changePanel(2,'#city-btn');
 	},
 	onClickUserBtn:function(id){
-		this.changePanel('#user-panel','#user-btn');
+		this.changePanel(3,'#user-btn');
 	}
 };
 
