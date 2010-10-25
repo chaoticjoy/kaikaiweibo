@@ -3,7 +3,8 @@
  */
 var toggle=1;
 var kkwb={//kaikai weibo
-	history:[],
+	history:[[0,"#events-btn"]],
+	currentHistory:0,///当前历史的Index
 	currentPanel:0,//
 	currentBtn:'#events-btn',
 	panels:["#events-panel","#checkin-panel","#city-panel","#user-panel"],
@@ -18,16 +19,21 @@ var kkwb={//kaikai weibo
 		$("#send").show();
 	},
 	//tid target panel's id;need to add a '#' before ids. buttonid 
-	changePanel:function(tid,bid){
+	changePanel:function(tid,bid,history){
 		if(tid==this.currentPanel)return;
 		
+		if (history == undefined) {
+			$("#back").show();
+			this.history.push([tid, bid]);
+			this.currentHistory = this.history.length - 1;
+		}
+		//alert("c"+this.currentHistory);
+
 		var speed=200;
 		var docw=$(document).width();
 		var cpanel =$(this.panels[this.currentPanel]);
 		var tpanel = $(this.panels[tid]);
-		//cpanel.css('z-index', '2');//当前的在上
-		//tpanel.css('z-index', '1');//目标在下
-		
+
 		//判断向左还是向右滑
 		var moveoption={};
 		if(tid>this.currentPanel){
@@ -64,6 +70,8 @@ var kkwb={//kaikai weibo
 		this.currentBtn=bid;
 		this.currentPanel = tid;
 	},
+	
+	
 	onClickEventBtn:function(id){
 		this.changePanel(0,'#events-btn');
 	},
@@ -75,7 +83,69 @@ var kkwb={//kaikai weibo
 	},
 	onClickUserBtn:function(id){
 		this.changePanel(3,'#user-btn');
+	},
+	//前进后退按钮
+	back:function(){
+		var h=this.currentHistory-1;
+		//alert(h);
+		if(h==0){
+			$("#back").hide();
+		}
+		if(h<0)return;
+		this.currentHistory--;
+		$("#forward").show();
+		this.changePanel(this.history[h][0],this.history[h][1],false);
+	},
+	forward:function(){
+		var h=this.currentHistory+1;
+		//alert(h);
+		if(h==this.history.length-1){
+			$("#forward").hide();
+		}
+		if(h>this.history.length)return;
+		this.currentHistory++;
+		$("#back").show();
+		this.changePanel(this.history[h][0],this.history[h][1],false);
+	},
+
+	//查看评论,
+	openComments:function(id){
+		var commentContainer=$('#comments-'+id);
+		if(commentContainer.css('display')=='none'){
+			//加截评论内容
+			
+			//显示
+			commentContainer.show();
+		}else {
+			commentContainer.hide();
+		}
+	},
+	moreComments:function(id){
+		
+	},
+	openRetweet:function(id){
+		var retweetContainer=$('#retweet-'+id);
+		if(retweetContainer.css('display')=='none'){
+			retweetContainer.show();
+		}else{
+			retweetContainer.hide();
+		}
+	},
+	sendComment:function(id){
+		var content=$('#comment-content-'+id).val();
+		alert("评论:"+content);
+	},
+	reply:function(id,name){
+		var contentArea=$('#comment-content-'+id);
+		var content=contentArea.val();
+		contentArea.val('回复:@'+name+' '+content);
+		contentArea[0].focus();
+	},
+	sendRetweet:function(id){
+		var content=$('#retweet-content-'+id).val();
+		alert("转发:"+content);
 	}
+
 };
 
 function onLoad(){
