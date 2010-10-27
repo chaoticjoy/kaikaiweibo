@@ -2,28 +2,45 @@
  * @author Administrator
  */
 var toggle=1;
-var kkwb={//kaikai weibo
+var gui={//kaikai weibo
 	history:[[0,"#events-btn"]],
 	currentHistory:0,///当前历史的Index
 	currentPanel:0,//
 	currentBtn:'#events-btn',
 	panels:["#events-panel","#checkin-panel","#city-panel","#user-panel"],
 	
-	onClickPostBtn:function(){
-		//设置遮罩的高宽为当前文档的高宽,开启遮罩,弹出编辑框
-		var docHeight=$(document).height(); 
-		var docWidth=$(document).width();
-		$("#mask").width(docWidth)
-				  .height(docHeight)
+	//组件，
+	components:{},
+	
+	init:function(){
+		this.components.mask=$("#mask");
+		this.components.image=$("#image");
+	},
+	
+	showMask:function(){
+		//alert($(document).height()+" "+$(document).width());
+		this.components.mask.width($(document).width())
+				  .height($(document).height())
 				  .show();
+	},
+	hideMask:function(){
+		this.components.mask.hide();
+	},
+	
+	onClickPostBtn:function(){
+		//开启遮罩,弹出编辑框
+		this.showMask();
 		$("#send").show();
 	},
 	//tid target panel's id;need to add a '#' before ids. buttonid 
 	changePanel:function(tid,bid,history){
 		if(tid==this.currentPanel)return;
 		
-		if (history == undefined) {
+		if (history == undefined) {//不是进行历史操作
 			$("#back").show();
+			while((this.history.length-1)>this.currentHistory){
+				this.history.pop();
+			}
 			this.history.push([tid, bid]);
 			this.currentHistory = this.history.length - 1;
 		}
@@ -120,9 +137,7 @@ var kkwb={//kaikai weibo
 			commentContainer.hide();
 		}
 	},
-	moreComments:function(id){
-		
-	},
+	
 	openRetweet:function(id){
 		var retweetContainer=$('#retweet-'+id);
 		if(retweetContainer.css('display')=='none'){
@@ -131,48 +146,46 @@ var kkwb={//kaikai weibo
 			retweetContainer.hide();
 		}
 	},
-	sendComment:function(id){
-		var content=$('#comment-content-'+id).val();
-		alert("评论:"+content);
-	},
 	reply:function(id,name){
 		var contentArea=$('#comment-content-'+id);
 		var content=contentArea.val();
 		contentArea.val('回复:@'+name+' '+content);
 		contentArea[0].focus();
 	},
-	sendRetweet:function(id){
-		var content=$('#retweet-content-'+id).val();
-		alert("转发:"+content);
+	openImage:function(event){
+		this.showMask();
+		var thumbnail=event.currentTarget.src;
+		var original=thumbnail.replace('thumbnail','orignal');
+		//---
 	}
-
 };
 
-function onLoad(){
+$(function(){
+	gui.init();
 	//隐藏前进后退箭头
 	$("#back").hide();
 	$("#forward").hide();
 	//顶栏各个按钮
 	$("#post-btn").click(function(){
-		kkwb.onClickPostBtn();
+		gui.onClickPostBtn();
 	});
 	$("#events-btn").click(function(){
-		kkwb.onClickEventBtn();
+		gui.onClickEventBtn();
 	});
 	$("#checkin-btn").click(function(){
-		kkwb.onClickCheckinBtn();
+		gui.onClickCheckinBtn();
 	});
 	$("#city-btn").click(function(){
-		kkwb.onClickCityBtn();
+		gui.onClickCityBtn();
 	});
 	$("#user-btn").click(function(){
-		kkwb.onClickUserBtn();
+		gui.onClickUserBtn();
 	});
 	
 	//发布界面的关闭按钮
 	$("#close-btn").click(function(){
 		$("#send").hide();
-		$("#mask").hide();
+		gui.hideMask();
 	});
 	//发布按钮
 	$("#send-btn").click(function(){
@@ -181,4 +194,4 @@ function onLoad(){
 	//初始化时只显示第一个Tab
 	$("#tabpanel").css('position','relative');
 	$("#tabpanel :first-child").show();
-}
+});
