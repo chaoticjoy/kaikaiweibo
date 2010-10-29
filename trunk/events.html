@@ -24,8 +24,10 @@
 </div>
 <div id="mask"></div>
 <div id="image">
-<img id="image-content"  />
-<img  src="image/close.png" class="close" />
+<img  src="image/close.png" class="close" onclick="gui.closeImage()" />
+<img id="image-content" class="set-center" />
+
+
 </div>
 
 <div id="header">
@@ -154,7 +156,7 @@
 			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
 			<div class="single-name">Kavin</div>
 			<p>测试测试测试转发
-			<br /><img onClick="gui.openImage(event)" src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
+			<br /><img onClick="gui.openImage(event)" src="http://ss16.sinaimg.cn/thumbnail/6628711bg93832cab169f&690" class="thumbnail"/></p>
 			<div class="single-operate"><span>收藏</span> | <span onClick="gui.openRetweet('123456')">转发</span> | <span>评论(3)</span></div>
 			<br class="clean"/></div>
 			<div class="retweet" id="retweet-123456" style="display:none">
