@@ -16,14 +16,17 @@
 	
 <div id="send">
 <img id="close-btn" src="image/close.png" class="close" />
-<div class="tips">说说你的新鲜事</div>
+<div class="tips" id='send-title'>说说你的新鲜事</div>
 <form>
 	<textarea id="send-content" rows="5"></textarea>
 	<input id="send-btn" type="button" class="main-button" value="发布围脖" />
 </form>
 </div>
 <div id="mask"></div>
-<div id="image"></div>
+<div id="image">
+<img id="image-content" class="set-center" />
+<img  src="image/close.png" class="close" />
+</div>
 
 <div id="header">
 开开围脖1.0
@@ -44,17 +47,18 @@
 	
 	<div id="events-panel"  class="wrapper"> 
 		<ul class="tab-bar"> 
-	        <li class="on" id="eventsTagWidth">围脖动态</li>        
-	        <li id="eventsTagWidth">开开动态</li> 
+	        <li onclick="gui.showEvents(this,'sina',event);" class="on" id="eventsTagWidth">围脖动态</li>        
+	        <li onclick="gui.showEvents(this,'kk',event);" id="eventsTagWidth">开开动态</li> 
 			<div class="clean"></div>
 	    </ul>
-		<div></div> 
+		
+		<div id="sinaEvents">
 		<div class="timeline">
 			<div class="single">
 			<div class="single-date">1 mins</div>
 			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
 			<div class="single-name">Kavin</div>
-			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<p>这是新浪动态呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
 			
 			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
 			<br class="clean"/></div>
@@ -112,7 +116,74 @@
 		</div>
 		
 		<div class="more-button">更多动态</div>
-	</div> 
+		</div> 
+
+		<div id="kkEvents">
+		<div class="timeline">
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是开开动态</p>
+			
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>测试评论按钮</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span onclick="gui.openComments('123456')">评论(3)</span></div>
+			<br class="clean"/></div>
+			<div class="comments" id="comments-123456" style="display:none">
+				<form>
+				<textarea rows="2" id="comment-content-123456"></textarea>
+				<input type="button" onclick="sinaApp.sendComment('123456')" class="submit-button" value="评论" />
+				</form>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply" onclick="gui.reply('123456','Kavin')">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<div class="main-button" onclick="sinaApp.moreComments('123456')">更多评论</div>
+			</div>
+			
+			
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>测试测试测试转发
+			<br /><img onclick="gui.openImage(event)" src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
+			<div class="single-operate"><span>收藏</span> | <span onclick="gui.openRetweet('123456')">转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			<div class="retweet" id="retweet-123456" style="display:none">
+				<form>
+				<textarea rows="2" id="retweet-content-123456">测试测试测试转发。</textarea>
+				<input type="button" onclick="sinaApp.sendRetweet('123456')" class="submit-button" value="转发" />
+				</form>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# <a href="#" target="_blank">http://sinaurl.cn/h67KnU</a></p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
+			<br class="clean"/></div>
+		</div>
+		
+		<div class="more-button">更多动态</div>
+		</div> 
+		</div> 
 	
 	<div id="checkin-panel" class="wrapper"> 
 		<div class="timeline">
@@ -249,13 +320,13 @@
 <div id="userinfo">
 			<img src="http://tp1.sinaimg.cn/1640316644/180/1287924377/1" class="avatar"/>
 			<span class="username">Kavin</span><span class="location">广东,汕头</span><br />
-			<div class="btn">加关注</div><div class="btn">私信</div>
+			<div class="btn">加关注</div><div class="btn" onclick="gui.sendMsg('dm','123','Kavin')">私信</div>
 			<div class="clean"></div>
 		</div>
 		<ul class="tab-bar"> 
-	        <li id="userinfo-tag-width">动态</li>        
-	        <li id="userinfo-tag-width">关注</li> 
-			<li class="on" id="userinfo-tag-width">粉丝</li> 
+	        <li onclick="gui.showUser(this,'events')" >动态</li>        
+	        <li onclick="gui.showUser(this,'following')">关注</li> 
+			<li onclick="gui.showUser(this,'followers')" class="on">粉丝</li> 
 			<div class="clean"></div>
 	    </ul> 
 		<div class="timeline">
