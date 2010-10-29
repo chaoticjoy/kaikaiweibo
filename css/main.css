@@ -51,13 +51,12 @@ a:visited {
 	display:none;
 }
 
-#header .forward{
+#header .exit{
 	position:absolute;
 	right:13px;
 	top:7px;
 	height:15px;
 	cursor:pointer;
-	display:none;
 }
 
 
@@ -474,11 +473,12 @@ input:focus{
 
 #send .close{
 	position:absolute;
-	top:8px;
-	right:13px;
-	height:24px;
+	top:-10px;
+	right:-10px;
+	height:40px;
 	cursor:pointer;
 }
+
 
 #send .tips{
 	position:absolute;
@@ -489,4 +489,12 @@ input:focus{
 	font-weight:bold;
 }
 
+
+.set-center{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:0px;
+	margin-top:0px;
+}
 
