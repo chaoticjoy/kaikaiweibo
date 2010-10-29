@@ -143,19 +143,31 @@ var gui = {//kaikai weibo
     openImage: function(event){
         this.showMask();
         var thumbnail = event.currentTarget.src;
-        var original = thumbnail.replace('thumbnail', 'orignal');
+        var bmiddle = thumbnail.replace('thumbnail', 'bmiddle');
         //---
 		var img=$('#image-content');
-		img[0].src=original;
+		img[0].src=bmiddle;
 		img[0].onload=function(){
-			img.css('z-index','200');
-			$('#image').show();
-			$('#image').css('margin-left',-img.width()/2);
-			$('#image').css('margin-top',document.body.scrollTop-img.height()/2);	
+			//img.css('z-index','200');
+			var scale;
+			
+			var properWidth=$(document).width()-30;
+			if(img.width()>properWidth){
+				scale=img.width()/properWidth;
+				img.width(properWidth);
+				img.height(img.height()/scale);
+			}
+			$('#image').show()
+			.css('margin-left',-img.width()/2)
+			.css('margin-top',document.body.scrollTop-img.height()/2);	
 		}
 		
 		
     },
+	closeImage:function(){
+		this.hideMask();
+		$("#image").hide();
+	},
     //under events-panel
     showEvents: function(node, type){
         var p = node.parentNode;
