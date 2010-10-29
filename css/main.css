@@ -453,6 +453,16 @@ input:focus{
 	padding:45px 10px 15px 10px;
 }
 
+#image{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:0px;
+	margin-top:0px;
+	z-index:200;
+	display:none;
+}
+
 #send textarea{
 	width:100%;
 	font-size: 18px;
@@ -492,10 +502,6 @@ input:focus{
 
 
 .set-center{
-	position:absolute;
-	top:50%;
-	left:50%;
-	margin-left:0px;
-	margin-top:0px;
+
 }
 
