@@ -150,8 +150,8 @@ var gui = {//kaikai weibo
 		img[0].onload=function(){
 			img.css('z-index','200');
 			$('#image').show();
-			img.css('margin-left',-img.width()/2);
-			img.css('margin-top',-img.height()/2);						
+			$('#image').css('margin-left',-img.width()/2);
+			$('#image').css('margin-top',document.body.scrollTop-img.height()/2);	
 		}
 		
 		

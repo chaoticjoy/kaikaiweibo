@@ -24,13 +24,13 @@
 </div>
 <div id="mask"></div>
 <div id="image">
-<img id="image-content" class="set-center" />
+<img id="image-content"  />
 <img  src="image/close.png" class="close" />
 </div>
 
 <div id="header">
 开开围脖1.0
-<img src="image/arrow_left.png" id="back" onclick="gui.back()" class="back"/>
+<img src="image/arrow_left.png" id="back" onClick="gui.back()" class="back"/>
 <img src="image/exit.png" id="exit" class="exit"/>
 </div>
 
@@ -47,8 +47,8 @@
 	
 	<div id="events-panel"  class="wrapper"> 
 		<ul class="tab-bar"> 
-	        <li onclick="gui.showEvents(this,'sina',event);" class="on" id="eventsTagWidth">围脖动态</li>        
-	        <li onclick="gui.showEvents(this,'kk',event);" id="eventsTagWidth">开开动态</li> 
+	        <li onClick="gui.showEvents(this,'sina',event);" class="on" id="eventsTagWidth">围脖动态</li>        
+	        <li onClick="gui.showEvents(this,'kk',event);" id="eventsTagWidth">开开动态</li> 
 			<div class="clean"></div>
 	    </ul>
 		
@@ -68,17 +68,17 @@
 			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
 			<div class="single-name">Kavin</div>
 			<p>测试评论按钮</p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span onclick="gui.openComments('123456')">评论(3)</span></div>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span onClick="gui.openComments('123456')">评论(3)</span></div>
 			<br class="clean"/></div>
 			<div class="comments" id="comments-123456" style="display:none">
 				<form>
 				<textarea rows="2" id="comment-content-123456"></textarea>
-				<input type="button" onclick="sinaApp.sendComment('123456')" class="submit-button" value="评论" />
+				<input type="button" onClick="sinaApp.sendComment('123456')" class="submit-button" value="评论" />
 				</form>
-				<p><span class="author">Kavin</span>评论评论评论<span class="reply" onclick="gui.reply('123456','Kavin')">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply" onClick="gui.reply('123456','Kavin')">回复</span></p>
 				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
 				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-				<div class="main-button" onclick="sinaApp.moreComments('123456')">更多评论</div>
+				<div class="main-button" onClick="sinaApp.moreComments('123456')">更多评论</div>
 			</div>
 			
 			
@@ -88,13 +88,13 @@
 			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
 			<div class="single-name">Kavin</div>
 			<p>测试测试测试转发
-			<br /><img onclick="gui.openImage(event)" src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
-			<div class="single-operate"><span>收藏</span> | <span onclick="gui.openRetweet('123456')">转发</span> | <span>评论(3)</span></div>
+			<br /><img onClick="gui.openImage(event)" src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
+			<div class="single-operate"><span>收藏</span> | <span onClick="gui.openRetweet('123456')">转发</span> | <span>评论(3)</span></div>
 			<br class="clean"/></div>
 			<div class="retweet" id="retweet-123456" style="display:none">
 				<form>
 				<textarea rows="2" id="retweet-content-123456">测试测试测试转发。</textarea>
-				<input type="button" onclick="sinaApp.sendRetweet('123456')" class="submit-button" value="转发" />
+				<input type="button" onClick="sinaApp.sendRetweet('123456')" class="submit-button" value="转发" />
 				</form>
 			</div>
 			
@@ -134,17 +134,17 @@
 			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
 			<div class="single-name">Kavin</div>
 			<p>测试评论按钮</p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span onclick="gui.openComments('123456')">评论(3)</span></div>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span onClick="gui.openComments('123456')">评论(3)</span></div>
 			<br class="clean"/></div>
 			<div class="comments" id="comments-123456" style="display:none">
 				<form>
 				<textarea rows="2" id="comment-content-123456"></textarea>
-				<input type="button" onclick="sinaApp.sendComment('123456')" class="submit-button" value="评论" />
+				<input type="button" onClick="sinaApp.sendComment('123456')" class="submit-button" value="评论" />
 				</form>
-				<p><span class="author">Kavin</span>评论评论评论<span class="reply" onclick="gui.reply('123456','Kavin')">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply" onClick="gui.reply('123456','Kavin')">回复</span></p>
 				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
 				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-				<div class="main-button" onclick="sinaApp.moreComments('123456')">更多评论</div>
+				<div class="main-button" onClick="sinaApp.moreComments('123456')">更多评论</div>
 			</div>
 			
 			
@@ -154,13 +154,13 @@
 			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
 			<div class="single-name">Kavin</div>
 			<p>测试测试测试转发
-			<br /><img onclick="gui.openImage(event)" src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
-			<div class="single-operate"><span>收藏</span> | <span onclick="gui.openRetweet('123456')">转发</span> | <span>评论(3)</span></div>
+			<br /><img onClick="gui.openImage(event)" src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
+			<div class="single-operate"><span>收藏</span> | <span onClick="gui.openRetweet('123456')">转发</span> | <span>评论(3)</span></div>
 			<br class="clean"/></div>
 			<div class="retweet" id="retweet-123456" style="display:none">
 				<form>
 				<textarea rows="2" id="retweet-content-123456">测试测试测试转发。</textarea>
-				<input type="button" onclick="sinaApp.sendRetweet('123456')" class="submit-button" value="转发" />
+				<input type="button" onClick="sinaApp.sendRetweet('123456')" class="submit-button" value="转发" />
 				</form>
 			</div>
 			
@@ -183,7 +183,7 @@
 		
 		<div class="more-button">更多动态</div>
 		</div> 
-		</div> 
+  </div> 
 	
 	<div id="checkin-panel" class="wrapper"> 
 		<div class="timeline">
@@ -312,7 +312,7 @@
 			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# <a href="#" target="_blank">http://sinaurl.cn/h67KnU</a></p>
 			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
 			<br class="clean"/></div>
-		</div>
+	  </div>
 		<div class="more-button">更多动态</div>
 	</div> 
 	
@@ -320,13 +320,13 @@
 <div id="userinfo">
 			<img src="http://tp1.sinaimg.cn/1640316644/180/1287924377/1" class="avatar"/>
 			<span class="username">Kavin</span><span class="location">广东,汕头</span><br />
-			<div class="btn">加关注</div><div class="btn" onclick="gui.sendMsg('dm','123','Kavin')">私信</div>
+			<div class="btn">加关注</div><div class="btn" onClick="gui.sendMsg('dm','123','Kavin')">私信</div>
 			<div class="clean"></div>
-		</div>
+	</div>
 		<ul class="tab-bar"> 
-	        <li onclick="gui.showUser(this,'events')" >动态</li>        
-	        <li onclick="gui.showUser(this,'following')">关注</li> 
-			<li onclick="gui.showUser(this,'followers')" class="on">粉丝</li> 
+	        <li onClick="gui.showUser(this,'events')" >动态</li>        
+	        <li onClick="gui.showUser(this,'following')">关注</li> 
+			<li onClick="gui.showUser(this,'followers')" class="on">粉丝</li> 
 			<div class="clean"></div>
 	    </ul> 
 		<div class="timeline">
@@ -381,7 +381,7 @@
 			</div>
 		</div>
 		<div class="more-button">更多粉丝</div>
-	</div> 
+  </div> 
 
 </div>
 </body>
