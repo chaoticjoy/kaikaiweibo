@@ -140,9 +140,12 @@ var gui = {//kaikai weibo
         contentArea.val('回复:@' + name + ' ' + content);
         contentArea[0].focus();
     },
-    openImage: function(event){
+	addFavourite:function(id){
+		
+	},
+    openImage: function(target){
         this.showMask();
-        var thumbnail = event.currentTarget.src;
+        var thumbnail = target.src;
         var bmiddle = thumbnail.replace('thumbnail', 'bmiddle');
         //---
 		var img=$('#image-content');
