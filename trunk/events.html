@@ -71,7 +71,7 @@
 			<div class="single-name">Kavin</div>
 			<p>测试评论按钮</p>
 			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span onClick="gui.openComments('123456')">评论(3)</span></div>
-			<br class="clean"/></div>
+			
 			<div class="comments" id="comments-123456" style="display:none">
 				<form>
 				<textarea rows="2" id="comment-content-123456"></textarea>
@@ -81,8 +81,8 @@
 				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
 				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
 				<div class="main-button" onClick="sinaApp.moreComments('123456')">更多评论</div>
+			</div><br class="clean"/>
 			</div>
-			
 			
 			
 			<div class="single">
@@ -90,15 +90,17 @@
 			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
 			<div class="single-name">Kavin</div>
 			<p>测试测试测试转发
-			<br /><img onClick="gui.openImage(event)" src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
+			<br /><img onClick="gui.openImage(this)" src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
 			<div class="single-operate"><span>收藏</span> | <span onClick="gui.openRetweet('123456')">转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
+			<br class="clean"/>
 			<div class="retweet" id="retweet-123456" style="display:none">
 				<form>
 				<textarea rows="2" id="retweet-content-123456">测试测试测试转发。</textarea>
 				<input type="button" onClick="sinaApp.sendRetweet('123456')" class="submit-button" value="转发" />
 				</form>
 			</div>
+			</div>
+			
 			
 			<div class="single">
 			<div class="single-date">1 mins</div>
@@ -156,7 +158,7 @@
 			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
 			<div class="single-name">Kavin</div>
 			<p>测试测试测试转发
-			<br /><img onClick="gui.openImage(event)" src="http://ss16.sinaimg.cn/thumbnail/6628711bg93832cab169f&690" class="thumbnail"/></p>
+			<br /><img onClick="gui.openImage(this)" src="http://ss16.sinaimg.cn/thumbnail/6628711bg93832cab169f&690" class="thumbnail"/></p>
 			<div class="single-operate"><span>收藏</span> | <span onClick="gui.openRetweet('123456')">转发</span> | <span>评论(3)</span></div>
 			<br class="clean"/></div>
 			<div class="retweet" id="retweet-123456" style="display:none">
