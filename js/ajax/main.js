@@ -149,15 +149,26 @@ var gui = {//kaikai weibo
 		img[0].src=bmiddle;
 		img[0].onload=function(){
 			//img.css('z-index','200');
+			
+			$('#image').show();
 			var scale;
 			
-			var properWidth=$(document).width()-30;
+			var properWidth=window.innerWidth-40;
+			var properHeight=window.innerHeight-40;
+			alert(properWidth+': '+properHeight+' \n'+img.width()+':'+img.height());
 			if(img.width()>properWidth){
+				alert('w');
 				scale=img.width()/properWidth;
 				img.width(properWidth);
 				img.height(img.height()/scale);
 			}
-			$('#image').show()
+			if(img.height()>properHeight){
+				alert('h');
+				scale=img.height()/properHeight;
+				img.height(properHeight);
+				img.width(img.width()/scale);
+			}
+			$('#image')
 			.css('margin-left',-img.width()/2)
 			.css('margin-top',document.body.scrollTop-img.height()/2);	
 		}
@@ -194,14 +205,20 @@ var gui = {//kaikai weibo
         p.children[1].className = "";
         p.children[2].className = "";
         
-        
+        $("#user-events").hide();
+		$("#user-following").hide();
+		$("#user-followers").hide();
+		
         node.className = 'on';
         switch (type) {
             case 'events':
+				 $("#user-events").show();
                 break;
             case 'following':
+				$("#user-following").show();
                 break;
             case 'followers':
+				$("#user-followers").show();
                 break;
                 
         }
