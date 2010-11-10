@@ -129,6 +129,15 @@ a:visited {
 	border-radius: 20px;
 }
 
+.main-checkbox{
+	margin:0 10px;
+}
+
+.checkbox-label{
+	font-size: 18px;
+	color: #999;
+}
+
 .username-label, .password-label{
 	position: absolute;
 	margin: 13px 9px 9px 12px;
