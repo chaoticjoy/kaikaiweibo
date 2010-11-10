@@ -47,7 +47,7 @@ $w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 <div id="header">
 开开围脖1.0
 <img src="image/arrow_left.png" id="back" onClick="gui.back()" class="back"/>
-<img src="image/exit.png" id="exit" class="exit"/>
+<a href="logout.php"><img border=0 src="image/exit.png" id="exit" class="exit"/></a>
 </div>
 
 <ul id="main-menu">
