@@ -47,17 +47,33 @@ class weibo
 		return $this->call_method( 'statuses' , 'public_timeline' );
 	}
 	
-	function friends_timeline()
+	function friends_timeline($count = 10 , $page = 1 )
 	{
-		return $this->call_method( 'statuses' , 'friends_timeline' );
+		return $this->call_method( 'statuses' , 'friends_timeline' ,'?count=' . $count . '&page='.$page);
 	}
 	
-	function user_timeline( $name=0 , $count = 20 ) 
+	function user_timeline( $name=0,$count = 10 , $page = 1  ) 
 	{
 		if($name==0)
-			return $this->call_method( 'statuses' , 'user_timeline' ,'');
+			return $this->call_method( 'statuses' , 'user_timeline' ,'?count=' . $count . '&page=' .$page);
 		else
-			return $this->call_method( 'statuses' , 'user_timeline' , '?screen_name=' . urlencode( $name ) .'&count=' . $count );
+			return $this->call_method( 'statuses' , 'user_timeline' , '?screen_name=' . urlencode( $name ) .'&count=' . $count. '&page='.$page );
+	}
+	
+	function followers( $name=0,$count = 10 , $page = 1  ) 
+	{
+		if($name==0)
+			return $this->call_method( 'statuses' , 'followers' , '?count='.$count.'&page=' .$page);
+		else
+			return $this->call_method( 'statuses' , 'followers' ,'?screen_name=' . urlencode( $name ) .'&count='.$count.'&page=' .$page);
+	}
+	
+	function friends( $name=0,$count = 10 , $page = 1  ) 
+	{
+		if($name==0)
+			return $this->call_method( 'statuses' , 'friends' , '?count='.$count.'&page=' .$page);
+		else
+			return $this->call_method( 'statuses' , 'friends' , '?screen_name=' . urlencode( $name ) .'&count='.$count.'&page=' .$page);
 	}
 	
 	function user_info( $name )
@@ -68,27 +84,27 @@ class weibo
 	
 	function mentions( $count = 10 , $page = 1 ) 
 	{
-		return $this->call_method( 'statuses' , 'mentions' , '?count=' . $count . '&page=' , $page  );
+		return $this->call_method( 'statuses' , 'mentions' , '?count=' . $count . '&page=' . $page  );
 	}
 	
 	function comments_timeline( $count = 10 , $page = 1 )
 	{
-		return $this->call_method( 'statuses' , 'comments_timeline' , '?count=' . $count . '&page=' , $page  );
+		return $this->call_method( 'statuses' , 'comments_timeline' , '?count=' . $count . '&page=' . $page  );
 	}
 	
 	function comments_by_me( $count = 10 , $page = 1 )
 	{
-		return $this->call_method( 'statuses' , 'comments_by_me' , '?count=' . $count . '&page=' , $page  );
+		return $this->call_method( 'statuses' , 'comments_by_me' , '?count=' . $count . '&page=' . $page  );
 	}
 	
 	function comments( $tid , $count = 10 , $page = 1 )
 	{
-		return $this->call_method( 'statuses' , 'comments' , '?id=' . $tid . '&count=' . $count . '&page=' , $page  );
+		return $this->call_method( 'statuses' , 'comments' , '?id=' . $tid . '&count=' . $count . '&page=' .$page  );
 	}
 	
 	function counts( $tids )
 	{
-		return $this->call_method( 'statuses' , 'counts' , '?tids=' . $tids   );
+		return $this->call_method( 'statuses' , 'counts' , '?ids=' . $tids   );
 	}
 	
 	function show( $tid )
@@ -288,14 +304,15 @@ class weibo
 		// clean post data
 		$this->postInit();
 		
-		//return json_decode( $ret , true);
-		
+		return json_decode( $ret , true);
+		/*
 		$response=array();
 		$header_callback=curl_getinfo( $this->curl );
 		array_push($response,$header_callback);
 		$json_response=json_decode( $ret , true);
 		array_push($response,$json_response);
 		return $response;
+		*/
 		
 	}
 	
