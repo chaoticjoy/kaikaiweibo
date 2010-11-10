@@ -13,14 +13,17 @@ include_once('inc/sina.php');
 			
 			if ($result ) {
 				//echo "<p>登陆成功</p>";
-				header('location: index.php');
+				echo "<script language=\"javascript\">location.href='index.php';</script>";
 			}
 			else{
-				echo "<p>登陆失败，请重试</p>";
+				echo "<script language=\"javascript\">alert('登陆失败，请重新登录。');</script>";
+				echo "<script language=\"javascript\">location.href='login.php';</script>";
 			}
 			
 	} 
 	else {
-		echo "<p>非法请求，请返回</p>";
+		//echo "<p>非法请求，请返回</p>";
+		echo "<script language=\"javascript\">alert('非法请求!');</script>";
+		echo "<script language=\"javascript\">location.href='index.php';</script>";
 	}
 ?>
