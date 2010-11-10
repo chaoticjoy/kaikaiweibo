@@ -8,7 +8,8 @@ include_once('inc/utility.php');
 include_once('inc/sina.php');
 
 if(!(getEncryptCookie('sina_name') && getEncryptCookie('sina_pw')))
-header('location: login.php');
+//header('location: login.php');
+echo "<script language=\"javascript\">location.href='login.php';</script>";
 $w = new weibo( APP_KEY );
 $w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 ?>	
