@@ -15,7 +15,7 @@
 <div id="wrapper"> 
 
 
-	<form onsubmit="return onSubmit()" class="loginform" action="login.php"> 
+	<form onsubmit="return onSubmit()" class="loginform" method="post" action="login_action.php"> 
 		<p>
 		<label class="username-label" for="username">帐号</label>
 		<input type="text" tabindex="1" autocapitalize="off" autocorrect="off" class="main-field" id="username" name="username">
