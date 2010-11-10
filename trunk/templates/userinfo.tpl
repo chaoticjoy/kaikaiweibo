@@ -7,8 +7,8 @@
 			<div class="clean"></div>
 	</div>
 		<ul class="tab-bar"> 
-	        <li onClick="gui.showUser(this,'events')" >动态{if {$user['statuses_count']}}({$user['statuses_count']}){/if}</li>        
-	        <li onClick="gui.showUser(this,'following')">关注{if {$user['friends_count']}}({$user['friends_count']}){/if}</li> 
-			<li onClick="gui.showUser(this,'followers')" class="on">粉丝{if {$user['followers_count']}}({$user['followers_count']}){/if}</li> 
+	        <li onClick="gui.showUser(this,'events')" >动态</li>        
+	        <li onClick="gui.showUser(this,'following')">关注</li> 
+			<li onClick="gui.showUser(this,'followers')" class="on">粉丝</li> 
 			<div class="clean"></div>
 	    </ul> 
