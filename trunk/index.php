@@ -1,17 +1,13 @@
 <?php
 
 //sae_set_display_errors(true);
-include_once('lib/smarty/Smarty.class.php');
-include_once('lib/weibo.php');
 include_once('inc/config.php');
 include_once('inc/utility.php');
-include_once('inc/sina.php');
 
 if(!(getEncryptCookie('sina_name') && getEncryptCookie('sina_pw')))
 //header('location: login.php');
 echo "<script language=\"javascript\">location.href='login.php';</script>";
-$w = new weibo( APP_KEY );
-$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+
 ?>	
 <!DOCTYPE html> 
 <html> 
@@ -71,7 +67,7 @@ $w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 		
 		<div id="sinaEvents">
 		<div class="timeline">
-			<?php include  ('ajax/friends_timeline.php'); ?>
+			
 		</div>
 		
 		<div class="more-button" onclick="sinaApp.moreEvents()">更多动态</div>
@@ -276,18 +272,19 @@ $w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 	</div> 
 	
 <div id="user-panel" class="wrapper"> 
-			<?php include  ('ajax/userinfo.php'); ?>
+			
 		<div id="user-events" >
-			<?php include  ('ajax/user_timeline.php'); ?>
+			
+			<div class="more-button">更多动态</div>
 		</div>
 		
 		<div id="user-following" >
-			<?php include  ('ajax/friends.php'); ?>
+			
 			<div class="more-button">更多关注</div>
 		</div>
 		
 		<div id="user-followers" class="timeline">
-			<?php include  ('ajax/followers.php'); ?>
+			
 			<div class="more-button">更多粉丝</div>
 		</div>
   </div> 

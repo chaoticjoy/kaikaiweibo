@@ -1,23 +1,6 @@
-<?php
+ï»¿<?php
 
-	function get_followers($screen_name=0,$count=10,$page=1){
-		global $w;
-		$followers=$w->followers($screen_name,$count,$page);
-		
-		$smarty = new Smarty;
-
-		$smarty->compile_dir = 'saemc://smartytpl/';
-		$smarty->cache_dir = 'saemc://smartytpl/';
-		$smarty->compile_locking = false; // ·ÀÖ¹µ÷ÓÃtouch,saemc»á×Ô¶¯¸üÐÂÊ±¼ä£¬²»ÐèÒªtouch
-
-		//$smarty->force_compile = true;
-		$smarty->debugging = false;
-		$smarty->caching = false;
-		$smarty->cache_lifetime = 120;
-
-		$smarty->assign("users",$followers);
-		$smarty->display('user.tpl');
-	}
+include_once('../inc/sina.php');
 	
 	if($_REQUEST['count']&&$_REQUEST['page'])
 		get_followers($_REQUEST['screen_name'],$_REQUEST['count'],$_REQUEST['page']);
