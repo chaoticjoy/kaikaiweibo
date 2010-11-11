@@ -69,7 +69,7 @@ include_once('utility.php');
 		$ids=get_ids($friends_timeline);
 		$counts=$w->counts($ids);
 		
-		foreach($friends_timeline as $key=>$msg){
+	foreach($friends_timeline as $key=>$msg){
 		
 		/*
 			foreach($emotions as $emotion){
@@ -107,8 +107,8 @@ include_once('utility.php');
 		$smarty->caching = false;
 		$smarty->cache_lifetime = 120;
 
-		$smarty->assign("timeline",$friends_timeline);
-		$smarty->display('timeline.tpl');
+		$smarty->assign("friends_timeline",$friends_timeline);
+		$smarty->display('friends_timeline.tpl');
 	}
 	
 	function get_user_timeline($screen_name=0,$max_id=0){
@@ -158,8 +158,8 @@ include_once('utility.php');
 		$smarty->caching = false;
 		$smarty->cache_lifetime = 120;
 
-		$smarty->assign("timeline",$user_timeline);
-		$smarty->display('timeline.tpl');
+		$smarty->assign("user_timeline",$user_timeline);
+		$smarty->display('user_timeline.tpl');
 	}
 	
 	function get_user_info($screen_name=0){
