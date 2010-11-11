@@ -60,10 +60,10 @@ include_once('utility.php');
 		return $ids;
 	}
 	
-	function get_friends_timeline($count=10,$page=1){
+	function get_friends_timeline($max_id=0){
 		$w = new weibo( APP_KEY );
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
-		$friends_timeline=$w->friends_timeline($count,$page);
+		$friends_timeline=$w->friends_timeline($max_id);
 		
 		//$emotions=$w->emotions();
 		$ids=get_ids($friends_timeline);
@@ -111,10 +111,10 @@ include_once('utility.php');
 		$smarty->display('timeline.tpl');
 	}
 	
-	function get_user_timeline($screen_name=0,$count=10,$page=1){
+	function get_user_timeline($screen_name=0,$max_id=0){
 		$w = new weibo( APP_KEY );
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
-		$user_timeline=$w->user_timeline($screen_name,$count,$page);
+		$user_timeline=$w->user_timeline($screen_name,$max_id);
 		
 		//$emotions=$w->emotions();
 		$ids=get_ids($user_timeline);
@@ -188,7 +188,7 @@ include_once('utility.php');
 		$smarty->display('userinfo.tpl');
 	}
 	
-		function get_followers($screen_name=0,$count=10,$page=1){
+	function get_followers($screen_name=0,$count=10,$page=1){
 		$w = new weibo( APP_KEY );
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 		$followers=$w->followers($screen_name,$count,$page);
@@ -208,7 +208,7 @@ include_once('utility.php');
 		$smarty->display('user.tpl');
 	}
 	
-		function get_friends($screen_name=0,$count=10,$page=1){
+	function get_friends($screen_name=0,$count=10,$page=1){
 		$w = new weibo( APP_KEY );
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 		$friends=$w->friends($screen_name,$count,$page);
