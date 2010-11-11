@@ -1,4 +1,8 @@
 <?php
+include_once('../lib/smarty/Smarty.class.php');
+include_once('../lib/weibo.php');
+include_once('config.php');
+include_once('utility.php');
 
 	function verify($username, $password, $remember) {
 	
@@ -70,5 +74,173 @@
 			$ids=$ids.$id['id'].",";
 		$ids= substr($ids, 0,-1);
 		return $ids;
+	}
+	
+	function get_friends_timeline($count=10,$page=1){
+		$w = new weibo( APP_KEY );
+		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+		$friends_timeline=$w->friends_timeline($count,$page);
+		
+		//$emotions=$w->emotions();
+		$ids=get_ids($friends_timeline);
+		$counts=$w->counts($ids);
+		
+		foreach($friends_timeline as $key=>$msg){
+		
+		/*
+			foreach($emotions as $emotion){
+				if(strpos($msg['text'],$emotion['phrase'])!==false)
+					if($emotion['phrase']=="image")
+						$friends_timeline[$key]['text']=str_replace($emotion['phrase'],"<img src=".$emotion['url'].">", $msg['text']);
+					else
+						$friends_timeline[$key]['text']=str_replace($emotion['phrase'],$emotion['url'], $msg['text']);
+			}
+		*/
+		
+			foreach($counts as $count){			
+				if($count['id']==$msg['id']){
+					$friends_timeline[$key]['comments_count']=$count['comments'];
+					$friends_timeline[$key]['rt_count']=$count['rt'];
+				}				
+			}
+			
+			$friends_timeline[$key]['created_at']=formatTime($msg['created_at']);
+			$friends_timeline[$key]['text']=formatText($msg['text']);
+			
+			if($msg['retweeted_status'])
+				$friends_timeline[$key]['retweeted_status']['text']=formatText($msg['text']);
+			 
+		}
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("timeline",$friends_timeline);
+		$smarty->display('timeline.tpl');
+	}
+	
+	function get_user_timeline($screen_name=0,$count=10,$page=1){
+		$w = new weibo( APP_KEY );
+		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+		$user_timeline=$w->user_timeline($screen_name,$count,$page);
+		
+		//$emotions=$w->emotions();
+		$ids=get_ids($user_timeline);
+		$counts=$w->counts($ids);
+		
+		foreach($user_timeline as $key=>$msg){
+		
+		/*
+			foreach($emotions as $emotion){
+				if(strpos($msg['text'],$emotion['phrase'])!==false)
+					if($emotion['phrase']=="image")
+						$user_timeline[$key]['text']=str_replace($emotion['phrase'],"<img src=".$emotion['url'].">", $msg['text']);
+					else
+						$user_timeline[$key]['text']=str_replace($emotion['phrase'],$emotion['url'], $msg['text']);
+			}
+		*/
+		
+			foreach($counts as $count){			
+				if($count['id']==$msg['id']){
+					$user_timeline[$key]['comments_count']=$count['comments'];
+					$user_timeline[$key]['rt_count']=$count['rt'];
+				}				
+			}
+			
+			$user_timeline[$key]['created_at']=formatTime($msg['created_at']);
+			$user_timeline[$key]['text']=formatText($msg['text']);
+			
+			if($msg['retweeted_status'])
+				$user_timeline[$key]['retweeted_status']['text']=formatText($msg['text']);
+			 
+		}
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("timeline",$user_timeline);
+		$smarty->display('timeline.tpl');
+	}
+	
+	function get_user_info($screen_name=0){
+		$w = new weibo( APP_KEY );
+		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+		if($screen_name==0){
+			$screen_name=$w->verify_credentials();
+			$screen_name=$screen_name['screen_name'];
+		}
+		$user=$w->user_info($screen_name);
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("user",$user);
+		//$smarty->assign("emotions",$emotions[1]);
+
+		$smarty->display('userinfo.tpl');
+	}
+	
+		function get_followers($screen_name=0,$count=10,$page=1){
+		$w = new weibo( APP_KEY );
+		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+		$followers=$w->followers($screen_name,$count,$page);
+		
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("users",$followers);
+		$smarty->display('user.tpl');
+	}
+	
+		function get_friends($screen_name=0,$count=10,$page=1){
+		$w = new weibo( APP_KEY );
+		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+		$friends=$w->friends($screen_name,$count,$page);
+		
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("users",$friends);
+		$smarty->display('user.tpl');
 	}
 ?>
