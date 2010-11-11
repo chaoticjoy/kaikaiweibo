@@ -74,7 +74,7 @@ $w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 			<?php include  ('ajax/friends_timeline.php'); ?>
 		</div>
 		
-		<div class="more-button">更多动态</div>
+		<div class="more-button" onclick="sinaApp.moreEvents()">更多动态</div>
 		</div> 
 
 		<div id="kkEvents">

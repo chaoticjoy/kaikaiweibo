@@ -150,7 +150,9 @@ var gui = {//kaikai weibo
         //---
 		var img=$('#image-content');
 		img[0].src=bmiddle;
-		img[0].onload=function(){
+		var imgObj=new Image();
+		imgObj.src=bmiddle;
+		imgObj.onload=function(){
 			//img.css('z-index','200');
 			
 			$('#image').show();
@@ -158,22 +160,24 @@ var gui = {//kaikai weibo
 			
 			var properWidth=window.innerWidth-40;
 			var properHeight=window.innerHeight-40;
-			alert(properWidth+': '+properHeight+' \n'+img.width()+':'+img.height());
+			//alert(properWidth+': '+properHeight+' \n'+img.width()+':'+img.height());
+			img.width(imgObj.width).height(imgObj.height);
+			
 			if(img.width()>properWidth){
-				alert('w');
 				scale=img.width()/properWidth;
 				img.width(properWidth);
 				img.height(img.height()/scale);
 			}
+			
 			if(img.height()>properHeight){
-				alert('h');
+				
 				scale=img.height()/properHeight;
 				img.height(properHeight);
 				img.width(img.width()/scale);
 			}
 			$('#image')
 			.css('margin-left',-img.width()/2)
-			.css('margin-top',document.body.scrollTop-img.height()/2);	
+			.css('margin-top',window.pageYOffset-img.height()/2);	
 		}
 		
 		
