@@ -3,7 +3,21 @@
 include_once('inc/config.php');
 include_once('lib/weibo.php');
 include_once('inc/utility.php');
-include_once('inc/sina.php');	
+	function verify($username, $password, $remember) {
+	
+		$w = new weibo( APP_KEY );
+		$w->setUser( $username, $password );
+		$user=$w->verify_credentials();
+		//print_r($user);
+		if ($user['screen_name']) {
+			$time = $remember ? time()+3600*24*365 : 0;
+			setEncryptCookie('sina_name', $username, $time, '/');
+			setEncryptCookie('sina_pw', $password, $time, '/');
+			return 1;
+		} else {
+			return 0;
+		}
+	}	
 
 	
 	if ( isset($_POST['username']) && isset($_POST['password']) ) {

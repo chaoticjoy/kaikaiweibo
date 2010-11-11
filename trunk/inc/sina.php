@@ -3,22 +3,6 @@ include_once('../lib/smarty/Smarty.class.php');
 include_once('../lib/weibo.php');
 include_once('config.php');
 include_once('utility.php');
-
-	function verify($username, $password, $remember) {
-	
-		$w = new weibo( APP_KEY );
-		$w->setUser( $username, $password );
-		$user=$w->verify_credentials();
-		//print_r($user);
-		if ($user['screen_name']) {
-			$time = $remember ? time()+3600*24*365 : 0;
-			setEncryptCookie('sina_name', $username, $time, '/');
-			setEncryptCookie('sina_pw', $password, $time, '/');
-			return 1;
-		} else {
-			return 0;
-		}
-	}
 	
 	function formatText($text) {
 		//如果开启了魔术引号\" \' 转回来
