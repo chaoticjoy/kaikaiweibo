@@ -112,27 +112,67 @@ var gui = {//kaikai weibo
         this.changePanel(this.history[h][0], this.history[h][1], false);
     },
     //查看评论,
-    openComments: function(id){
+    openComments: function(app,type,id){
         var commentContainer = $('#comments-' + id);
-        if (commentContainer.css('display') == 'none') {
-            //加截评论内容
-            
-            //显示
-            commentContainer.show();
-        }
-        else {
-            commentContainer.hide();
-        }
+		if (commentContainer.length > 0) {//已经加入，也就是第二次点击评论了。
+			if (commentContainer.css('display') == 'none') {
+				//加截评论内容
+				
+				//显示
+				commentContainer.show();
+			}
+			else {
+				commentContainer.hide();
+			}
+		}else{//如果还没有加入
+			//获取微博节点
+			var status=$('#'+app+'-'+type+'-'+id);
+			//根据模板创建节点
+			var comment=document.createElement('div');
+			comment.className='comments'
+			comment.id="comments-"+id;
+			
+			comment.innerHTML=
+			"<form>"+
+				"<textarea rows='2' id='comment-content-"+id+"'></textarea>"+
+				"<input type='button' onClick='sinaApp.sendComment(\""+id+"\")' class='submit-button' value='评论' />"+
+			"</form>"+
+	/*
+	<p>
+		<span class="author">$someone</span>
+		$someone_comment
+		<span class="reply" onClick="gui.reply('$id','$name')">回复</span>
+		//....
+	</p>
+	*/	
+			"<div class='main-button' onClick='sinaApp.moreComments(\""+id+"\")'>更多评论</div>"
+			status.append(comment);
+		}
     },
     
-    openRetweet: function(id){
+    openRetweet: function(app,type,id){
+		
         var retweetContainer = $('#retweet-' + id);
-        if (retweetContainer.css('display') == 'none') {
-            retweetContainer.show();
-        }
-        else {
-            retweetContainer.hide();
-        }
+		if (retweetContainer.length > 0) {
+			if (retweetContainer.css('display') == 'none') {
+				retweetContainer.show();
+			}
+			else {
+				retweetContainer.hide();
+			}
+		}else{
+			var status=$('#'+app+'-'+type+'-'+id);
+			var retweet=document.createElement('div');
+			retweet.className='retweet';
+			retweet.id='retweet-'+id;
+			
+			retweet.innerHTML=
+			"<form>"+
+				"<textarea rows='2' id='retweet-content-"+id+"'>测试测试测试转发。</textarea>"+
+				"<input type='button' onClick='sinaApp.sendRetweet(\""+id+"\")' class='submit-button' value='转发' />"+
+			"</form>"
+			status.append(retweet);			
+		}
     },
     reply: function(id, name){
         var contentArea = $('#comment-content-' + id);
@@ -140,7 +180,7 @@ var gui = {//kaikai weibo
         contentArea.val('回复:@' + name + ' ' + content);
         contentArea[0].focus();
     },
-	addFavourite:function(id){
+	addFavourite:function(app,type,id){
 		
 	},
     openImage: function(target){

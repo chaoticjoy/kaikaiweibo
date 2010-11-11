@@ -2,8 +2,16 @@
  * @author Administrator
  */
 var sinaApp={
-	moreEvents:function(){
-		$('#sinaEvents').load("ajax/friends_timeline.php",{count:20});
+	
+	/**
+	 * 
+	 * @param {boolean} clear  表示是否清楚SinaEvents里有所有元素
+	 */
+	moreEvents:function(clear){
+		var container=$('#sinaEvents-content');
+		
+		container.load("ajax/friends_timeline.php",{count:20});
+		
 	},
 	moreComments:function(id){
 		
