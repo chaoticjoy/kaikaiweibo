@@ -15,7 +15,6 @@
 		<br />
 		<img onClick="gui.openImage(this)" src="$thumbnail" class="thumbnail"/>
 	</p>
-	
 	<div class="quote">
 		转发
 		 <a href="#">@经纬张颖</a> : 
@@ -23,7 +22,6 @@
 		 <br />
 		 <img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail" />
 	</div>
-	
 	<div class="single-operate">
 		<span onClick="gui.addFavourite('sina','$type','$id')">收藏</span> | 
 		<span onClick="gui.openRetweet('sina','$type','$id')">转发 ($retweet_count)</span> | 

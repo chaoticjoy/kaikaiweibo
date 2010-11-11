@@ -66,11 +66,11 @@ echo "<script language=\"javascript\">location.href='login.php';</script>";
 	    </ul>
 		
 		<div id="sinaEvents">
-		<div class="timeline">
+		<div id="sinaEvents-content" class="timeline">
 			
 		</div>
 		
-		<div class="more-button" onclick="sinaApp.moreEvents()">更多动态</div>
+		<div class="more-button" onclick="sinaApp.moreEvents(false)">更多动态</div>
 		</div> 
 
 		<div id="kkEvents">
