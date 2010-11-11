@@ -1,8 +1,11 @@
 /*******************************************************
-*timeline sinaevents kkevents
+*timeline sinaevents 
+
+  friendtimeline.php时  $type为event
+  usertimeline 时 $type 为user
 *
 *******************************************************/
-<div class="single">
+<div id="sina-$type-$id" class="single">
 	<div class="single-date">1 mins</div>
 	<img src="$src" class="single-avatar"/>
 	<div class="single-name">$name</div>
@@ -22,32 +25,43 @@
 	</div>
 	
 	<div class="single-operate">
-		<span onClick="gui.addFavourite('$id')">收藏</span> | 
-		<span onClick="gui.openRetweet('$id')">转发 ($retweet_count)</span> | 
-		<span onClick="gui.openComments('$id')">评论($comment_count)</span>
+		<span onClick="gui.addFavourite('sina','$type','$id')">收藏</span> | 
+		<span onClick="gui.openRetweet('sina','$type','$id')">转发 ($retweet_count)</span> | 
+		<span onClick="gui.openComments('sina','$type','$id')">评论($comment_count)</span>
 	</div>
 	<br class="clean"/>
-	<div class="comments" id="comments-$id" style="display:none">
-		<form>
-		<textarea rows="2" id="comment-content-$id"></textarea>
-		<input type="button" onClick="sinaApp.sendComment('$id')" class="submit-button" value="评论" />
-		</form>
-		<p>
-			<span class="author">$someone</span>
-			$someone_comment
-			<span class="reply" onClick="gui.reply('$id','$name')">回复</span>
-			//....
-		</p>
-		
-		<div class="main-button" onClick="sinaApp.moreComments('$id')">更多评论</div>
-	</div>
-	<div class="retweet" id="retweet-$id" style="display:none">
-		<form>
-		<textarea rows="2" id="retweet-content-123456">测试测试测试转发。</textarea>
-		<input type="button" onClick="sinaApp.sendRetweet('123456')" class="submit-button" value="转发" />
-		</form>
-	</div>
+
 </div>
+
+/********************************************************
+ 
+ 评论和转发的模板 ，由JS负责显示
+
+**********************************************************/
+<div class="comments" id="comments-$id" style="display:none">
+	<form>
+	<textarea rows="2" id="comment-content-$id"></textarea>
+	<input type="button" onClick="sinaApp.sendComment('$id')" class="submit-button" value="评论" />
+	</form>
+	<p>
+		<span class="author">$someone</span>
+		$someone_comment
+		<span class="reply" onClick="gui.reply('$id','$name')">回复</span>
+		//....
+	</p>
+	
+	<div class="main-button" onClick="sinaApp.moreComments('$id')">更多评论</div>
+</div>
+
+
+<div class="retweet" id="retweet-$id" style="display:none">
+	<form>
+	<textarea rows="2" id="retweet-content-123456">测试测试测试转发。</textarea>
+	<input type="button" onClick="sinaApp.sendRetweet('123456')" class="submit-button" value="转发" />
+	</form>
+</div>
+
+
 
 /*******************************************************
 *	个人页面的粉丝,关注
