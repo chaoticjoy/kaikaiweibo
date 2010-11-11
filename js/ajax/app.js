@@ -2,6 +2,9 @@
  * @author Administrator
  */
 var sinaApp={
+	moreEvents:function(){
+		$('#sinaEvents').load("ajax/friends_timeline.php",{count:20});
+	},
 	moreComments:function(id){
 		
 	},
