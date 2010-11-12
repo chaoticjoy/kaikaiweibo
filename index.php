@@ -73,7 +73,7 @@ echo "<script language=\"javascript\">location.href='login.php';</script>";
 		<div class="more-button" onclick="sinaApp.moreEvents(false)">更多动态</div>
 		</div> 
 
-		<div id="kkEvents" display="none">
+		<div id="kkEvents" style="display:none">
 			<div id="kkEvents-content" class="timeline">
 			
 			</div>
