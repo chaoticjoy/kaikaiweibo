@@ -64,7 +64,8 @@ include_once('utility.php');
 		$w = new weibo( APP_KEY );
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 		$friends_timeline=$w->friends_timeline($max_id);
-		
+		if($max_id)
+			array_shift($friends_timeline);
 		//$emotions=$w->emotions();
 		$ids=get_ids($friends_timeline);
 		$counts=$w->counts($ids);
@@ -115,6 +116,8 @@ include_once('utility.php');
 		$w = new weibo( APP_KEY );
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 		$user_timeline=$w->user_timeline($screen_name,$max_id);
+		if($max_id)
+			array_shift($user_timeline);
 		
 		//$emotions=$w->emotions();
 		$ids=get_ids($user_timeline);

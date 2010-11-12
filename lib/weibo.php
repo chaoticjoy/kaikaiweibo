@@ -52,7 +52,7 @@ class weibo
 		if($max_id==0)
 			return $this->call_method( 'statuses' , 'friends_timeline' ,'?count=20' );
 		else
-			return $this->call_method( 'statuses' , 'friends_timeline' ,'?count=20&max_id='.$max_id);
+			return $this->call_method( 'statuses' , 'friends_timeline' ,'?count=21&max_id='.$max_id);
 	}
 	
 	function user_timeline( $name=0,$max_id=0 ) 
@@ -61,7 +61,7 @@ class weibo
 			if($max_id==0)
 				return $this->call_method( 'statuses' , 'user_timeline' ,'?count=20');
 			else
-				return $this->call_method( 'statuses' , 'user_timeline' ,'?count=20&max_id='.$max_id);
+				return $this->call_method( 'statuses' , 'user_timeline' ,'?count=21&max_id='.$max_id);
 		}
 		else{
 			if($max_id==0)
