@@ -86,8 +86,7 @@ var sinaApp={
 	getUserFollowers:function(cursor){
 		var arg={
 			screen_name:sinaApp.user,
-			count:20,
-			cursor:sinaApp.follower.cursor
+			count:20
 		}
 		if(cursor)
 			arg.cursor=cursor;
@@ -111,11 +110,11 @@ var sinaApp={
 		}
 		
 	},
-	moreFollowers:function(){
-		this.getUserFollowers();
+	moreFollowers:function(cursor){
+		this.getUserFollowers(cursor);
 	},
-	moreFollowing:function(){
-		this.getUserFollowing();
+	moreFollowing:function(cursor){
+		this.getUserFollowing(cursor);
 	}
 
 }
