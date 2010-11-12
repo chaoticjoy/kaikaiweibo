@@ -17,7 +17,6 @@ include_once('utility.php');
 		if (!preg_match('/\w+(@\w*\.)*\w+@\w+(\.\w+)+/', $text)) {
 			$matches = array();
 			preg_match_all('/@([\x{4e00}-\x{9fa5}0-9A-Za-z_-]+)/u', $text, $matches);
-			print_r($matches);
 			if (!empty($matches)) {
 				for($i=0;$i<count($matches[0]);$i++)
 				$text=str_replace($matches[0][$i],"<a href='user.php?username=".$matches[1][$i]."' target='_blank'>@".$matches[1][$i]."</a>", $text);
