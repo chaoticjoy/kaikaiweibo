@@ -14,11 +14,11 @@ userinfo.php 返回用户个人信息,微博数，好友数，关注数：
 followers.php 返回用户粉丝列表：
 	screen_name：用户昵称
 	count：显示条数，默认为10
-	page：显示页数，默认为1
-	若不传参数，默认返回登录用户前10个粉丝，注意：count和page都必须传值才有效
+	cursor：默认为-1
+	若不传参数，默认返回登录用户前10个粉丝，注意：count和cursor都必须传值才有效
 
 friends.php 返回用户关注列表：
 	screen_name：用户昵称
 	count：显示条数，默认为10
-	page：显示页数，默认为1
-	若不传参数，默认返回登录用户前10个关注，注意：count和page都必须传值才有效
+	cursor：默认为-1
+	若不传参数，默认返回登录用户前10个关注，注意：count和cursor都必须传值才有效
