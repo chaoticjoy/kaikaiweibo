@@ -9,6 +9,7 @@ include_once('utility.php');
 		/*if (get_magic_quotes_gpc()) {
 			$text = stripslashes($text);
 		}*/
+		$text=htmlspecialchars($text);
 		$text=$text." ";
 		
 		//添加url链接
