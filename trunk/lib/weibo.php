@@ -71,20 +71,20 @@ class weibo
 		}
 	}
 	
-	function followers( $name=0,$count = 10 , $page = 1  ) 
+	function followers( $name,$count = 10 , $cursor = -1  ) 
 	{
-		if($name==0)
-			return $this->call_method( 'statuses' , 'followers' , '?count='.$count.'&page=' .$page);
+		if(!$name)
+			return $this->call_method( 'statuses' , 'followers' , '?count='.$count.'&cursor=' .$cursor);
 		else
-			return $this->call_method( 'statuses' , 'followers' ,'?screen_name=' . urlencode( $name ) .'&count='.$count.'&page=' .$page);
+			return $this->call_method( 'statuses' , 'followers' ,'?screen_name=' . urlencode( $name ) .'&count='.$count.'&cursor=' .$cursor);
 	}
 	
-	function friends( $name=0,$count = 10 , $page = 1  ) 
+	function friends( $name,$count = 10 , $cursor = -1  ) 
 	{
-		if($name==0)
-			return $this->call_method( 'statuses' , 'friends' , '?count='.$count.'&page=' .$page);
+		if(!$name)
+			return $this->call_method( 'statuses' , 'friends' , '?count='.$count.'&cursor=' .$cursor);
 		else
-			return $this->call_method( 'statuses' , 'friends' , '?screen_name=' . urlencode( $name ) .'&count='.$count.'&page=' .$page);
+			return $this->call_method( 'statuses' , 'friends' , '?screen_name=' . urlencode( $name ) .'&count='.$count.'&cursor=' .$cursor);
 	}
 	
 	function user_info( $name )

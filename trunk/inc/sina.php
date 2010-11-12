@@ -185,11 +185,10 @@ include_once('utility.php');
 		$smarty->display('userinfo.tpl');
 	}
 	
-	function get_followers($screen_name=0,$count=10,$page=1){
+	function get_followers($screen_name="",$count=10,$cursor=-1){
 		$w = new weibo( APP_KEY );
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
-		$followers=$w->followers($screen_name,$count,$page);
-		
+		$followers=$w->followers($screen_name,$count,$cursor);
 		$smarty = new Smarty;
 
 		$smarty->compile_dir = 'saemc://smartytpl/';
@@ -201,14 +200,14 @@ include_once('utility.php');
 		$smarty->caching = false;
 		$smarty->cache_lifetime = 120;
 
-		$smarty->assign("users",$followers);
+		$smarty->assign("users",$followers['users']);
 		$smarty->display('user.tpl');
 	}
 	
-	function get_friends($screen_name=0,$count=10,$page=1){
+	function get_friends($screen_name="",$count=10,$cursor=-1){
 		$w = new weibo( APP_KEY );
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
-		$friends=$w->friends($screen_name,$count,$page);
+		$friends=$w->friends($screen_name,$count,$cursor);
 		
 		$smarty = new Smarty;
 
@@ -221,7 +220,7 @@ include_once('utility.php');
 		$smarty->caching = false;
 		$smarty->cache_lifetime = 120;
 
-		$smarty->assign("users",$friends);
+		$smarty->assign("users",$friends['users']);
 		$smarty->display('user.tpl');
 	}
 ?>
