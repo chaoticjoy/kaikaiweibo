@@ -40,7 +40,7 @@ include_once('utility.php');
 				$time=1;
 			$time=$time."秒前";
 		}
-		elseif($time/60<=59)
+		elseif(($time=$time/60)<=59)
 			$time=ceil($time)."分钟前";
 		elseif(date("Y年n月j日",$created_at)==date("Y年n月j日",time()))
 			$time=date("今天 G:i",$created_at);
