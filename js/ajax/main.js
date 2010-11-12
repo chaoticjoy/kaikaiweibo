@@ -117,6 +117,7 @@ var gui = {//kaikai weibo
     },
     //查看评论,
     openComments: function(app,type,id){
+		$('#retweet-' + id).hide();
         var commentContainer = $('#comments-' + id);
 		if (commentContainer.length > 0) {//已经加入，也就是第二次点击评论了。
 			if (commentContainer.css('display') == 'none') {
@@ -157,6 +158,7 @@ var gui = {//kaikai weibo
     openRetweet: function(app,type,id){
 		
         var retweetContainer = $('#retweet-' + id);
+		$('#comments-' + id).hide();
 		if (retweetContainer.length > 0) {
 			if (retweetContainer.css('display') == 'none') {
 				retweetContainer.show();

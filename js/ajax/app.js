@@ -2,7 +2,13 @@
  * @author Administrator
  */
 var sinaApp={
-	
+	following:{
+		page:0
+	},
+	follower:{
+		page:0
+	},
+	user:'',
 	/**
 	 * 
 	 * @param {boolean} clear  表示是否清楚SinaEvents里有所有元素
@@ -44,7 +50,7 @@ var sinaApp={
 		alert("转发:"+content);
 	},
 	getUserInfo:function(name){
-		this.user=name;//标记当前用户信息正在显示的用户名
+		sinaApp.user=name;//标记当前用户信息正在显示的用户名
 		var arg={};
 		if(name)
 			arg.screen_name=name;
@@ -58,7 +64,7 @@ var sinaApp={
 	getUserTimeline:function(maxid){
 		//
 		var arg={};
-		arg.screen_name=this.user;
+		arg.screen_name=sinaApp.user;
 		if (maxid) {
 			arg.max_id = maxid;
 		}
@@ -71,10 +77,45 @@ var sinaApp={
 		});
 	},
 	getUserFollowing:function(){
-		
+		sinaApp.following.page++;
+		var arg={
+			screen_name:sinaApp.user,
+			count:20,
+			page:sinaApp.following.page
+		}
+		$.post("ajax/friends.php",arg,function(data,textStatus){
+			$("#user-following-content").append(data);
+		});
 	},
 	getUserFollowers:function(){
+		sinaApp.follower.page++;
+		var arg={
+			screen_name:sinaApp.user,
+			count:20,
+			page:sinaApp.follower.page
+		}
+		$.post("ajax/followers.php",arg,function(data,textStatus){
+			$("#user-followers-content").append(data);	
+		});
+	},
+	moreUserEvents:function(){
+		var lastchild=document.getElementById("user-events-content").lastChild;
+		while(lastchild&&lastchild.nodeType!=1){
+			lastchild=lastchild.previousSibling;
+		}
+		if(lastchild){
+			var maxid;
+			maxid=lastchild.id;
+			maxid=maxid.split('-')[2];
+			this.getUserTimeline(maxid);
+		}
 		
+	},
+	moreFollowers:function(){
+		this.getUserFollowers();
+	},
+	moreFollowing:function(){
+		this.getUserFollowing();
 	}
 
 }
