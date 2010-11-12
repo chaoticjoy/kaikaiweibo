@@ -190,7 +190,7 @@ include_once('utility.php');
 		$smarty->display('userinfo.tpl');
 	}
 	
-	function get_followers($screen_name="",$count=10,$cursor=-1){
+	function get_followers($screen_name="",$count=20,$cursor=-1){
 		$w = new weibo( APP_KEY );
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 		$followers=$w->followers($screen_name,$count,$cursor);
@@ -209,7 +209,7 @@ include_once('utility.php');
 		$smarty->display('user.tpl');
 	}
 	
-	function get_friends($screen_name="",$count=10,$cursor=-1){
+	function get_friends($screen_name="",$count=20,$cursor=-1){
 		$w = new weibo( APP_KEY );
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 		$friends=$w->friends($screen_name,$count,$cursor);
