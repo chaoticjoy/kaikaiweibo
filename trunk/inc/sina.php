@@ -92,7 +92,7 @@ include_once('utility.php');
 			$friends_timeline[$key]['text']=formatText($msg['text']);
 			
 			if($msg['retweeted_status'])
-				$friends_timeline[$key]['retweeted_status']['text']=formatText($msg['text']);
+				$friends_timeline[$key]['retweeted_status']['text']=formatText($msg['retweeted_status']['text']);
 			 
 		}
 
@@ -145,7 +145,7 @@ include_once('utility.php');
 			$user_timeline[$key]['text']=formatText($msg['text']);
 			
 			if($msg['retweeted_status'])
-				$user_timeline[$key]['retweeted_status']['text']=formatText($msg['text']);
+				$user_timeline[$key]['retweeted_status']['text']=formatText($msg['retweeted_status']['text']);
 			 
 		}
 
