@@ -99,6 +99,9 @@ var gui = {//kaikai weibo
     },
     onClickUserBtn: function(id){
         this.changePanel(3, '#user-btn');
+		//载入当前用户的info.
+		
+		sinaApp.getUserInfo();
     },
     //前进后退按钮
     back: function(){
@@ -261,12 +264,15 @@ var gui = {//kaikai weibo
         switch (type) {
             case 'events':
 				 $("#user-events").show();
+				 sinaApp.getUserTimeline();
                 break;
             case 'following':
 				$("#user-following").show();
+				sinaApp.getUserFollowing();
                 break;
             case 'followers':
 				$("#user-followers").show();
+				sinaApp.getUserFollowers();
                 break;
                 
         }

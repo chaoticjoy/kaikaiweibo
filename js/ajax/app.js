@@ -42,7 +42,41 @@ var sinaApp={
 	sendRetweet:function(id){
 		var content=$('#retweet-content-'+id).val();
 		alert("转发:"+content);
+	},
+	getUserInfo:function(name){
+		this.user=name;//标记当前用户信息正在显示的用户名
+		var arg={};
+		if(name)
+			arg.screen_name=name;
+		$.post("ajax/userinfo.php",arg,function(data,textStatus){
+			$("#user-panel-header").empty()//清空后插入
+			.append(data);	
+		});
+		//插入后载入动态
+		this.getUserTimeline();
+	},
+	getUserTimeline:function(maxid){
+		//
+		var arg={};
+		arg.screen_name=this.user;
+		if (maxid) {
+			arg.max_id = maxid;
+		}
+		else {//如果不带Max参数表示第一次打开,所以要清空
+			$("#user-events-content").empty();
+		}
+
+		$.post("ajax/user_timeline.php",arg,function(data,textStatus){
+			$("#user-events-content").append(data);	
+		});
+	},
+	getUserFollowing:function(){
+		
+	},
+	getUserFollowers:function(){
+		
 	}
+
 }
 var kkApp={
 	
