@@ -222,11 +222,11 @@ echo "<script language=\"javascript\">location.href='login.php';</script>";
 		</div>
 		
 		<div id="user-following" style="display:none" >
-			<div  id="morefollowing" class="more-button" onclick="sinaApp.moreFollowing()">更多关注</div>
+			
 		</div>
 		
 		<div id="user-followers" style="display:none">
-			<div  id="morefollowers" class="more-button" onclick="sinaApp.moreFollowers()">更多粉丝</div>
+			
 		</div>
   </div> 
 
