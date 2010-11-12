@@ -218,17 +218,17 @@ echo "<script language=\"javascript\">location.href='login.php';</script>";
 		</div>
 		<div id="user-events" >
 			<div id="user-events-content"></div>
-			<div class="more-button">更多动态</div>
+			<div class="more-button" onclick="sinaApp.moreUserEvents()">更多动态</div>
 		</div>
 		
 		<div id="user-following" style="display:none" >
 			<div id="user-following-content"></div>
-			<div class="more-button">更多关注</div>
+			<div class="more-button" onclick="sinaApp.moreFollowing()">更多关注</div>
 		</div>
 		
 		<div id="user-followers" style="display:none">
 			<div id="user-followers-content"></div>
-			<div class="more-button">更多粉丝</div>
+			<div class="more-button" onclick="sinaApp.moreFollowers()">更多粉丝</div>
 		</div>
   </div> 
 
