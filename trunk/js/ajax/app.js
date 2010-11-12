@@ -77,7 +77,7 @@ var sinaApp={
 		}
 		if(cursor)
 			arg.cursor=cursor;
-		else	$("#user-following-content").empty();
+		else	$("#user-following").empty();
 		$.post("ajax/friends.php",arg,function(data,textStatus){
 			$("#morefollowing").remove();
 			$("#user-following").append(data);
@@ -91,7 +91,7 @@ var sinaApp={
 		}
 		if(cursor)
 			arg.cursor=cursor;
-		else $("#user-followers-content").empty();
+		else $("#user-followers").empty();
 		
 		$.post("ajax/followers.php",arg,function(data,textStatus){
 			$("#morefollowers").remove();
