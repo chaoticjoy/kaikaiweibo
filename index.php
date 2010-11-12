@@ -73,70 +73,11 @@ echo "<script language=\"javascript\">location.href='login.php';</script>";
 		<div class="more-button" onclick="sinaApp.moreEvents(false)">更多动态</div>
 		</div> 
 
-		<div id="kkEvents">
-		<div class="timeline">
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>这是开开动态</p>
+		<div id="kkEvents" display="none">
+			<div id="kkEvents-content" class="timeline">
 			
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
-			<br class="clean"/></div>
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>测试评论按钮</p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span onClick="gui.openComments('123456')">评论(3)</span></div>
-			<br class="clean"/></div>
-			<div class="comments" id="comments-123456" style="display:none">
-				<form>
-				<textarea rows="2" id="comment-content-123456"></textarea>
-				<input type="button" onClick="sinaApp.sendComment('123456')" class="submit-button" value="评论" />
-				</form>
-				<p><span class="author">Kavin</span>评论评论评论<span class="reply" onClick="gui.reply('123456','Kavin')">回复</span></p>
-				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-				<div class="main-button" onClick="sinaApp.moreComments('123456')">更多评论</div>
 			</div>
-			
-			
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>测试测试测试转发
-			<br /><img onClick="gui.openImage(this)" src="http://ss16.sinaimg.cn/thumbnail/6628711bg93832cab169f&690" class="thumbnail"/></p>
-			<div class="single-operate"><span>收藏</span> | <span onClick="gui.openRetweet('123456')">转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-			<div class="retweet" id="retweet-123456" style="display:none">
-				<form>
-				<textarea rows="2" id="retweet-content-123456">测试测试测试转发。</textarea>
-				<input type="button" onClick="sinaApp.sendRetweet('123456')" class="submit-button" value="转发" />
-				</form>
-			</div>
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU</p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# <a href="#" target="_blank">http://sinaurl.cn/h67KnU</a></p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-		</div>
-		
-		<div class="more-button">更多动态</div>
+			<div class="more-button">更多动态</div>
 		</div> 
   </div> 
 	
