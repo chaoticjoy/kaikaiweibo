@@ -88,6 +88,7 @@ var gui = {//kaikai weibo
     
     
     onClickEventBtn: function(id){
+		sinaApp.moreEvents(true);
         this.changePanel(0, '#events-btn');
     },
     onClickCheckinBtn: function(id){
@@ -321,4 +322,6 @@ $(function(){
     $("#tabpanel").css('position', 'relative');
     $("#tabpanel :first-child").show();
 	$("#image").hide();
+	
+	sinaApp.moreEvents(true);
 });
