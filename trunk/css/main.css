@@ -288,6 +288,7 @@ input:focus{
 	line-height:150%;
 }
 
+
 .single .quote,.user-tread .quote{
 	background:#cddbfa;
 	border:1px solid #b7caf1;
@@ -297,7 +298,7 @@ input:focus{
 	line-height:150%;
 }
 
-.single .thumbnail{
+.single .thumbnail,.user-tread .thumbnail{
 	margin:5px 0px;
 	cursor:pointer;
 	padding:2px;
