@@ -5,33 +5,27 @@ include_once('config.php');
 include_once('utility.php');
 	
 	function formatText($text) {
-		//如果开启了魔术引号\" \' 转回来
-		/*if (get_magic_quotes_gpc()) {
-			$text = stripslashes($text);
-		}*/
 		$text=htmlspecialchars($text);
-		$text=$text." ";
 		
 		//添加url链接
 		$urlReg = '(((http|https|ftp)://){1}([[:alnum:]\-\.])+(\.)([[:alnum:]]){2,4}([[:alnum:]/+=%&_\.~?\:\-]*))';
-		//$text = eregi_replace($urlReg, '<a href="\1" target="_blank">\1</a>', $text);
 		preg_match_all($urlReg, $text,$out);
 		for($i=0;$i<count($out[0]);$i++)
 			$text=str_replace($out[0][$i],"<a href='".$out[0][$i]."' target='_blank'>".$out[0][$i]."</a>", $text);
 
 		//添加@链接
-		//$atReg = '@{1}(([a-zA-Z0-9\_\.\-])+)';
-		//$text = eregi_replace($atReg,  '<a href="user.php?id=\1" target="_blank">\0</a>', $text);
-		$atReg ='/@(.+?)([: ])/';
-		//$atReg ='/@(\w+)/';
-		preg_match_all($atReg, $text,$out);
-		for($i=0;$i<count($out[0]);$i++)
-			$text=str_replace($out[0][$i],"<a href='user.php?username=".$out[1][$i]."' target='_blank'>@".$out[1][$i]."</a>".$out[2][$i], $text);
+		if (!preg_match('/\w+(@\w*\.)*\w+@\w+(\.\w+)+/', $text)) {
+			$matches = array();
+			preg_match_all('/@([\x{4e00}-\x{9fa5}0-9A-Za-z_-]+)/u', $text, $matches);
+			print_r($matches);
+			if (!empty($matches)) {
+				for($i=0;$i<count($matches[0]);$i++)
+				$text=str_replace($matches[0][$i],"<a href='user.php?username=".$matches[1][$i]."' target='_blank'>@".$matches[1][$i]."</a>", $text);
+			}
+		}
 		
 
 		//添加标签链接
-		//$tagReg = "/(\#{1}([\S]{1,10}))([\s]*)/u";
-		//$text = preg_replace($tagReg, '<a href="search.php?q=\2">\1</a>', $text);
 		$tagReg = "/#(.+?)#/";
 		preg_match_all($tagReg, $text,$out);
 		for($i=0;$i<count($out[0]);$i++)
