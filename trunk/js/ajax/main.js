@@ -270,11 +270,11 @@ var gui = {//kaikai weibo
                 break;
             case 'following':
 				$("#user-following").show();
-				sinaApp.getUserFollowing(true);
+				sinaApp.getUserFollowing();
                 break;
             case 'followers':
 				$("#user-followers").show();
-				sinaApp.getUserFollowers(true);
+				sinaApp.getUserFollowers();
                 break;
                 
         }

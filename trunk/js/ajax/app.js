@@ -2,12 +2,6 @@
  * @author Administrator
  */
 var sinaApp={
-	following:{
-		page:0
-	},
-	follower:{
-		page:0
-	},
 	user:'',
 	/**
 	 * 
@@ -76,34 +70,32 @@ var sinaApp={
 			$("#user-events-content").append(data);	
 		});
 	},
-	getUserFollowing:function(clear){
-		if(clear){
-			sinaApp.following.page=0;
-			$("#user-following-content").empty();
-		}
-		sinaApp.following.page++;
+	getUserFollowing:function(cursor){
 		var arg={
 			screen_name:sinaApp.user,
-			count:20,
-			page:sinaApp.following.page
+			count:20
 		}
+		if(cursor)
+			arg.cursor=cursor;
+		else	$("#user-following-content").empty();
 		$.post("ajax/friends.php",arg,function(data,textStatus){
-			$("#user-following-content").append(data);
+			$("#morefollowing").remove();
+			$("#user-following").append(data);
 		});
 	},
-	getUserFollowers:function(clear){
-		if(clear){
-			sinaApp.follower.page=0;
-			$("#user-followers-content").empty();
-		}
-		sinaApp.follower.page++;
+	getUserFollowers:function(cursor){
 		var arg={
 			screen_name:sinaApp.user,
 			count:20,
-			page:sinaApp.follower.page
+			cursor:sinaApp.follower.cursor
 		}
+		if(cursor)
+			arg.cursor=cursor;
+		else $("#user-followers-content").empty();
+		
 		$.post("ajax/followers.php",arg,function(data,textStatus){
-			$("#user-followers-content").append(data);	
+			$("#morefollowers").remove();
+			$("#user-followers").append(data);
 		});
 	},
 	moreUserEvents:function(){
