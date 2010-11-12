@@ -205,8 +205,9 @@ include_once('utility.php');
 		$smarty->caching = false;
 		$smarty->cache_lifetime = 120;
 
-		$smarty->assign("users",$followers['users']);
-		$smarty->display('user.tpl');
+		$smarty->assign("followers",$followers['users']);
+		$smarty->assign("next_cursor",$followers['next_cursor']);
+		$smarty->display('followers.tpl');
 	}
 	
 	function get_friends($screen_name="",$count=20,$cursor=-1){
@@ -225,7 +226,8 @@ include_once('utility.php');
 		$smarty->caching = false;
 		$smarty->cache_lifetime = 120;
 
-		$smarty->assign("users",$friends['users']);
-		$smarty->display('user.tpl');
+		$smarty->assign("friends",$friends['users']);
+		$smarty->assign("next_cursor",$friends['next_cursor']);
+		$smarty->display('friends.tpl');
 	}
 ?>
