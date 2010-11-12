@@ -13,7 +13,6 @@
 		</p>
 		{if $item['retweeted_status']}
 			<div class="quote">
-				转发
 				 <a href="#">@{$item['retweeted_status']['user']['screen_name']}</a> : 
 				  {$item['retweeted_status']['text']}
 				 <br />
