@@ -76,7 +76,11 @@ var sinaApp={
 			$("#user-events-content").append(data);	
 		});
 	},
-	getUserFollowing:function(){
+	getUserFollowing:function(clear){
+		if(clear){
+			sinaApp.following.page=0;
+			$("#user-following-content").empty();
+		}
 		sinaApp.following.page++;
 		var arg={
 			screen_name:sinaApp.user,
@@ -87,7 +91,11 @@ var sinaApp={
 			$("#user-following-content").append(data);
 		});
 	},
-	getUserFollowers:function(){
+	getUserFollowers:function(clear){
+		if(clear){
+			sinaApp.follower.page=0;
+			$("#user-followers-content").empty();
+		}
 		sinaApp.follower.page++;
 		var arg={
 			screen_name:sinaApp.user,
