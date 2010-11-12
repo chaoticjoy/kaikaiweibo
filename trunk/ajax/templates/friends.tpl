@@ -5,4 +5,4 @@
 	<p>{$user['location']}</p>
 </div>
 {/foreach}
-<div id="morefollowing" class="more-button" onclick="sinaApp.moreFollowing({$next_cursor})">更多关注</div>
+{if $next_cursor}<div id="morefollowing" class="more-button" onclick="sinaApp.moreFollowing({$next_cursor})">更多关注</div>{/if}
