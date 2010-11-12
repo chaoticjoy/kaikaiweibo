@@ -1,8 +1,7 @@
 {foreach from=$user_timeline item=item}
 <div id="sina-user-{$item['id']}" >
-	<div class="single">
+	<div class="user-tread">
 		<div class="single-date">{$item['created_at']}</div>
-		<img src="{$item['user']['profile_image_url']}" class="single-avatar"/>
 		<div class="single-name">{$item['user']['screen_name']}</div>
 		<p class="status">
 			{$item['text']}
