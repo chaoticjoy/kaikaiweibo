@@ -22,3 +22,18 @@ friends.php 返回用户关注列表：
 	count：显示条数，默认为20
 	cursor：默认为-1
 	若不传参数，默认返回登录用户前20个关注，注意：count和cursor都必须传值才有效
+
+update.php 发布一条微博：
+	status：微博内容
+
+repost.php 转发一条微博:
+	id：转发微博id
+	status：转发评论内容
+
+send_comment.php 发布评论：
+	id：评论微博id
+	status：评论微博内容
+	cid（可选）：回复评论cid
+
+add_to_favorites.php 添加收藏：
+	id：添加收藏微博id
