@@ -7,6 +7,7 @@ var sinaApp={
 	 * 
 	 * @param {boolean} clear  表示是否清楚SinaEvents里有所有元素
 	 */
+	
 	moreEvents:function(clear){
 		var container=$('#sinaEvents-content');
 		if(clear)//如果为True则清空
@@ -35,13 +36,36 @@ var sinaApp={
 	moreComments:function(id){
 		
 	},
+	addFavourite:function(id){
+		 var arg={};
+		 arg.id=id;
+		$.post("ajax/add_to_favorites.php",arg,function(data,textStatus){
+			
+		});
+	},
+	
+	sendDirectMessage:function(msg,name){
+		
+	},
+	sendMessage:function(status){
+		var arg={};
+		arg.status=status;
+		$.post("ajax/update.php",arg,function(data,textStatus){
+			
+		});
+	},
 	sendComment:function(id){
 		var content=$('#comment-content-'+id).val();
 		alert("评论:"+content);
 	},
 	sendRetweet:function(id){
-		var content=$('#retweet-content-'+id).val();
-		alert("转发:"+content);
+		//var content=$('#retweet-content-'+id).val();
+		var arg={};
+		arg.id=id;
+		arg.status=$('#retweet-content-'+id).val();
+		$.post("ajax/repost.php",arg,function(data,textStatus){
+			
+		});
 	},
 	getUserInfo:function(name){
 		sinaApp.user=name;//标记当前用户信息正在显示的用户名

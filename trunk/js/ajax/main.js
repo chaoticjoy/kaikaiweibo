@@ -187,7 +187,8 @@ var gui = {//kaikai weibo
         contentArea[0].focus();
     },
 	addFavourite:function(app,type,id){
-		
+		if(app=='sina')
+			sinaApp.addFavourite(id);
 	},
     openImage: function(target){
         this.showMask();
@@ -286,12 +287,14 @@ var gui = {//kaikai weibo
 		if(type=='normal'){
 			$('#send-title').text('说说你的新鲜事');
 			$("#send-btn")[0].onclick=function(){
-		        alert('发普通消息'+$("#send-content").val()+'nor');
+		        //alert('发普通消息'+$("#send-content").val()+'nor');
+				sinaApp.sendMessage($("#send-content").val());
 		    }
 		}else if(type=='dm'){
 			$('#send-title').text('发送私信给: '+name);
 			$("#send-btn")[0].onclick=function(){
-		        alert('发私信给：'+$("#send-content").val());
+		        //alert('发私信给：'+$("#send-content").val());
+				sinaApp.sendDirectMessage($("#send-content").val());
 		    }
 		}
 	}
