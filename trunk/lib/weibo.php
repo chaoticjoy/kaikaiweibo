@@ -141,13 +141,14 @@ class weibo
 	
 	function update( $status )
 	{
+		$status=str_replace("+","%2B",$status);
 		$this->postdata[] = 'status=' . urlencode($status);
 		return $this->call_method( 'statuses' , 'update'  );
 	}
 	
 	function upload( $status , $file )
 	{
-		
+		$status=str_replace("+","%2B",$status);
 		$boundary = uniqid('------------------');
 		$MPboundary = '--'.$boundary;
 		$endMPboundary = $MPboundary. '--';
