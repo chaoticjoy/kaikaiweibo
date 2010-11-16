@@ -1,5 +1,5 @@
 {foreach from=$friends_timeline item=item}
-<div id="sina-event-{$item['id']}" >
+<div id="sina-event-{$item['id']}" username="{$item['user']['screen_name']}">
 	<div class="single">
 		<div class="single-date">{$item['created_at']}</div>
 		<img src="{$item['user']['profile_image_url']}" class="single-avatar"/>

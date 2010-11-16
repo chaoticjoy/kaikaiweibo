@@ -157,7 +157,7 @@ var gui = {//kaikai weibo
     /**
      * 
      * @param {Object} app
-     * @param {Object} type
+     * @param {Object} type 
      * @param {Object} id
      * @param {Boolean} isRT　本条微博是否转自他人．
      */
@@ -187,7 +187,7 @@ var gui = {//kaikai weibo
 			status.append(retweet);			
 			var content=$("#retweet-content-"+id);
 			if (isRT) {
-				content[0].value='//'+$("#sina-status-" + id).text().trim();
+				content[0].value='//@'+status.attr('username')+":"+$("#sina-status-" + id).text().trim();
 				content[0].selectionEnd=0;
 				content[0].selectionStart=0;
 			}
