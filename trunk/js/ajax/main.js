@@ -100,7 +100,6 @@ var gui = {//kaikai weibo
     onClickUserBtn: function(id){
         this.changePanel(3, '#user-btn');
 		//载入当前用户的info.
-		
 		sinaApp.getUserInfo();
     },
     //前进后退按钮

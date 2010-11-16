@@ -85,6 +85,9 @@ var sinaApp={
 		});
 		//插入后载入动态
 		this.getUserTimeline();
+		$("#user-events").show();
+		$("#user-following").hide();
+		$("#user-followers").hide();
 	},
 	getUserTimeline:function(maxid){
 		//
