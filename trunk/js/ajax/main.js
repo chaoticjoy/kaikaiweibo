@@ -154,8 +154,14 @@ var gui = {//kaikai weibo
 			status.append(comment);
 		}
     },
-    
-    openRetweet: function(app,type,id){
+    /**
+     * 
+     * @param {Object} app
+     * @param {Object} type
+     * @param {Object} id
+     * @param {Boolean} isRT　本条微博是否转自他人．
+     */
+    openRetweet: function(app,type,id,isRT){
 		
         var retweetContainer = $('#retweet-' + id);
 		$('#comments-' + id).hide();
@@ -172,12 +178,20 @@ var gui = {//kaikai weibo
 			retweet.className='retweet';
 			retweet.id='retweet-'+id;
 			
-			retweet.innerHTML=
+			var retStr=
 			"<form>"+
-				"<textarea rows='2' id='retweet-content-"+id+"'>测试测试测试转发。</textarea>"+
+				"<textarea rows='2' id='retweet-content-"+id+"'></textarea>"+
 				"<input type='button' onClick='sinaApp.sendRetweet(\""+id+"\")' class='submit-button' value='转发' />"+
-			"</form>"
+			"</form>";
+			retweet.innerHTML=retStr;
 			status.append(retweet);			
+			var content=$("#retweet-content-"+id);
+			if (isRT) {
+				content[0].value='//'+$("#sina-status-" + id).text().trim();
+				content[0].selectionEnd=0;
+				content[0].selectionStart=0;
+			}
+			content[0].focus();
 		}
     },
     reply: function(id, name){

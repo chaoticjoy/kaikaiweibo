@@ -56,7 +56,14 @@ var sinaApp={
 	},
 	sendComment:function(id){
 		var content=$('#comment-content-'+id).val();
-		alert("评论:"+content);
+		
+		var arg={};
+		arg.id=id;
+		if(content=='')return;
+		arg.status=content;
+		$.post("ajax/send_comment.php",arg,function(data,textStatus){
+			
+		});
 	},
 	sendRetweet:function(id){
 		//var content=$('#retweet-content-'+id).val();
