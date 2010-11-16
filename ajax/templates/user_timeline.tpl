@@ -1,5 +1,5 @@
 {foreach from=$user_timeline item=item}
-<div id="sina-user-{$item['id']}" >
+<div id="sina-user-{$item['id']}" username="{$item['user']['screen_name']}">
 	<div class="user-tread">
 		<div class="single-date">{$item['created_at']}</div>
 		<div class="single-name">{$item['user']['screen_name']}</div>
