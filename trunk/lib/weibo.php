@@ -237,6 +237,13 @@ class weibo
 		return $this->call_method( 'statuses' , 'comment'  );
 	}
 	
+	function send_direct_messages( $screen_name , $text  )
+	{
+		$this->postdata[] = 'screen_name=' . urlencode($screen_name);
+		$this->postdata[] = 'text=' . urlencode($text);
+		return $this->call_method( 'direct_messages' , 'new'  );
+	}
+	
 	function remove_comment( $cid )
 	{
 		return $this->call_method( 'statuses' , 'comment_destroy/'.$cid  );
