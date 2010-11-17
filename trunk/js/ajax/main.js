@@ -218,7 +218,7 @@ var gui = {//kaikai weibo
 			sinaApp.addFavourite(id);
 	},
     openImage: function(target){
-        this.showMask();
+        
         var thumbnail = target.src;
         var bmiddle = thumbnail.replace('thumbnail', 'bmiddle');
         //---
@@ -226,9 +226,11 @@ var gui = {//kaikai weibo
 		img[0].src=bmiddle;
 		var imgObj=new Image();
 		imgObj.src=bmiddle;
+		gui.showTip('图片打开中．．．');
 		imgObj.onload=function(){
+			gui.showMask();
 			//img.css('z-index','200');
-			
+			gui.hideTip();
 			$('#image').show();
 			var scale;
 			
@@ -253,7 +255,9 @@ var gui = {//kaikai weibo
 			.css('margin-left',-img.width()/2)
 			.css('margin-top',window.pageYOffset-img.height()/2);	
 		}
-		
+		imgObj.onerror=function(){
+			gui.showTip('打开图片失败',1500);
+		}
 		
     },
 	closeImage:function(){
