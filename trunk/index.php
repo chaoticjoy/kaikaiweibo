@@ -24,7 +24,7 @@ echo "<script language=\"javascript\">location.href='login.php';</script>";
 <title>开开围脖</title> 
 </head>
 <body>
-
+<div id="pop-msg"><p>发送成功!</p></div>	
 <div id="send">
 <img id="close-btn" src="image/close.png" class="close" />
 <div class="tips" id='send-title'>说说你的新鲜事</div>

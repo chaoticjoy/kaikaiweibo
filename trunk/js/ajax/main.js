@@ -16,7 +16,21 @@ var gui = {//kaikai weibo
         this.components.mask = $("#mask");
         this.components.image = $("#image");
     },
-    
+	/**
+	 * 
+	 * @param {Object} str
+	 * @param {Object} duration 如果有则表示持续时间
+	 */
+    showTip:function(str,duration){
+		var tip=$("#pop-msg").html("<p>"+str+"</p>")
+				.css('margin-top',window.pageYOffset-30).show();
+		if(duration){
+			setTimeout("$('#pop-msg').hide()", duration);
+		}
+	},
+	hideTip:function(){
+		$("#pop-msg").hide();
+	},
     showMask: function(){
         //alert($(document).height()+" "+$(document).width());
         this.components.mask.width($(document).width()).height($(document).height()).show();
@@ -293,6 +307,10 @@ var gui = {//kaikai weibo
                 
         }
     },
+	hideSend:function(){
+		this.hideMask();
+		$("#send").hide();
+	},
 	sendMsg:function(type,id,name){
 		this.showMask();
         $("#send").show();

@@ -27,9 +27,13 @@ var sinaApp={
 		var arg={};
 		if(maxid)
 			arg.max_id=maxid; 
-		
+		gui.showTip('载入中．．．')
 		$.post("ajax/friends_timeline.php",arg,function(data,textStatus){
 			container.append(data);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
 		});
 		
 	},
@@ -39,8 +43,15 @@ var sinaApp={
 	addFavourite:function(id){
 		 var arg={};
 		 arg.id=id;
+		 gui.showTip('正在收藏．．．')
 		$.post("ajax/add_to_favorites.php",arg,function(data,textStatus){
-			
+			gui.hideTip();
+			if(textStatus=='success'){
+				gui.showTip('收藏成功!',500);
+				$("#comments-"+id).hide();
+			}else {
+				gui.showTip('收藏失败',500);
+			}
 		});
 	},
 	
@@ -50,8 +61,15 @@ var sinaApp={
 	sendMessage:function(status){
 		var arg={};
 		arg.status=status;
+		gui.showTip('发送中．．．')
 		$.post("ajax/update.php",arg,function(data,textStatus){
-			
+			gui.hideTip();
+			if(textStatus=='success'){
+				gui.showTip('发送成功!',500);
+				gui.hideSend();
+			}else {
+				gui.showTip('发送失败',500);
+			}
 		});
 	},
 	sendComment:function(id){
@@ -61,8 +79,16 @@ var sinaApp={
 		arg.id=id;
 		if(content=='')return;
 		arg.status=content;
+
+		gui.showTip('评论发送中....');		
 		$.post("ajax/send_comment.php",arg,function(data,textStatus){
-			
+			gui.hideTip();
+			if(textStatus=='success'){
+				gui.showTip('评论成功!',500);
+				$("#comments-"+id).hide();
+			}else {
+				gui.showTip('评论失败',500);
+			}
 		});
 	},
 	sendRetweet:function(id){
@@ -70,8 +96,15 @@ var sinaApp={
 		var arg={};
 		arg.id=id;
 		arg.status=$('#retweet-content-'+id).val();
+		gui.showTip('发送中....');
 		$.post("ajax/repost.php",arg,function(data,textStatus){
-			
+			gui.hideTip();
+			if(textStatus=='success'){
+				gui.showTip('发送成功!',500);
+				$("#retweet-"+id).hide();
+			}else {
+				gui.showTip('发送失败',500);
+			}
 		});
 	},
 	getUserInfo:function(name){
@@ -98,10 +131,15 @@ var sinaApp={
 		}
 		else {//如果不带Max参数表示第一次打开,所以要清空
 			$("#user-events-content").empty();
-		}
-
+		} 
+		gui.showTip('载入中...');		
+		
 		$.post("ajax/user_timeline.php",arg,function(data,textStatus){
 			$("#user-events-content").append(data);	
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',1500);	
+			}
 		});
 	},
 	getUserFollowing:function(cursor){
@@ -112,9 +150,14 @@ var sinaApp={
 		if(cursor)
 			arg.cursor=cursor;
 		else	$("#user-following").empty();
+		gui.showTip('载入中...');
 		$.post("ajax/friends.php",arg,function(data,textStatus){
 			$("#morefollowing").remove();
 			$("#user-following").append(data);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',1500);	
+			}
 		});
 	},
 	getUserFollowers:function(cursor){
@@ -125,8 +168,12 @@ var sinaApp={
 		if(cursor)
 			arg.cursor=cursor;
 		else $("#user-followers").empty();
-		
+		gui.showTip('载入中...');
 		$.post("ajax/followers.php",arg,function(data,textStatus){
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',1500);	
+			}
 			$("#morefollowers").remove();
 			$("#user-followers").append(data);
 		});
