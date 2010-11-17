@@ -37,3 +37,9 @@ send_comment.php 发布评论：
 
 add_to_favorites.php 添加收藏：
 	id：添加收藏微博id
+	
+comments_list.php 评论列表：
+	id:（必填）获取评论微博id
+	count:（选填）显示条数
+	page:（选填）显示页数
+	若要传递选填参数，count和page同时填写才有效。
