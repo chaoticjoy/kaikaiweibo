@@ -56,7 +56,20 @@ var sinaApp={
 	},
 	
 	sendDirectMessage:function(msg,name){
+		var arg={};
+		arg.screen_name=name;
+		arg.text=msg;
 		
+		gui.showTip('发送私信中．．．');
+		$.post("ajax/send_direct_messages.php",arg,function(data,textStatus){
+			gui.hideTip();
+			if(textStatus=='success'){
+				gui.showTip('发送成功!',500);
+				gui.hideSend();
+			}else {
+				gui.showTip('发送失败',1500);
+			}
+		});
 	},
 	sendMessage:function(status){
 		var arg={};
@@ -189,6 +202,9 @@ var sinaApp={
 			maxid=maxid.split('-')[2];
 			this.getUserTimeline(maxid);
 		}
+		
+	},
+	getCommentList:function(id){
 		
 	},
 	moreFollowers:function(cursor){

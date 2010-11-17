@@ -155,17 +155,12 @@ var gui = {//kaikai weibo
 				"<textarea rows='2' id='comment-content-"+id+"'></textarea>"+
 				"<input type='button' onClick='sinaApp.sendComment(\""+id+"\")' class='submit-button' value='评论' />"+
 			"</form>"+
-	/*
-	<p>
-		<span class="author">$someone</span>
-		$someone_comment
-		<span class="reply" onClick="gui.reply('$id','$name')">回复</span>
-		//....
-	</p>
-	*/	
+			"<div id=\"comment-list-\""+id+ ">" +
+			"</div>"+
 			"<div class='main-button' onClick='sinaApp.moreComments(\""+id+"\")'>更多评论</div>"
 			status.append(comment);
 		}
+		sinaApp.getCommentList(id);
     },
     /**
      * 
@@ -318,7 +313,9 @@ var gui = {//kaikai weibo
 	sendMsg:function(type,id,name){
 		this.showMask();
         $("#send").show();
-		$("#send-content").val('');
+		
+		$("#send-content").val('')[0].focus();
+		
 		if(type=='normal'){
 			$('#send-title').text('说说你的新鲜事');
 			$("#send-btn")[0].onclick=function(){
