@@ -135,7 +135,7 @@ var gui = {//kaikai weibo
 		if (commentContainer.length > 0) {//已经加入，也就是第二次点击评论了。
 			if (commentContainer.css('display') == 'none') {
 				//加截评论内容
-				
+				sinaApp.getCommentList(id);
 				//显示
 				commentContainer.show();
 			}
@@ -155,12 +155,13 @@ var gui = {//kaikai weibo
 				"<textarea rows='2' id='comment-content-"+id+"'></textarea>"+
 				"<input type='button' onClick='sinaApp.sendComment(\""+id+"\")' class='submit-button' value='评论' />"+
 			"</form>"+
-			"<div id=\"comment-list-\""+id+ ">" +
-			"</div>"+
-			"<div class='main-button' onClick='sinaApp.moreComments(\""+id+"\")'>更多评论</div>"
+			"<div id=\"comment-list-"+id+ "\">" +
+			"</div>";
+			//"<div class='main-button' onClick='sinaApp.moreComments(\""+id+"\")'>更多评论</div>"
 			status.append(comment);
+			sinaApp.getCommentList(id);
 		}
-		sinaApp.getCommentList(id);
+		
     },
     /**
      * 

@@ -37,8 +37,8 @@ var sinaApp={
 		});
 		
 	},
-	moreComments:function(id){
-		
+	moreComments:function(id,page){
+		this.getCommentList(id,page);
 	},
 	addFavourite:function(id){
 		 var arg={};
@@ -116,7 +116,7 @@ var sinaApp={
 				gui.showTip('发送成功!',500);
 				$("#retweet-"+id).hide();
 			}else {
-				gui.showTip('发送失败',500);
+				gui.showTip('发送失败',1500);
 			}
 		});
 	},
@@ -204,8 +204,19 @@ var sinaApp={
 		}
 		
 	},
-	getCommentList:function(id){
-		
+	getCommentList:function(id,page,count){
+		var arg={};
+		arg.id=id;
+		arg.count=10;
+		if(page)arg.page=page;
+		gui.showTip('正在载入评论...');
+		$.post("ajax/comments_list.php",arg,function(data,textStatus){
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',1500);	
+			}
+			$("#comment-list-"+id).append(data);
+		});
 	},
 	moreFollowers:function(cursor){
 		this.getUserFollowers(cursor);
