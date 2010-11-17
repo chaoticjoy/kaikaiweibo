@@ -230,4 +230,44 @@ include_once('utility.php');
 		$smarty->assign("next_cursor",$friends['next_cursor']);
 		$smarty->display('friends.tpl');
 	}
+	
+	function get_comments_list($id=0,$count=20,$page=1){
+		$w = new weibo( APP_KEY );
+		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+		$comments_list=$w->comments($id,$count,$page);
+		
+		//$emotions=$w->emotions();
+		
+		foreach($comments_list as $key=>$msg){
+		
+		/*
+			foreach($emotions as $emotion){
+				if(strpos($msg['text'],$emotion['phrase'])!==false)
+					if($emotion['phrase']=="image")
+						$comments_list[$key]['text']=str_replace($emotion['phrase'],"<img src=".$emotion['url'].">", $msg['text']);
+					else
+						$comments_list[$key]['text']=str_replace($emotion['phrase'],$emotion['url'], $msg['text']);
+			}
+		*/
+			
+			$comments_list[$key]['created_at']=formatTime($msg['created_at']);
+			$comments_list[$key]['text']=formatText($msg['text']);
+			 
+		}
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("comments_list",$comments_list);
+		$smarty->assign("id",$id);
+		$smarty->display('comments_list.tpl');
+	}	
 ?>
