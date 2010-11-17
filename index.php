@@ -1,5 +1,5 @@
 <?php
-
+sae_xhprof_start();
 //sae_set_display_errors(true);
 include_once('inc/config.php');
 include_once('inc/utility.php');
@@ -233,3 +233,4 @@ echo "<script language=\"javascript\">location.href='login.php';</script>";
 </div>
 </body>
 </html>
+<?php sae_xhprof_start();?>
