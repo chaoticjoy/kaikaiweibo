@@ -218,6 +218,7 @@ var sinaApp={
 			}
 			$("#moreComments-"+id).remove();
 			$("#comment-list-"+id).append(data);
+			//bug:因为评论在不断刷新，评论的页数也在变化，造成上一条和下一条重复．
 		});
 	},
 	moreFollowers:function(cursor){
