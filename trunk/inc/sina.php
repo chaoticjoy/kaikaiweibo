@@ -268,7 +268,7 @@ include_once('utility.php');
 
 		$smarty->assign("comments_list",$comments_list);
 		$smarty->assign("id",$id);
-		$smarty->assign("page",$page+1);
+		$smarty->assign("cpage",$page);//当前页
 		
 		if(count($comments_list)<$count)
 			$smarty->assign("hasMore",false);
