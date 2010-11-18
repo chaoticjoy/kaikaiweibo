@@ -135,6 +135,7 @@ var gui = {//kaikai weibo
 		if (commentContainer.length > 0) {//已经加入，也就是第二次点击评论了。
 			if (commentContainer.css('display') == 'none') {
 				//加截评论内容
+				commentContainer.empty();
 				sinaApp.getCommentList(id);
 				//显示
 				commentContainer.show();
