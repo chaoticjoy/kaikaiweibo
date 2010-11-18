@@ -216,7 +216,8 @@ var sinaApp={
 			if(textStatus!='success'){
 				gui.showTip('载入失败，请重新载入',1500);	
 			}
-			$("#moreComments-"+id).remove();
+			//$("#moreComments-"+id).remove();
+			$("#comment-list-"+id).empty();
 			$("#comment-list-"+id).append(data);
 			//bug:因为评论在不断刷新，评论的页数也在变化，造成上一条和下一条重复．
 		});
