@@ -209,12 +209,14 @@ var sinaApp={
 		arg.id=id;
 		arg.count=10;
 		if(page)arg.page=page;
+		else page=1;
 		gui.showTip('正在载入评论...');
 		$.post("ajax/comments_list.php",arg,function(data,textStatus){
 			gui.hideTip();
 			if(textStatus!='success'){
 				gui.showTip('载入失败，请重新载入',1500);	
 			}
+			$("#moreComments-"+id).remove();
 			$("#comment-list-"+id).append(data);
 		});
 	},

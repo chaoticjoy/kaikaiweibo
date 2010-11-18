@@ -268,6 +268,12 @@ include_once('utility.php');
 
 		$smarty->assign("comments_list",$comments_list);
 		$smarty->assign("id",$id);
+		$smarty->assign("page",$page+1);
+		
+		if(count($comments_list)<$count)
+			$smarty->assign("hasMore",false);
+		else $smarty->assign("hasMore",true);
+		
 		$smarty->display('comments_list.tpl');
 	}	
 ?>
