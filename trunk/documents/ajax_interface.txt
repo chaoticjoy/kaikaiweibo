@@ -47,3 +47,6 @@ comments_list.php 评论列表：
 send_direct_messages.php 发送私信：
 	screen_name：微博昵称
 	text：私信内容
+
+follow.php 添加关注：
+	screen_name：微博昵称

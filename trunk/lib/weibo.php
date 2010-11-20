@@ -87,6 +87,11 @@ class weibo
 			return $this->call_method( 'statuses' , 'friends' , '?screen_name=' . urlencode( $name ) .'&count='.$count.'&cursor=' .$cursor);
 	}
 	
+	function follow( $screen_name )
+	{
+		return $this->call_method( 'friendships' , 'create' , '?screen_name=' . urlencode( $screen_name));
+	}
+	
 	function user_info( $name )
 	{
 		return $this->call_method( 'users' , 'show' , '?screen_name=' . urlencode( $name )   );
