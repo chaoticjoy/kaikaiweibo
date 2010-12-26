@@ -223,9 +223,8 @@ input:focus{
 	background:-moz-linear-gradient(top, #fafafa,#ececec 50%,#e7e7e7 50%);
 }
 
-.timeline{
+.timeline,.poi{
 	width:100%;
-	background:#333333;
 }
 
 .single{
@@ -236,6 +235,14 @@ input:focus{
 	position:relative;
 }
 
+.note{
+	clear:both;
+	padding:20px 20px 30px 20px;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#fafafa),to( #eaeaea));
+	background:-moz-linear-gradient(top, #fafafa,#eaeaea);
+	font-size:15px;
+}
+
 .user-tread{
 	clear:both;
 	padding:20px 20px 30px 20px;
@@ -244,13 +251,16 @@ input:focus{
 	position:relative;
 }
 
-.single-avatar{
+.single-avatar,.poi-avatar,.acti-avatar{
 	position:absolute;
 	width:50px;
 	height:50px;
 	left:17px;
 	cursor:pointer;
 }
+
+
+
 
 
 .single-date{
@@ -265,6 +275,14 @@ input:focus{
 	font-weight:bold;
 	color:#446aab;
 }
+
+.poi-name{
+	font-size:15px;
+	font-weight:bold;
+	padding:4px 0px 2px 0px;
+	color:#446aab;
+}
+
 
 
 .single-operate{
@@ -292,7 +310,7 @@ input:focus{
 .single .quote,.user-tread .quote{
 	background:#cddbfa;
 	border:1px solid #b7caf1;
-	margin:10px 0px 0px 0px;
+	margin:10px 0px 10px 0px;
 	padding:10px;
 	border-radius: 10px;
 	line-height:150%;
@@ -306,7 +324,7 @@ input:focus{
 	border:1px solid #9eb0d5;
 }
 
-.comments,.retweet{
+.comments,.retweet,.checkin{
 	clear:both;
 	padding:20px 20px 10px 20px;
 	background:#b4c6ec;
@@ -314,7 +332,7 @@ input:focus{
 }
 
 
-.comments textarea,.retweet textarea{
+.comments textarea,.retweet textarea,.checkin textarea{
 	width:100%;
 	font-size: 18px;
 	outline:none;
@@ -355,7 +373,7 @@ input:focus{
 	position:relative;
 }
 
-.comments .author{
+.author{
 	font-weight:bold;
 	color:#4063a2;
 	padding-right:10px;
@@ -411,6 +429,15 @@ input:focus{
 .comment-bar .next{
 	border-top-right-radius: 20px;
 	border-bottom-right-radius:20px;
+}
+
+.checkin p{
+	margin:10px;
+	border-bottom:1px dashed #9bafd9;
+	padding-bottom:10px;
+	padding-right:5px;
+	color:#333;
+	position:relative;
 }
 
 
@@ -506,6 +533,7 @@ input:focus{
 	padding:45px 10px 15px 10px;
 }
 
+
 #image{
 	position:absolute;
 	top:50%;
@@ -586,3 +614,104 @@ input:focus{
 	color:#eee;
 	font-weight:bold;
 }
+
+/* ---------- checkin page -------------- */
+
+#search-box{
+	width:100%;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#fafafa),to(#eaeaea));
+	background:-moz-linear-gradient(top, #fafafa,#eaeaea);
+	padding:13px 20px;
+}
+
+#search-box .content{
+	width:100%;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	background: -webkit-gradient(linear, left top, left 25, from(#eaeaea), color-stop(5%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #eaeaea, #EEEEEE 5%, #FFFFFF);
+	border: 3px solid #e2e2e2;
+	font-size:18px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	padding:8px;
+	outline:none;
+}
+
+#search-box .content:focus{
+	border-color:#C4D1FF;
+}
+
+.search-button{
+	height:24px;
+	width:24px;
+	position: absolute;
+	top:22px;
+	right:40px;
+	background:url(../image/search.gif);
+	border-style:none;
+	cursor:pointer;
+}
+
+
+/* ---------- city page -------------- */
+#weather-box{
+	width:100%;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#fafafa),to(#eaeaea));
+	background:-moz-linear-gradient(top, #fafafa,#eaeaea);
+	height:105px;
+	position:relative;
+}
+
+.weather-icon{
+	position:absolute;
+	top:10px;
+	left:10px;
+	height:75px;
+	width:75px;
+}
+
+.weather-content{
+	position:absolute;
+	top:13px;
+	left:105px;
+}
+
+.weather-content h2{
+	display:inline;
+	font-size:20px;
+	font-weight:bold;
+	color:#446aab;
+}
+
+.weather-content p{
+	line-height:150%;
+	padding:8px 0px 0px 0px;
+}
+
+
+#city-panel .tab-bar li{
+	width:50%;
+}
+
+
+/* ---------- user page -------------- */
+.cat-item{
+clear:both;
+	padding:20px 20px 20px 30px;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#fafafa),to( #eaeaea));
+	background:-moz-linear-gradient(top, #fafafa,#eaeaea);
+	position:relative;
+	font-size:16px;
+	font-weight:bold;
+	color:#446aab;
+	cursor:pointer;
+}
+

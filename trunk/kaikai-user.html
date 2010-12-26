@@ -1,0 +1,205 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" /> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />  
+<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/> 
+<link rel="stylesheet" href="css/main.css" type="text/css">
+<script src="js/jquery/jquery-1.4.2.js"></script>
+<script src="js/ajax/main.js"></script>
+<script src="js/ajax/app.js"></script>
+
+<title>开开围脖</title> 
+</head>
+<body>
+
+<div id="send">
+<img id="close-btn" src="image/close.png" class="close" />
+<div class="tips" id='send-title'>说说你的新鲜事</div>
+<form>
+	<textarea id="send-content" rows="5"></textarea>
+	<input id="send-btn" type="button" class="main-button" value="发布围脖" />
+</form>
+</div>
+<div id="mask"></div>
+<div id="image">
+<img  src="image/close.png" class="close" onClick="gui.closeImage()" />
+<img id="image-content" class="set-center" />
+
+
+</div>
+
+<div id="header">
+开开围脖1.0
+<img src="image/arrow_left.png" id="back" onClick="gui.back()" class="back"/>
+<img src="image/exit.png" id="exit" class="exit"/>
+</div>
+
+<ul id="main-menu">
+		<li id="post-btn"><img src="image/post.png" /></li>
+        <li id="events-btn" tab="events-panel"><img src="image/events.png" /></li>        
+        <li id="checkin-btn" tab="checkin-panel"><img src="image/checkin.png" /></li> 
+		<li id="city-btn" tab="city-panel"><img src="image/city.png" /></li> 
+		<li id="user-btn" tab="user-panel"  class="on"><img src="image/user.png" /></li> 	 
+		<div class="clean"></div>
+</ul>
+<div class="clean"></div>
+<div id="tabpanel">
+	
+		<div id="user-panel" class="wrapper"> 
+		
+		<div id="userinfo">
+			<img src="http://tp1.sinaimg.cn/1640316644/180/1287924377/1" class="avatar"/>
+			<!-- username 采用开开用户的screen_name-->
+			<span class="username">Kavin</span><span class="location">广东,汕头</span><br />
+			<!-- 开开未开放私信和好友加删功能，所以在这里仅设置一个连接该用户开开主页的按钮，地址为http://k.ai/加上该用户name -->
+			<a href="http://k.ai/kavin"><div class="btn">开开主页</div></a>
+			<div class="clean"></div>
+		</div>
+		
+		<ul class="tab-bar"> 
+	        <li onClick="gui.showUser(this,'events')" >动态</li>        
+	        <li onClick="gui.showUser(this,'following')">好友</li> 
+			<li onClick="gui.showUser(this,'followers')" class="on">粉丝</li> 
+			<div class="clean"></div>
+	    </ul> 
+		
+		
+		<div id="user-events" >
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是开开动态</p>
+			<br class="clean"/>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是开开动态</p>
+			<br class="clean"/>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是开开动态</p>
+			<br class="clean"/>
+			</div>
+		</div>
+		
+		<div id="kaikai-friends" >
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			<div class="more-button">更多好友</div>
+		</div>
+		
+		<div id="kaikai-followers" class="timeline">
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			<div class="more-button">更多粉丝</div>
+		</div>
+		
+	</div>
+
+</div>
+</body>
+</html>
