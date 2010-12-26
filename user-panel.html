@@ -1,0 +1,576 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" /> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />  
+<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/> 
+<link rel="stylesheet" href="css/main.css" type="text/css">
+<script src="js/jquery/jquery-1.4.2.js"></script>
+<script src="js/ajax/main.js"></script>
+<script src="js/ajax/app.js"></script>
+
+<title>开开围脖</title> 
+</head>
+<body>
+
+<div id="send">
+<img id="close-btn" src="image/close.png" class="close" />
+<div class="tips" id='send-title'>说说你的新鲜事</div>
+<form>
+	<textarea id="send-content" rows="5"></textarea>
+	<input id="send-btn" type="button" class="main-button" value="发布围脖" />
+</form>
+</div>
+<div id="mask"></div>
+<div id="image">
+<img  src="image/close.png" class="close" onClick="gui.closeImage()" />
+<img id="image-content" class="set-center" />
+
+
+</div>
+
+<div id="header">
+开开围脖1.0
+<img src="image/arrow_left.png" id="back" onClick="gui.back()" class="back"/>
+<img src="image/exit.png" id="exit" class="exit"/>
+</div>
+
+<ul id="main-menu">
+		<li id="post-btn"><img src="image/post.png" /></li>
+        <li id="events-btn" tab="events-panel"><img src="image/events.png" /></li>        
+        <li id="checkin-btn" tab="checkin-panel"><img src="image/checkin.png" /></li> 
+		<li id="city-btn" tab="city-panel"><img src="image/city.png" /></li> 
+		<li id="user-btn" tab="user-panel"  class="on"><img src="image/user.png" /></li> 	 
+		<div class="clean"></div>
+</ul>
+<div class="clean"></div>
+<div id="tabpanel">
+	
+<div id="user-panel" class="wrapper"> 
+	<div id="userinfo">
+			<img src="http://tp1.sinaimg.cn/1640316644/180/1287924377/1" class="avatar"/>
+			<span class="username">Kavin</span><span class="location">广东,汕头</span><br />
+			<div class="btn">绑定开开</div>
+			<!--<div class="btn">开开帐号: Kavin</div>-->
+			<div class="clean"></div>
+	</div>
+		<ul class="tab-bar"> 
+	        <li onClick="gui.showUser(this,'events')"  class="on">消息</li>        
+	        <li onClick="gui.showUser(this,'following')">动态</li> 
+			<li onClick="gui.showUser(this,'followers')">关系</li> 
+			<div class="clean"></div>
+	    </ul> 
+		<ul id="category-panel">
+			<!-- 消息分类 -->
+			<!--
+			<li class="cat-item">微博评论</li>
+			<li class="cat-item">微博@回复</li>
+			<li class="cat-item">微博私信</li>
+			<!-- 动态分类 -->
+			<!--
+			<li class="cat-item">微博动态</li>
+			<li class="cat-item">微博收藏</li>
+			<li class="cat-item">开开动态</li>
+			-->
+			<!-- 关系分类 -->
+			<!--
+			<li class="cat-item">微博关注</li>
+			<li class="cat-item">微博粉丝</li>
+			<li class="cat-item">开开好友</li>
+			<li class="cat-item">开开粉丝</li>
+			-->		
+		</ul>
+		
+		
+		<!-- ######################## 微博评论 Timeline ########################-->
+		
+		<div id="weibo-comments"  class="timeline">
+			
+			<div class="single">
+				<div class="single-date">1 mins</div>
+				<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+				<div class="single-name">Welling</div>
+				<p>评论评论评论</p>
+				<p class="quote"><b>回复我的原文：</b>我发起了一个投票【学生手机操作系统小调查(仅限学生参与)】，请帮忙转发，谢谢！ 地址 http://sinaurl.cn/hbc3ev</p>
+				<div class="single-operate"><span>回复TA</span></div>
+			</div>
+			<div class="comments">
+			<form>
+			<textarea rows="2">回复Welling:</textarea>
+			<input type="button" class="submit-button" value="回复" />
+			</form>		
+			<br class="clean"/>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Welling</div>
+			<p>评论评论评论</p>
+			<p class="quote"><b>回复我的原文：</b>我发起了一个投票【学生手机操作系统小调查(仅限学生参与)】，请帮忙转发，谢谢！ 地址 http://sinaurl.cn/hbc3ev</p>
+			<div class="single-operate"><span>回复TA</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Welling</div>
+			<p>评论评论评论</p>
+			<p class="quote"><b>回复我的原文：</b>我发起了一个投票【学生手机操作系统小调查(仅限学生参与)】，请帮忙转发，谢谢！ 地址 http://sinaurl.cn/hbc3ev</p>
+			<div class="single-operate"><span>回复TA</span></div>
+			<br class="clean"/></div>
+			<div class="more-button">更多评论</div>
+		</div>
+		
+		
+		
+		<!-- ######################## 微博@回复 Timeline ########################-->
+		<!--
+		<div id="weibo-reply"  class="timeline">
+		
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是新浪动态呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<p class="quote"><b>转发原文：</b>我发起了一个投票【学生手机操作系统小调查(仅限学生参与)】，请帮忙转发，谢谢！ 地址 http://sinaurl.cn/hbc3ev</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
+			</div>
+			<div class="retweet" id="retweet-123456">
+				<form>
+				<textarea rows="2" id="retweet-content-123456">测试测试测试转发。</textarea>
+				<input type="button" onClick="sinaApp.sendRetweet('123456')" class="submit-button" value="转发" />
+				</form>
+			<br class="clean"/>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是新浪动态呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<p class="quote"><b>转发原文：</b>我发起了一个投票【学生手机操作系统小调查(仅限学生参与)】，请帮忙转发，谢谢！ 地址 http://sinaurl.cn/hbc3ev</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
+			<br class="clean"/>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是新浪动态呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<p class="quote"><b>转发原文：</b>我发起了一个投票【学生手机操作系统小调查(仅限学生参与)】，请帮忙转发，谢谢！ 地址 http://sinaurl.cn/hbc3ev</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
+			<br class="clean"/>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是新浪动态呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			<p class="quote"><b>转发原文：</b>我发起了一个投票【学生手机操作系统小调查(仅限学生参与)】，请帮忙转发，谢谢！ 地址 http://sinaurl.cn/hbc3ev</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
+			</div>
+			<div class="comments" id="comments-123456">
+				<form>
+				<textarea rows="2" id="comment-content-123456"></textarea>
+				<input type="button" onClick="sinaApp.sendComment('123456')" class="submit-button" value="评论" />
+				</form>
+				<p><span class="author">Kavin</span>评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论<span class="reply" onClick="gui.reply('123456','Kavin')">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
+				<ul class="comment-bar">         
+						 <li class="available pre">上一页</li> 
+						 <li>下一页</li>        
+						<div class="clean"></div>
+				</ul>
+			<br class="clean"/>
+			</div>
+			
+		<div class="more-button">更多回复</div>
+		</div>
+		-->
+		
+		<!-- ######################## 微博私信 Timeline ########################-->
+		<!--
+		<div id="weibo-dm"  class="timeline">
+			<div class="single">
+				<div class="single-date">1 mins</div>
+				<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+				<div class="single-name">Welling</div>
+				<p>私信私信私信私信私信</p>
+				<div class="single-operate"><span>回复TA</span></div>
+			</div>
+			<div class="comments">
+			<form>
+			<textarea rows="2">回复Welling:</textarea>
+			<input type="button" class="submit-button" value="回复" />
+			</form>		
+			<br class="clean"/>
+			</div>
+			
+			<div class="single">
+				<div class="single-date">1 mins</div>
+				<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+				<div class="single-name">Welling</div>
+				<p>私信私信私信私信私信</p>
+				<div class="single-operate"><span>回复TA</span></div>
+			<br class="clean"/>
+			</div>
+			
+			<div class="single">
+				<div class="single-date">1 mins</div>
+				<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+				<div class="single-name">Welling</div>
+				<p>私信私信私信私信私信</p>
+				<div class="single-operate"><span>回复TA</span></div>
+			<br class="clean"/>
+			</div>
+			
+			<div class="more-button">更多私信</div>
+		</div>
+		
+		-->
+		
+		
+			
+			
+		<!-- ######################## 微博动态 Timeline ########################-->
+		<!--
+		<div id="sinaEvents" class="timeline">
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是新浪动态呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是新浪动态呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是新浪动态呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			
+		</div>
+		-->
+		
+		
+		
+		<!-- ######################## 开开动态 Timeline ########################-->
+		<!--
+		<div id="kkEvents" class="timeline">
+		
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是开开动态</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span></div>
+			<br class="clean"/>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是开开动态</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span></div>
+			<br class="clean"/>
+			</div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是开开动态</p>
+			<div class="single-operate"><span>收藏</span> | <span>转发</span></div>
+			<br class="clean"/>
+			</div>
+			
+		</div>
+		-->
+		
+		
+		
+		<!-- ######################## 微博收藏 Timeline ########################-->
+		<!--
+		<div id="sinaFav" class="timeline">
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是新浪动态呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是新浪动态呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			<div class="single">
+			<div class="single-date">1 mins</div>
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>这是新浪动态呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
+			
+			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span >评论(3)</span></div>
+			<br class="clean"/></div>
+			
+			
+		</div>
+		-->
+
+		<!-- ######################## 微博关注列表 ########################-->
+		<!-- 
+				<div id="user-followers" class="timeline">
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			<div class="more-button">更多关注</div>
+		</div>
+		-->
+		
+		<!-- ######################## 微博粉丝列表 ########################-->
+		<!-- 
+		<div id="user-followering" class="timeline">
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			<div class="more-button">更多粉丝</div>
+		</div>
+		-->
+		
+		<!-- ######################## 开开好友列表 ########################-->
+		<!-- 
+		<div id="kaikai-friends" class="timeline">
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			<div class="more-button">更多好友</div>
+		</div>
+		-->
+		
+		<!-- ######################## 开开粉丝列表 ########################-->
+		<!-- 
+		<div id="kaikai-followers" class="timeline">
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			
+			<div class="single">
+			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
+			<div class="single-name">Kavin</div>
+			<p>浙江,杭州</p>
+			</div>
+			<div class="more-button">更多粉丝</div>
+		</div>
+		-->
+
+
+			
+  </div> 
+
+</div>
+</body>
+</html>
