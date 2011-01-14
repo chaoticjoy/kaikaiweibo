@@ -102,14 +102,28 @@ var gui = {//kaikai weibo
     
     
     onClickEventBtn: function(id){
-		sinaApp.moreEvents(true);
+		var refresh=false;
+		if(gui.currentBtn=='#events-btn'){
+			refresh=true;
+		}
+		//如果当前选中的是Event,则刷新当前选中的动态新浪或开开
+		if (refresh) {
+			if (gui.selectedEvent == 'kk') {
+				kk.moreEvents(true);
+			}
+			else {
+				sinaApp.moreEvents(true);
+			}
+		}
         this.changePanel(0, '#events-btn');
     },
     onClickCheckinBtn: function(id){
         this.changePanel(1, '#checkin-btn');
+		
     },
     onClickCityBtn: function(id){
         this.changePanel(2, '#city-btn');
+		
     },
     onClickUserBtn: function(id){
         this.changePanel(3, '#user-btn');
@@ -263,6 +277,12 @@ var gui = {//kaikai weibo
 	},
     //under events-panel
     showEvents: function(node, type){
+		var refresh=false;
+		if(type==gui.selectedEvent){
+			refresh=true;
+		}
+		gui.selectedEvent=type;//当前选中的动态
+		
         var p = node.parentNode;
         //前两个元素清空Class
         p.children[0].className = '';
@@ -271,13 +291,15 @@ var gui = {//kaikai weibo
         if (type == 'sina') {//如果
             $('#sinaEvents').show();
             $('#kkEvents').hide();
-            
+            if(refresh)
+				sinaApp.moreEvents(true);
         }
         else 
             if (type == 'kk') {
                 $('#kkEvents').show();
                 $('#sinaEvents').hide();
-                
+				if(refresh)
+					kk.moreEvents(true);
             }
     },
     //under user-panel

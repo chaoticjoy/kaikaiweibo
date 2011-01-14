@@ -230,6 +230,18 @@ var sinaApp={
 	}
 
 }
-var kkApp={
+var kk={
+	login:function(){
+		
+	},
+	/**
+	 * 
+	 * @param Boolean clear 是否清空原有的Events
+	 */
+	moreEvents:function(clear){
+		
+	}
+}
+var douban={
 	
 }
