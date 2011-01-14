@@ -293,6 +293,10 @@ var gui = {//kaikai weibo
             $('#kkEvents').hide();
             if(refresh)
 				sinaApp.moreEvents(true);
+			else if(!this.sinaEventLoaded){
+				sinaApp.moreEvents(true);
+				this.sinaEventLoaded=true;
+			}
         }
         else 
             if (type == 'kk') {
@@ -300,6 +304,10 @@ var gui = {//kaikai weibo
                 $('#sinaEvents').hide();
 				if(refresh)
 					kk.moreEvents(true);
+				else if(!this.kkEventLoaded){
+					kk.moreEvents(true);
+					this.kkEventLoaded=true;
+				}
             }
     },
     //under user-panel

@@ -79,7 +79,7 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>";
 			<div id="kkEvents-content" class="timeline">
 			
 			</div>
-			<div class="more-button">更多动态</div>
+			<div class="more-button" onclick="kk.moreEvents(false)">更多动态</div>
 		</div> 
   </div> 
 	

@@ -13,8 +13,7 @@ var sinaApp={
 		if(clear)//如果为True则清空
 			container.empty();
 		var sc=document.getElementById('sinaEvents-content');
-		
-		
+
 		var lastchild=sc.lastChild;
 		while(lastchild&&lastchild.nodeType!=1){
 			lastchild=lastchild.previousSibling;
@@ -231,15 +230,42 @@ var sinaApp={
 
 }
 var kk={
+	logined:false,
+	/**
+	 * 从Cookie里获得KK的登录信息,用户名,登录状态
+	 */
+	isLogined:function(){
+		alert(document.cookie);
+	},
+	user:{},
 	login:function(){
 		
 	},
+	currentEventPage:1,
 	/**
 	 * 
 	 * @param Boolean clear 是否清空原有的Events
 	 */
 	moreEvents:function(clear){
-		
+		var container=$('#kkEvents-content');
+		if (clear) {//如果为True则清空
+			container.empty();
+			this.currentEventPage=1;
+		}
+		var sc=document.getElementById('kkEvents-content');
+
+		arg={
+			page:this.currentEventPage
+		};
+		this.currentEventPage++;
+		gui.showTip('载入中．．．');
+		$.post("ajax/kk_friends_timeline.php",arg,function(data,textStatus){
+			container.append(data);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});
 	}
 }
 var douban={
