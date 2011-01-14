@@ -50,3 +50,6 @@ send_direct_messages.php 发送私信：
 
 follow.php 添加关注：
 	screen_name：微博昵称
+
+kk_friends_timeline.php 开开动态：
+	page:（选填）页数
