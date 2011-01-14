@@ -7,6 +7,8 @@ include_once('inc/utility.php');
 if(!(getEncryptCookie('sina_name') && getEncryptCookie('sina_pw')))
 //header('location: login.php');
 echo "<script language=\"javascript\">location.href='login.php';</script>";
+if(!(getEncryptCookie('kk_name') && getEncryptCookie('kk_pw')))
+echo "<script language=\"javascript\">location.href='kk_login.php';</script>";
 
 ?>	
 <!DOCTYPE html> 

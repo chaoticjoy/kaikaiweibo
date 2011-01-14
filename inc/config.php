@@ -1,1 +1,1 @@
-<?phpdefine( "APP_KEY" , "2399222655" );define( "USER_NAME" , 'ikailang@sina.cn' );define( "USER_PASS" , 'kaikaisina2010' );define('COOKIE_DOMAIN',".".$_SERVER['HTTP_APPNAME'].".sinaapp.com");define('SECURE_KEY',"KAILANG2010");?>
+<?phpdefine( "APP_KEY" , "2399222655" );define( "USER_NAME" , 'ikailang@sina.cn' );define( "USER_PASS" , 'kaikaisina2010' );define('COOKIE_DOMAIN',".".$_SERVER['HTTP_APPNAME'].".sinaapp.com");define('SECURE_KEY',"KAILANG2010");define( "KAIKAI_KEY" , "544e6d3941babe1f0485d3b139a7f9b5" );?>
