@@ -109,18 +109,19 @@ include_once('utility.php');
 		$smarty->display('kk_friends_timeline.tpl');
 	}
 	
-	function get_user_timeline($screen_name=0,$max_id=0){
-		$w = new weibo( APP_KEY );
-		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
-		$user_timeline=$w->user_timeline($screen_name,$max_id);
-		if($max_id)
-			array_shift($user_timeline);
+	function get_user_timeline($username,$page=1){
+		$k = new kaikai( KAIKAI_KEY );
+		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
+		$user_timeline=$k->user_timeline($username,$page);
 		
-		//$emotions=$w->emotions();
+		$user_timeline=$user_timeline['statuses'];
+/* 		//$emotions=$w->emotions();
 		$ids=get_ids($user_timeline);
-		$counts=$w->counts($ids);
+		$counts=$w->counts($ids); */
 		
-		foreach($user_timeline as $key=>$msg){
+		foreach($user_timeline as $key1=>$item)
+		foreach($item as $key=>$msg)
+		{
 		
 		/*
 			foreach($emotions as $emotion){
@@ -132,18 +133,18 @@ include_once('utility.php');
 			}
 		*/
 		
-			foreach($counts as $count){			
+			/* foreach($counts as $count){			
 				if($count['id']==$msg['id']){
 					$user_timeline[$key]['comments_count']=$count['comments'];
 					$user_timeline[$key]['rt_count']=$count['rt'];
 				}				
-			}
+			} */
 			
-			$user_timeline[$key]['created_at']=formatTime($msg['created_at']);
-			$user_timeline[$key]['text']=formatText($msg['text']);
+			$user_timeline[$key1][$key]['create_at']=formatTime($msg['create_at']);
+			$user_timeline[$key1][$key]['text']=formatText($msg['text']);
 			
-			if($msg['retweeted_status'])
-				$user_timeline[$key]['retweeted_status']['text']=formatText($msg['retweeted_status']['text']);
+			/* if($msg['retweeted_status'])
+				$user_timeline[$key]['retweeted_status']['text']=formatText($msg['retweeted_status']['text']); */
 			 
 		}
 
@@ -159,7 +160,7 @@ include_once('utility.php');
 		$smarty->cache_lifetime = 120;
 
 		$smarty->assign("user_timeline",$user_timeline);
-		$smarty->display('user_timeline.tpl');
+		$smarty->display('kk_user_timeline.tpl');
 	}
 	
 	function get_user_info($screen_name=0){
@@ -188,10 +189,10 @@ include_once('utility.php');
 		$smarty->display('userinfo.tpl');
 	}
 	
-	function get_followers($screen_name="",$count=20,$cursor=-1){
-		$w = new weibo( APP_KEY );
-		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
-		$followers=$w->followers($screen_name,$count,$cursor);
+	function get_followers($id,$page=1,$count=20){
+		$k = new kaikai( KAIKAI_KEY );
+		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
+		$followers=$k->followers($id,$page,$count);
 		$smarty = new Smarty;
 
 		$smarty->compile_dir = 'saemc://smartytpl/';
@@ -204,15 +205,15 @@ include_once('utility.php');
 		$smarty->cache_lifetime = 120;
 
 		$smarty->assign("followers",$followers['users']);
-		$smarty->assign("next_cursor",$followers['next_cursor']);
-		$smarty->display('followers.tpl');
+		$smarty->display('kk_followers.tpl');
 	}
 	
-	function get_friends($screen_name="",$count=20,$cursor=-1){
-		$w = new weibo( APP_KEY );
-		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
-		$friends=$w->friends($screen_name,$count,$cursor);
-		
+	function get_friends($id,$page=1,$count=20){
+		$k = new kaikai( KAIKAI_KEY );
+		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
+		$friends=$k->friends($id,$page,$count);
+		//$friends=$friends['users'];
+		//print_r($friends['users']);
 		$smarty = new Smarty;
 
 		$smarty->compile_dir = 'saemc://smartytpl/';
@@ -225,8 +226,7 @@ include_once('utility.php');
 		$smarty->cache_lifetime = 120;
 
 		$smarty->assign("friends",$friends['users']);
-		$smarty->assign("next_cursor",$friends['next_cursor']);
-		$smarty->display('friends.tpl');
+		$smarty->display('kk_friends.tpl');
 	}
 	
 	function get_comments_list($id=0,$count=20,$page=1){

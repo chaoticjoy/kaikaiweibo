@@ -42,7 +42,7 @@ class kaikai
 	
 	function user_timeline($username,$page=1,$count=20)
 	{
-		return $this->call_method( 'public' , 'statuses','user_timeline','?username='.urlencode($username).'?page='.$page.'&count=' .$count );
+		return $this->call_method( 'public' , 'statuses','user_timeline','?username='.urlencode($username).'&page='.$page.'&count=' .$count );
 	}
 	
 	function friends($id,$page=1,$count=20)
