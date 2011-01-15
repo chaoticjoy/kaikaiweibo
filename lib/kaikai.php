@@ -35,6 +35,14 @@ class kaikai
 		return $this->call_method( 'public' , 'account','verify_credentials' );
 	}
 	
+	function user_info($id=0)
+	{
+		if($id==0)
+			return $this->call_method( 'public' , 'users','show' );
+		else
+			return $this->call_method( 'public' , 'users','show','?id='.$id );
+	}
+	
 	function friends_timeline($page=1,$count=20)
 	{
 		return $this->call_method( 'public' , 'statuses','friends_timeline','?page='.$page.'&count='.$count );

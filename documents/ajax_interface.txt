@@ -65,3 +65,6 @@ kk_followers.php 开开粉丝列表：
 kk_user_timeline.php 开开用户动态：
 	username：用户名
 	page:（选填）页数
+
+kk_userinfo.php 开开用户信息：
+	id：（选填）用户id

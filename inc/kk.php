@@ -163,15 +163,12 @@ include_once('utility.php');
 		$smarty->display('kk_user_timeline.tpl');
 	}
 	
-	function get_user_info($screen_name=0){
-		$w = new weibo( APP_KEY );
-		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
-		if($screen_name==0){
-			$screen_name=$w->verify_credentials();
-			$screen_name=$screen_name['screen_name'];
-		}
-		$user=$w->user_info($screen_name);
+	function get_user_info($id=0){
+		$k = new kaikai( KAIKAI_KEY );
+		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
+		$user=$k->user_info($id);
 
+		
 		$smarty = new Smarty;
 
 		$smarty->compile_dir = 'saemc://smartytpl/';
@@ -186,7 +183,7 @@ include_once('utility.php');
 		$smarty->assign("user",$user);
 		//$smarty->assign("emotions",$emotions[1]);
 
-		$smarty->display('userinfo.tpl');
+		$smarty->display('kk_userinfo.tpl');
 	}
 	
 	function get_followers($id,$page=1,$count=20){
