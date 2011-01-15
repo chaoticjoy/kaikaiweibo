@@ -63,6 +63,25 @@ class kaikai
 		return $this->call_method( 'public' , 'users','followers','?id='.$id.'page='.$page.'&count=' .$count );
 	}
 
+	function search($lat,$lon,$query='',$rawgps='',$range=5000,$page=1,$count=20,$category='',$certified=true)
+	{
+		return $this->call_method( 'public' , 'poi','search','?lat='.$lat.'lon='.$lon.'&query=' .$query.'&rawgps=' .$rawgps.'&range=' .$range.'&page=' .$page.'&count=' .$count.'&category=' .$category.'&certified=' .$certified );
+	}
+	
+	function tips($poi_id,$page=1,$count=20)
+	{
+		return $this->call_method( 'public' , 'poi','tips','?poi_id='.$poi_id.'page='.$page.'&count='.$count );
+	}
+	
+	function tipsupdate($text,$id,$in_reply_to_status_id='',$source='',$photo='')
+	{
+		
+	}
+	
+	function checkin($id,$visibility='all',$lat='',$lon='',$text='',$photo='')
+	{
+		
+	}
 	
 	function call_method( $classify,$method , $action , $args = '' ) 
 	{
