@@ -53,3 +53,15 @@ follow.php 添加关注：
 
 kk_friends_timeline.php 开开动态：
 	page:（选填）页数
+
+kk_friends.php 开开好友列表：
+	id：用户id
+	page:（选填）页数
+
+kk_followers.php 开开粉丝列表：
+	id：用户id
+	page:（选填）页数
+
+kk_user_timeline.php 开开用户动态：
+	username：用户名
+	page:（选填）页数
