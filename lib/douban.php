@@ -17,8 +17,18 @@
 		return json_encode($xml,JSON_FORCE_OBJECT);
 		//return Array2Json($xml);
 	}
+	
+	function douban_event($location='beijing',$start_index=1,$max_results=10){
+		$content=fetchurl("http://api.douban.com/event/location/".$location."?apikey=0082e8f57232f6d00188bae05698e470&start-index=".$start_index."&max-results=".$max_results);
+		$content=str_replace('gd:','',$content);
+		$content=str_replace('db:','',$content);
+		$xml=simplexml_load_string($content);
+		$result=json_encode($xml,JSON_FORCE_OBJECT);
+		return json_decode( $result, true);
+	}
 
-	function Array2Json($array) { 
+	//print_r(douban_event());
+/* 	function Array2Json($array) { 
 		arrayRecursive($array, 'urlencode', true); 
 		$json = json_encode($array); 
 		$json = urldecode($json); 
@@ -50,7 +60,7 @@
 			} 
 		} 
 		$recursive_counter--; 
-	} 
+	}  */
 	
-	echo doubansearch("hi","all",1,10);
+	//echo doubansearch("hi","all",1,10);
 ?>
