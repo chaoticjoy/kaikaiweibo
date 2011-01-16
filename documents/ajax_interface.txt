@@ -68,3 +68,14 @@ kk_user_timeline.php 开开用户动态：
 
 kk_userinfo.php 开开用户信息：
 	id：（选填）用户id
+
+kk_tipsupdate.php 开开发布贴士：
+	id：地点id
+	text：消息内容 
+
+kk_checkin.php 开开签到：
+	id：地点id
+
+weather.php 天气预报：
+	city：城市名
+

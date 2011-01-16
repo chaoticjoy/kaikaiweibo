@@ -73,14 +73,17 @@ class kaikai
 		return $this->call_method( 'public' , 'poi','tips','?poi_id='.$poi_id.'page='.$page.'&count='.$count );
 	}
 	
-	function tipsupdate($text,$id,$in_reply_to_status_id='',$source='',$photo='')
+	function tipsupdate($id,$text)
 	{
-		
+		$this->postdata[] = 'id='.$id;
+		$this->postdata[] = 'text='.urlencode($text);
+		return $this->call_method( 'public' , 'poi', 'tipsupdate'  );
 	}
 	
-	function checkin($id,$visibility='all',$lat='',$lon='',$text='',$photo='')
+	function checkin($id)
 	{
-		
+		$this->postdata[] = 'id='.$id;
+		return $this->call_method( 'public' , 'poi', 'checkin'  );
 	}
 	
 	function call_method( $classify,$method , $action , $args = '' ) 
