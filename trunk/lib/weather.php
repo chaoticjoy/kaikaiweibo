@@ -12,10 +12,22 @@
 	
 	function weather($city)
 	{
-		$ret=fetchurl( 'http://pandoralab.appspot.com/api/weather.json' , '?city='.urlencode($city).'&lan=zh_CN' );
+		$ret=fetchurl( 'http://pandoralab.appspot.com/api/weather.json?city='.urlencode($city).'&lan=zh_CN' );
 		return json_decode( $ret , true);
 	}
 	
-	print_r(weather('±±¾©'));
+	function g_weather(){
+		$content=fetchurl("http://www.google.com/ig/api?hl=zh-cn&weather=beijing");
+		$content=iconv('gb2312','utf-8',$content);
+		$xml=simplexml_load_string($content);
+		//urlencode(iconv('gb2312','utf-8',$val['name'])); 
+		return json_encode($xml,JSON_FORCE_OBJECT);
+		//return Array2Json($xml);
+	}
+	
+	//print_r(weather('shanghai'));
+	print_r(json_decode( g_weather() , true));
+	
+
 
 ?>
