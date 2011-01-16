@@ -10,24 +10,25 @@
 	
 	}
 	
-	function weather($city)
+/* 	function weather($city)
 	{
 		$ret=fetchurl( 'http://pandoralab.appspot.com/api/weather.json?city='.urlencode($city).'&lan=zh_CN' );
 		return json_decode( $ret , true);
-	}
+	} */
 	
-	function g_weather(){
-		$content=fetchurl("http://www.google.com/ig/api?hl=zh-cn&weather=beijing");
+	function gg_weather($city='北京'){
+		$content=fetchurl("http://www.google.com/ig/api?hl=zh-cn&weather=".urlencode($city));
 		$content=iconv('gb2312','utf-8',$content);
+		$content=str_replace('/ig/images/weather','../image/weather',$content);
+		$content=str_replace('.gif','.png',$content);
 		$xml=simplexml_load_string($content);
 		//urlencode(iconv('gb2312','utf-8',$val['name'])); 
-		return json_encode($xml,JSON_FORCE_OBJECT);
+		$result=json_encode($xml,JSON_FORCE_OBJECT);
+		return json_decode( $result, true);
 		//return Array2Json($xml);
 	}
 	
-	//print_r(weather('shanghai'));
-	print_r(json_decode( g_weather() , true));
-	
+	//print_r(g_weather('北京'));
 
 
 ?>
