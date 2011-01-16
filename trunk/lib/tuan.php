@@ -12,12 +12,13 @@
 	
 	function tuan(){
 		$content=fetchurl("http://open.client.lashou.com/list/api/");
-		$xml=simplexml_load_string($content);
+		$xml=simplexml_load_string($content,"SimpleXMLElement",LIBXML_NOCDATA);
 		//urlencode(iconv('gb2312','utf-8',$val['name'])); 
-		return json_encode($xml,JSON_FORCE_OBJECT);
+		$result=json_encode($xml,JSON_FORCE_OBJECT);
+		return json_decode( $result, true);
 		//return Array2Json($xml);
 	}
 	
-	print_r(json_decode( tuan() , true));
+	print_r(tuan());
 
 ?>

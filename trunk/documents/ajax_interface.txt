@@ -77,5 +77,10 @@ kk_checkin.php 开开签到：
 	id：地点id
 
 weather.php 天气预报：
-	city：城市名
+	city：城市名（拼音或者汉字）
 
+db_event.php 豆瓣活动:
+	city：城市名（拼音）
+	page：（选填）页数
+
+	
