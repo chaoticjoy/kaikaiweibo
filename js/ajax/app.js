@@ -9,6 +9,9 @@ var sinaApp={
 	 */
 	
 	moreEvents:function(clear){
+		if(this.kkUserInfoLoaded){
+			kk.moreUserEvents(false);
+		}
 		var container=$('#sinaEvents-content');
 		if(clear)//如果为True则清空
 			container.empty();
@@ -230,16 +233,10 @@ var sinaApp={
 
 }
 var kk={
-	logined:false,
-	/**
-	 * 从Cookie里获得KK的登录信息,用户名,登录状态
-	 */
-	isLogined:function(){
-		alert(document.cookie);
-	},
-	user:{},
-	login:function(){
-		
+	//当前打开的用户
+	userInfo:{
+		id:'',
+		name:''
 	},
 	currentEventPage:1,
 	/**
@@ -266,19 +263,20 @@ var kk={
 		});
 	},
 	userEventPage:1,
-	friendPage:1,
+	friendsPage:1,
 	followersPage:1,
 	//用户动态
 	moreUserEvents:function(clear){
-		var container=$('#user-events');
+		var container=$('#user-events-content');
 		if (clear) {//如果为True则清空
 			container.empty();
 			this.userEventPage=1;
 		}
 		var arg={
+			username:kk.userInfo.name,
 			page:this.userEventPage
 		};
-		this.currentEventPage++;
+		this.userEventPage++;
 		gui.showTip('载入中．．．');
 		$.post("ajax/kk_user_timeline.php",arg,function(data,textStatus){
 			container.append(data);
@@ -286,27 +284,29 @@ var kk={
 			if(textStatus!='success'){
 				gui.showTip('载入失败，请重新载入',500);
 			}
-		});			
+		});
 	},
 	//我关注的
 	moreFriends:function(clear){
 		var container=$('#user-following');
 		if (clear) {//如果为True则清空
 			container.empty();
+			container.html("<div onclick='kk.moreFriends()' class='more-button' id='morefollowing'>更多好友</div>");
 			this.friendsPage=1;
 		}
 		var arg={
+			id:kk.userInfo.id,
 			page:this.friendsPage
 		};
-		this.currentEventPage++;
+		this.friendsPage++;
 		gui.showTip('载入中．．．');
 		$.post("ajax/kk_friends.php",arg,function(data,textStatus){
-			container.append(data);
+			$(data).insertBefore("#morefollowing");
 			gui.hideTip();
 			if(textStatus!='success'){
 				gui.showTip('载入失败，请重新载入',500);
 			}
-		});		
+		});
 		
 	},
 	//关注我的.
@@ -314,15 +314,17 @@ var kk={
 		var container=$('#user-followers');
 		if (clear) {//如果为True则清空
 			container.empty();
+			container.html("<div onclick='kk.moreFollowers()' class='more-button' id='morefollowers'>更多粉丝</div>");
 			this.followersPage=1;
 		}
 		var arg={
+			id:kk.userInfo.id,
 			page:this.followersPage
 		};
-		this.currentEventPage++;
+		this.followersPage++;
 		gui.showTip('载入中．．．');
 		$.post("ajax/kk_followers.php",arg,function(data,textStatus){
-			container.append(data);
+			$(data).insertBefore("#morefollowers");
 			gui.hideTip();
 			if(textStatus!='success'){
 				gui.showTip('载入失败，请重新载入',500);

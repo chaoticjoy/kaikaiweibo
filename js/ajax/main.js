@@ -3,6 +3,7 @@
  */
 var toggle = 1;
 var gui = {//kaikai weibo
+
     history: [[0, "#events-btn"]],
     currentHistory: 0,///当前历史的Index
     currentPanel: 0,//
@@ -377,12 +378,16 @@ var gui = {//kaikai weibo
 	 * @param {Object} id
 	 * @param {Object} type
 	 */
-	openUserInfo:function(id,type){
+	openUserInfo:function(id,name,type){
 		var url="kk_userinfo.php";
 		var arg={};
 		arg.id=id;
 		if(type=='kk'){
 			this.kkUserInfoLoaded=true;
+			kk.userInfo.id=id;
+			kk.userInfo.name=name;
+			//默认打开用户动态
+			kk.moreUserEvents(true);
 		}else if(type=='sina'){
 			this.kkUserInfoLoaded=false;
 			url="";
