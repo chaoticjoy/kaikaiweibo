@@ -83,4 +83,5 @@ db_event.php 豆瓣活动:
 	city：城市名（拼音）
 	page：（选填）页数
 
-	
+tuangou.php 团购：
+	city：城市名（汉字）（不填默认全国）

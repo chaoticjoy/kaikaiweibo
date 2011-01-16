@@ -2,10 +2,12 @@
 	include_once('../lib/tuan.php');
 	include_once('../lib/smarty/Smarty.class.php');
 	
-	function get_tuan($location='beijing'){
-		$tuan=tuan();
-		print_r($tuan);
-		//return 0;
+	function get_tuan($city='全国'){
+		$cityid=tuan_get_cityid($city);
+		$tuan=tuan_city($cityid);
+		
+		//print_r($tuan);
+		
 		$smarty = new Smarty;
 
 		$smarty->compile_dir = 'saemc://smartytpl/';
@@ -17,14 +19,13 @@
 		$smarty->caching = false;
 		$smarty->cache_lifetime = 120;
 
-		$smarty->assign("tuan",$tuan['url']);
-		//$smarty->assign("db_event_title",$douban['title']);
+		$smarty->assign("tuan",$tuan);
 		$smarty->display('tuan.tpl');
 	}
 	
-	if($_REQUEST['location'])
-		get_tuan($_REQUEST['location']);
+	if($_REQUEST['city'])
+		get_tuan($_REQUEST['city']);
 	else
-		get_tuan();
+		get_tuan("全国");
 
 ?>
