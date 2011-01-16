@@ -252,9 +252,7 @@ var kk={
 			container.empty();
 			this.currentEventPage=1;
 		}
-		var sc=document.getElementById('kkEvents-content');
-
-		arg={
+		var arg={
 			page:this.currentEventPage
 		};
 		this.currentEventPage++;
@@ -266,6 +264,70 @@ var kk={
 				gui.showTip('载入失败，请重新载入',500);
 			}
 		});
+	},
+	userEventPage:1,
+	friendPage:1,
+	followersPage:1,
+	//用户动态
+	moreUserEvents:function(clear){
+		var container=$('#user-events');
+		if (clear) {//如果为True则清空
+			container.empty();
+			this.userEventPage=1;
+		}
+		var arg={
+			page:this.userEventPage
+		};
+		this.currentEventPage++;
+		gui.showTip('载入中．．．');
+		$.post("ajax/kk_user_timeline.php",arg,function(data,textStatus){
+			container.append(data);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});			
+	},
+	//我关注的
+	moreFriends:function(clear){
+		var container=$('#user-following');
+		if (clear) {//如果为True则清空
+			container.empty();
+			this.friendsPage=1;
+		}
+		var arg={
+			page:this.friendsPage
+		};
+		this.currentEventPage++;
+		gui.showTip('载入中．．．');
+		$.post("ajax/kk_friends.php",arg,function(data,textStatus){
+			container.append(data);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});		
+		
+	},
+	//关注我的.
+	moreFollowers:function(clear){
+		var container=$('#user-followers');
+		if (clear) {//如果为True则清空
+			container.empty();
+			this.followersPage=1;
+		}
+		var arg={
+			page:this.followersPage
+		};
+		this.currentEventPage++;
+		gui.showTip('载入中．．．');
+		$.post("ajax/kk_followers.php",arg,function(data,textStatus){
+			container.append(data);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});		
 	}
 }
 var douban={

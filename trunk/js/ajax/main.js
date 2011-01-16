@@ -42,12 +42,18 @@ var gui = {//kaikai weibo
     onClickPostBtn: function(){//
 		this.sendMsg('normal');
     },
-    //tid target panel's id;need to add a '#' before ids. buttonid 
+	/**
+	 * 
+	 * @param {string} target panel's id;need to add a '#' before id
+	 * @param {String} bid target button's id ;need to add a '#' before id
+	 * @param {Boolean} history if undefined or true  ,then it will be auto added to historys,
+	 *                 
+	 */ 
     changePanel: function(tid, bid, history){
         if (tid == this.currentPanel) 
             return;
         
-        if (history == undefined) {//不是进行历史操作
+        if (history == undefined||history) {//是否将当前动作加入历史
             $("#back").show();
             while ((this.history.length - 1) > this.currentHistory) {
                 this.history.pop();
@@ -125,6 +131,12 @@ var gui = {//kaikai weibo
         this.changePanel(2, '#city-btn');
 		
     },
+	/**
+	 * User标签按钮
+	 * TODO: 是否每次点击都默认打开新浪的当用户,或是改成每次打开都是上一次的用户资料,直到再次刷新为止?
+	 * 
+	 * @param {Object} id
+	 */
     onClickUserBtn: function(id){
         this.changePanel(3, '#user-btn');
 		//载入当前用户的info.
@@ -310,7 +322,11 @@ var gui = {//kaikai weibo
 				}
             }
     },
-    //under user-panel
+    /**
+     * 新浪用户标签,里的三个按钮切换.
+     * @param {Object} node
+     * @param {Object} type
+     */
     showUser: function(node, type){
         var p = node.parentNode;
         p.children[0].className = "";
@@ -320,24 +336,69 @@ var gui = {//kaikai weibo
         $("#user-events").hide();
 		$("#user-following").hide();
 		$("#user-followers").hide();
-		
+		var refresh=false;
+		if(this.lastUserInfoId==type){
+			refresh=true;
+		}
+		this.lastUserInfoId=type;//把当前的类型存起来,以便下次判断是否需要刷新
         node.className = 'on';
         switch (type) {
             case 'events':
 				 $("#user-events").show();
-				 sinaApp.getUserTimeline();
+				 if(refresh)
+				 if(this.kkUserInfoLoaded)
+				 	kk.moreUserEvents(true);
+				 else 
+				 	sinaApp.getUserTimeline();
                 break;
             case 'following':
 				$("#user-following").show();
+				 if(refresh)
+				 if(this.kkUserInfoLoaded)
+				 	kk.moreFriends(true);
+					else
 				sinaApp.getUserFollowing();
                 break;
             case 'followers':
 				$("#user-followers").show();
+				 if(refresh)
+				 if(this.kkUserInfoLoaded)
+				 	kk.moreFollowers(true);
+					else
 				sinaApp.getUserFollowers();
                 break;
                 
         }
     },
+	/**
+	 * 点击用户的头像进而打开Userinfo面板
+	 * 包括新浪的和开开的.
+	 * 
+	 * @param {Object} id
+	 * @param {Object} type
+	 */
+	openUserInfo:function(id,type){
+		var url="kk_userinfo.php";
+		var arg={};
+		arg.id=id;
+		if(type=='kk'){
+			this.kkUserInfoLoaded=true;
+		}else if(type=='sina'){
+			this.kkUserInfoLoaded=false;
+			url="";
+		}
+		
+		gui.showTip('载入中．．．');
+		$.post("ajax/"+url,arg,function(data,textStatus){
+			gui.changePanel(3, '#user-btn');
+			$("#user-panel-header").empty().append(data);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});
+		
+	},
 	hideSend:function(){
 		this.hideMask();
 		$("#send").hide();
