@@ -27,7 +27,7 @@ include_once('inc/utility.php');
 			
 			if ($result ) {
 				//echo "<p>µÇÂ½³É¹¦</p>";
-				echo "<script language=\"javascript\">location.href='kk_login.php';</script>";
+				echo "<script language=\"javascript\">location.href='index.php';</script>";
 			}
 			else{
 				echo "<script language=\"javascript\">alert('\u767B\u9646\u5931\u8D25\uFF01\u8BF7\u91CD\u65B0\u767B\u9646\u3002');</script>";
