@@ -226,4 +226,24 @@ include_once('utility.php');
 		$smarty->display('kk_friends.tpl');
 	}
 	
+	function get_search($lat,$lon,$query=''){
+		$k = new kaikai( KAIKAI_KEY );
+		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
+		$search=$k->search($lat,$lon,$query);
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("search",$search['pois']);
+		$smarty->display('kk_search.tpl');
+	}
+	
 ?>
