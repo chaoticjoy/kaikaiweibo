@@ -6,6 +6,6 @@ include_once('../inc/kk.php');
 		get_friends($_REQUEST['id'],$_REQUEST['page']);
 	elseif($_REQUEST['id'])
 		get_friends($_REQUEST['id']);
-/* 	else
-		get_friends(183911); */
+/*  	else
+		get_friends(183911);  */
 ?>

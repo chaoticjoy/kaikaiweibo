@@ -55,12 +55,12 @@ class kaikai
 	
 	function friends($id,$page=1,$count=20)
 	{
-		return $this->call_method( 'public' , 'users','friends','?id='.$id.'page='.$page.'&count=' .$count );
+		return $this->call_method( 'public' , 'users','friends','?id='.$id.'&page='.$page.'&count=' .$count );
 	}
 	
 	function followers($id,$page=1,$count=20)
 	{
-		return $this->call_method( 'public' , 'users','followers','?id='.$id.'page='.$page.'&count=' .$count );
+		return $this->call_method( 'public' , 'users','followers','?id='.$id.'&page='.$page.'&count=' .$count );
 	}
 
 	function search($lat,$lon,$query='',$rawgps='',$range=5000,$page=1,$count=20,$category='',$certified=true)
