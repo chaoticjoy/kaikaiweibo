@@ -70,6 +70,7 @@ include_once('utility.php');
 		$counts=$k->counts($ids); */
 		
 		//$friends_timeline=array();
+		if($friends_timeline)
 		foreach($friends_timeline as $key1=>$item)
 		foreach($item as $key=>$msg)
 		{
@@ -118,7 +119,7 @@ include_once('utility.php');
 /* 		//$emotions=$w->emotions();
 		$ids=get_ids($user_timeline);
 		$counts=$w->counts($ids); */
-		
+		if($user_timeline)
 		foreach($user_timeline as $key1=>$item)
 		foreach($item as $key=>$msg)
 		{
