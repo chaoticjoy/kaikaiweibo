@@ -126,7 +126,11 @@ var gui = {//kaikai weibo
     },
     onClickCheckinBtn: function(id){
         this.changePanel(1, '#checkin-btn');
-		
+		//第一次载入或再次点击.
+		if(!this.firstLoadCheckin||'#checkin-btn'==this.currentBtn){
+			this.firstLoadCheckin=true;
+			kk.getCheckin();
+		}
     },
     onClickCityBtn: function(id){
         this.changePanel(2, '#city-btn');
@@ -141,6 +145,7 @@ var gui = {//kaikai weibo
     onClickUserBtn: function(id){
         this.changePanel(3, '#user-btn');
 		//载入当前用户的info.
+		//TOdo
 		sinaApp.getUserInfo();
     },
     //前进后退按钮
@@ -329,6 +334,11 @@ var gui = {//kaikai weibo
      * @param {Object} type
      */
     showUser: function(node, type){
+		var refresh=false;
+		if(node.getAttribute('class')=='on'||node.getAttribute('loaded')==null){//已打开,表示刷新.
+			refresh=true; 
+			node.setAttribute('loaded','true');
+		}
         var p = node.parentNode;
         p.children[0].className = "";
         p.children[1].className = "";
@@ -337,12 +347,8 @@ var gui = {//kaikai weibo
         $("#user-events").hide();
 		$("#user-following").hide();
 		$("#user-followers").hide();
-		var refresh=false;
-		if(this.lastUserInfoId==type){
-			refresh=true;
-		}
-		this.lastUserInfoId=type;//把当前的类型存起来,以便下次判断是否需要刷新
-        node.className = 'on';
+
+        node.setAttribute('class','on');
         switch (type) {
             case 'events':
 				 $("#user-events").show();
@@ -368,7 +374,6 @@ var gui = {//kaikai weibo
 					else
 				sinaApp.getUserFollowers();
                 break;
-                
         }
     },
 	/**

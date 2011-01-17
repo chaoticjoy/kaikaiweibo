@@ -9,9 +9,7 @@ var sinaApp={
 	 */
 	
 	moreEvents:function(clear){
-		if(this.kkUserInfoLoaded){
-			kk.moreUserEvents(false);
-		}
+
 		var container=$('#sinaEvents-content');
 		if(clear)//如果为True则清空
 			container.empty();
@@ -194,6 +192,10 @@ var sinaApp={
 		});
 	},
 	moreUserEvents:function(){
+		if(gui.kkUserInfoLoaded){
+			kk.moreUserEvents(false);
+			return;
+		}
 		var lastchild=document.getElementById("user-events-content").lastChild;
 		while(lastchild&&lastchild.nodeType!=1){
 			lastchild=lastchild.previousSibling;
@@ -329,7 +331,18 @@ var kk={
 			if(textStatus!='success'){
 				gui.showTip('载入失败，请重新载入',500);
 			}
-		});		
+		});
+	},
+	//当前用户的City
+	city:"",
+	getCheckin:function(){
+		$.post("ajax/kk_followers.php",arg,function(data,textStatus){
+			$(data).insertBefore("#morefollowers");
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});
 	}
 }
 var douban={

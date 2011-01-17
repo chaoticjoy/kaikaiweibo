@@ -6,9 +6,9 @@
 </div>
 
 <ul class="tab-bar"> 
-    <li onClick="gui.showUser(this,'events')" >动态</li>        
+    <li onClick="gui.showUser(this,'events')" class="on" loaded="true">动态</li>        
     <li onClick="gui.showUser(this,'following')">好友</li> 
-	<li onClick="gui.showUser(this,'followers')" class="on">粉丝</li> 
+	<li onClick="gui.showUser(this,'followers')" >粉丝</li> 
 	<div class="clean"></div>
 </ul> 
 	
