@@ -30,12 +30,12 @@ include_once('inc/utility.php');
 				echo 'True';
 			}
 			else{
-				echo 'True';
+				echo 'False';
 			}
 			
 	} 
 	else {
 		//echo "<p>非法请求，请返回</p>";
-		echo 'True';
+		echo 'False';
 	}
 ?>
