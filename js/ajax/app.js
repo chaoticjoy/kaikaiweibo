@@ -31,6 +31,7 @@ var sinaApp={
 		$.post("ajax/friends_timeline.php",arg,function(data,textStatus){
 			container.append(data);
 			gui.hideTip();
+			gui.sinaEventLoaded=true;
 			if(textStatus!='success'){
 				gui.showTip('载入失败，请重新载入',500);
 			}
@@ -235,6 +236,54 @@ var sinaApp={
 
 }
 var kk={
+	hideLoginWin:function(){
+		$('#kk_login_window').hide();
+		gui.hideMask();
+	},
+	showLoginWin:function(){
+		gui.showMask();
+		$('#kk_login_window').show();		
+	},
+	// 弹出登录窗口的登录事件
+	startLogin:function(){
+		var un=$('#kk_un').val();
+		var pw=$('#kk_pw').val();
+		
+		var arg={
+			username:un,
+			password:pw
+		};
+		$.post("kk_login_action.php",arg,function(data,textStatus){
+			if(data=='True'){
+				kk.hideLoginWin();
+				kk.logined=true;
+			}else {
+				kk.logined=false;
+				alert('登录失败');
+			}
+		});		
+	},
+	logined:false,
+	login:function(){
+		if(!this.logined){//如果未登录就查看Cookie
+			var c=document.cookie.split(',');
+			var v=[];
+			for(var i=0;i<c.length;i++){
+				v=c[i].split('=');
+				this.logined=false;
+				if(v[0]=='kk_name'){
+					if (c[i].length > 'kk_name=12345'.length) {
+						this.logined = true;
+						return;
+					}
+				}
+			}
+			//检测Cookie未登录就进行登录操作
+			if(!this.logined){
+				this.showLoginWin();
+			}
+		}
+	},
 	//当前打开的用户
 	userInfo:{
 		id:'',
@@ -257,8 +306,11 @@ var kk={
 		this.currentEventPage++;
 		gui.showTip('载入中．．．');
 		$.post("ajax/kk_friends_timeline.php",arg,function(data,textStatus){
-			container.append(data);
 			gui.hideTip();
+			if(data.length==0){
+				kk.login();return;
+			}
+			container.append(data);
 			if(textStatus!='success'){
 				gui.showTip('载入失败，请重新载入',500);
 			}
@@ -281,6 +333,7 @@ var kk={
 		this.userEventPage++;
 		gui.showTip('载入中．．．');
 		$.post("ajax/kk_user_timeline.php",arg,function(data,textStatus){
+
 			container.append(data);
 			gui.hideTip();
 			if(textStatus!='success'){
