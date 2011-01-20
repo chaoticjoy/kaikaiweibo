@@ -39,10 +39,21 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 <div id="image">
 <img  src="image/close.png" class="close" onclick="gui.closeImage()" />
 <img id="image-content" class="set-center" />
-
-
 </div>
+<div id="kk_login_window">
+<img id="close-btn" src="image/close.png" class="close" onclick="kk.hideLoginWin()"/>
+<div class="tips" id='send-title'>登陆开开</div>
+<form class="loginform" method="post" > 
+		<label class="username-label" for="username">帐号</label>
+		<input id="kk_un" type="text" tabindex="1" autocapitalize="off" autocorrect="off" class="main-field" id="username" name="username">
 
+	  	<p>
+		<label class="password-label" for="password">密码</label>
+		<input id="kk_pw" type="password" tabindex="2" autocapitalize="off" autocorrect="off" class="main-field" id="password" name="password">
+		</p>
+		<input  onclick="kk.startLogin()" class="main-button" value="登陆开开" />
+</form>
+</div>
 <div id="header">
 开开围脖1.0
 <img src="image/arrow_left.png" id="back" onClick="gui.back()" class="back"/>
