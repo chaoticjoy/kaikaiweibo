@@ -95,135 +95,42 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
   </div> 
 	
 	<div id="checkin-panel" class="wrapper"> 
-		<div class="timeline">
-			<div class="single">
-			<div class="single-date">23 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">VVVV</div>
-			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
-			<div class="quote">转发 <a href="#">@经纬张颖</a> : 要想在创业板上市的创业者们可以认真读下这篇文章。虽然有些细节过于夸张，但总体来说，在国内上市，不管是创业板，中小板还是主板，都是“千军万马过独木桥”的艰难和未知！其过程对老总的综合素质，全面化，应急，执行和变通能力要求都非常高！《我是这样闯过创业板的》http://sinaurl.cn/h9BiCk<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail" /></div>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-			<div class="comments">
-				<form>
-				<textarea rows="2"></textarea>
-				<input type="submit" class="submit-button" value="评论" />
-				</form>
-				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-				<div class="main-button">更多评论</div>
-			</div>
-			
-			
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU
-			<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-			<div class="retweet">
-				<form>
-				<textarea rows="2">测试测试测试转发。</textarea>
-				<input type="submit" class="submit-button" value="转发" />
-				</form>
-			</div>
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU</p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# <a href="#" target="_blank">http://sinaurl.cn/h67KnU</a></p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
+		<div id="search-box">
+			<form>
+				 <input id="checkin-query" type="text" class="content" ><input onclick="kk.moreCheckin(true)" class="search-button" value=""/>
+			</form>
 		</div>
-		<div class="more-button">更多动态</div>
-		
+		<div id="checkin-panel-content">
+			<div id="more-checkin" onclick="kk.moreCheckin(false)" class="more-button">更多地点</div>
+		</div>
 	</div> 
 	
-	<div id="city-panel" class="wrapper"> 
-	<div class="timeline">
-			<div class="single">
-			<div class="single-date">23 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">VVVV</div>
-			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
-			<div class="quote">转发 <a href="#">@经纬张颖</a> : 要想在创业板上市的创业者们可以认真读下这篇文章。虽然有些细节过于夸张，但总体来说，在国内上市，不管是创业板，中小板还是主板，都是“千军万马过独木桥”的艰难和未知！其过程对老总的综合素质，全面化，应急，执行和变通能力要求都非常高！《我是这样闯过创业板的》http://sinaurl.cn/h9BiCk<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail" /></div>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>我说我以后结婚，一定要找爱人当伴娘，因为她比我还着急比我还操心嘛~ 恩……明天几点起来呢，我有10张明信片要去邮局寄。晚上再去看个电影。</p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-			<div class="comments">
-				<form>
-				<textarea rows="2"></textarea>
-				<input type="submit" class="submit-button" value="评论" />
-				</form>
-				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-				<p><span class="author">Kavin</span>评论评论评论<span class="reply">回复</span></p>
-				<div class="main-button">更多评论</div>
-			</div>
-			
-			
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU
-			<br /><img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail"/></p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-			<div class="retweet">
-				<form>
-				<textarea rows="2">测试测试测试转发。</textarea>
-				<input type="submit" class="submit-button" value="转发" />
-				</form>
-			</div>
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# http://sinaurl.cn/h67KnU</p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-			
-			<div class="single">
-			<div class="single-date">1 mins</div>
-			<img src="http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-			<div class="single-name">Kavin</div>
-			<p>FourSquare 和 Seesmic Twitter 两大社交程序现身 WP7 #Facebook# #Foursquare# #Landscape# #Seesmic# #Twitter# #WP7# <a href="#" target="_blank">http://sinaurl.cn/h67KnU</a></p>
-			<div class="single-operate"><span>收藏</span> | <span>转发</span> | <span>评论(3)</span></div>
-			<br class="clean"/></div>
-	  </div>
-		<div class="more-button">更多动态</div>
+<div id="city-panel" class="wrapper">
+	<!-- 天气开始 -->
+	<div id="weather-box">
+		<img src="image/weather/sunny.png" class="weather-icon"/>
+		<div class="weather-content">
+		<h2>未知</h2>
+		<p>实时：xxxxx</p>
+		<p>明天：xxxxx</p>
+		</div>
+	</div>
+	<!-- 天气结束 -->
+	<ul class="tab-bar"> 
+        <li load="true" class="on" onclick='gui.getCityEvent(this,"event")'>活动</li>        
+        <li load="false" onclick='gui.getCityEvent(this,"groupbuy")'>团购</li> 
+		<div class="clean"></div>
+	</ul> 
+	<!-- 活动开始 -->
+	<div id="acti" class="acti">
+		<div id="more-acti" onclick="douban.moreEvents(false);" class="more-button">更多活动</div>
 	</div> 
+	<!-- 活动结束 -->
+	<!-- 团购开始 -->
+	<div id="group-buy" class="group-buy" style="display:none">
+	</div>
+
+</div> 
 	
 <div id="user-panel" class="wrapper"> 
 		<div id="user-panel-header">

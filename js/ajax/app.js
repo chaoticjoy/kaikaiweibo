@@ -27,7 +27,7 @@ var sinaApp={
 		var arg={};
 		if(maxid)
 			arg.max_id=maxid; 
-		gui.showTip('载入中．．．')
+		gui.showTip('载入中．．．');
 		$.post("ajax/friends_timeline.php",arg,function(data,textStatus){
 			container.append(data);
 			gui.hideTip();
@@ -212,7 +212,7 @@ var sinaApp={
 	getCommentList:function(id,page,count){
 		var arg={};
 		arg.id=id;
-		arg.count=10;
+		arg.count=20;
 		if(page)arg.page=page;
 		else page=1;
 		gui.showTip('正在载入评论...');
@@ -387,17 +387,94 @@ var kk={
 		});
 	},
 	//当前用户的City
-	city:"",
-	getCheckin:function(){
-		$.post("ajax/kk_followers.php",arg,function(data,textStatus){
-			$(data).insertBefore("#morefollowers");
+	cityNamePY:"guangzhou",
+	//汉字
+	cityName:"广州",
+	lat:23.1,
+	lon:111.2,
+	checkinPage:1,
+	lastQuery:'',
+	moreCheckin:function(clear){
+		var container=$('#checkin-panel-content');
+		var arg;
+		if(clear){
+			this.checkinPage=1;
+			this.lastQuery=$('#checkin-query').val();
+			container.empty();
+			container.html('<div id="more-checkin" onclick="kk.moreCheckin(false)" class="more-button">更多地点</div>');
+		}
+		arg={
+			lat:this.lat,
+			lon:this.lon,
+			page:this.checkinPage
+		};
+		if(this.lastQuery!=''){
+			arg.query=this.lastQuery;
+		}
+		this.checkinPage++;
+		gui.showTip('载入中．．．');
+		$.post("ajax/kk_search.php",arg,function(data,textStatus){
+			$(data).insertBefore("#more-checkin");
 			gui.hideTip();
 			if(textStatus!='success'){
 				gui.showTip('载入失败，请重新载入',500);
 			}
 		});
-	}
+	},
+	getWeather:function(){	
+		var arg={
+			city:this.cityName
+		}
+		$.post("ajax/weather.php",arg,function(data,textStatus){
+			$('#weather-box').empty().append(data);
+		});		
+	},
+	city:function(){
+
+	},
+	
 }
 var douban={
-	
+	eventsPage:1,
+	moreEvents:function(clear){
+		var container=$('#acti');
+		if(clear){
+			container.empty();
+			container.html('<div id="more-acti" onclick="douban.moreEvents(false);" class="more-button">更多活动</div>');
+			this.eventsPage=1;
+		}
+		var morebtn=$('#more-acti');
+		var arg={
+			city:kk.cityNamePY,
+			page:this.eventsPage
+		}
+		this.eventsPage++;
+		gui.showTip('载入中...');
+		$.post("ajax/db_event.php",arg,function(data,textStatus){
+			gui.hideTip();
+			$(data).insertBefore(morebtn);
+		});
+	},
+	share:function(event,url){
+		
+		
+	}
+};
+var lashou={
+	groupBuyPage:1,
+	moreGroupBuy:function(clear){
+		var container=$('#group-buy');
+		if(clear){
+			container.empty();
+			this.groupBuyPage=1;
+		}
+		var arg={
+			city:kk.cityName
+		}
+		this.groupBuyPage++;
+		$.post("ajax/tuangou.php",arg,function(data,textStatus){
+			gui.hideTip();
+			container.append(data);
+		});		
+	}
 }
