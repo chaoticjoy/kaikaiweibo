@@ -125,16 +125,23 @@ var gui = {//kaikai weibo
         this.changePanel(0, '#events-btn');
     },
     onClickCheckinBtn: function(id){
-        this.changePanel(1, '#checkin-btn');
+        
 		//第一次载入或再次点击.
 		if(!this.firstLoadCheckin||'#checkin-btn'==this.currentBtn){
 			this.firstLoadCheckin=true;
-			kk.getCheckin();
+			kk.moreCheckin(true);
 		}
+		this.changePanel(1, '#checkin-btn');
     },
     onClickCityBtn: function(id){
-        this.changePanel(2, '#city-btn');
-		
+        
+		//第一次载入或再次点击.
+		if(!this.firstLoadCity||'#city-btn'==this.currentBtn){
+			this.firstLoadCity=true;
+			kk.getWeather();
+			douban.moreEvents(true);
+		}
+		this.changePanel(2, '#city-btn');
     },
 	/**
 	 * User标签按钮
@@ -413,6 +420,12 @@ var gui = {//kaikai weibo
 		this.hideMask();
 		$("#send").hide();
 	},
+	/**
+	 * 
+	 * @param {Object} type
+	 * @param {Object} id
+	 * @param {Object} name
+	 */
 	sendMsg:function(type,id,name){
 		this.showMask();
         $("#send").show();
@@ -431,6 +444,36 @@ var gui = {//kaikai weibo
 		        //alert('发私信给：'+$("#send-content").val());
 				sinaApp.sendDirectMessage($("#send-content").val());
 		    }
+		}else if(type=='douban'){
+			$("#send-content").val('我分享了一个活动:'+id+' '+name+' ');
+			$('#send-title').text('分享一个活动');
+			$("#send-btn")[0].onclick=function(){
+				sinaApp.sendMessage($("#send-content").val());
+		    }
+		}
+	},
+	getCityEvent:function(node,type){
+		if(type=='event'){
+			node.className="on";
+			node.nextElementSibling.className="";
+			$('#acti').show();
+			$('#group-buy').hide();
+			if(this.lastDBType==type||node.getAttribute('load')!='true'){
+				douban.moreEvents(true);
+				node.setAttribute('load','true');
+			}
+			this.lastDBType=type;
+		}else if(type=='groupbuy'){
+			
+			$('#group-buy').show();
+			$('#acti').hide();
+			node.className="on";
+			node.previousElementSibling.className="";
+			if(this.lastDBType==type||node.getAttribute('load')!='true'){
+				lashou.moreGroupBuy(true);
+				node.setAttribute('load','true');
+			}
+			this.lastDBType=type;
 		}
 	}
     
@@ -470,4 +513,31 @@ $(function(){
 	$("#image").hide();
 	
 	sinaApp.moreEvents(true);
+    /**
+     * 载入当前的位置
+     *
+     */
+    navigator.geolocation.getCurrentPosition(function(position){
+        kk.lat=position.coords.latitude;
+        kk.lon=position.coords.longitude;
+		alert('当前位置->经度:'+kk.lon+' 纬度:'+kk.lat);
+    }, function(error){
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                alert("你的浏览器不允许获取地理位置");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("获取不到你当前的位置");
+                break;
+            case error.TIMEOUT:
+                alert("获取地理位置超时");
+                break;
+                
+            default:
+                alert("获取地理位置时发生未知错误");
+                break;
+        }
+    });
+	
+	
 });
