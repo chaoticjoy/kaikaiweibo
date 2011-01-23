@@ -59,7 +59,18 @@ include_once('utility.php');
 		return $ids;
 	}
 	
+	function is_login_kk(){
+		if(!(getEncryptCookie('kk_name') && getEncryptCookie('kk_pw'))){
+			echo "Not login kaikai!";
+			return 1;
+		}
+		return 0;
+	}
+	
 	function get_friends_timeline($page=1){
+		if(is_login_kk()){
+			return 0;
+		}
 		$k = new kaikai( KAIKAI_KEY );
 		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
 		$friends_timeline=$k->friends_timeline($page);
@@ -111,6 +122,9 @@ include_once('utility.php');
 	}
 	
 	function get_user_timeline($username,$page=1){
+		if(is_login_kk()){
+			return 0;
+		}
 		$k = new kaikai( KAIKAI_KEY );
 		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
 		$user_timeline=$k->user_timeline($username,$page);
@@ -165,6 +179,9 @@ include_once('utility.php');
 	}
 	
 	function get_user_info($id=0){
+		if(is_login_kk()){
+			return 0;
+		}
 		$k = new kaikai( KAIKAI_KEY );
 		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
 		$user=$k->user_info($id);
@@ -188,6 +205,9 @@ include_once('utility.php');
 	}
 	
 	function get_followers($id,$page=1,$count=20){
+		if(is_login_kk()){
+			return 0;
+		}
 		$k = new kaikai( KAIKAI_KEY );
 		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
 		$followers=$k->followers($id,$page,$count);
@@ -207,6 +227,9 @@ include_once('utility.php');
 	}
 	
 	function get_friends($id,$page=1,$count=20){
+		if(is_login_kk()){
+			return 0;
+		}
 		$k = new kaikai( KAIKAI_KEY );
 		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
 		$friends=$k->friends($id,$page,$count);
@@ -228,6 +251,9 @@ include_once('utility.php');
 	}
 	
 	function get_search($lat,$lon,$query=''){
+		if(is_login_kk()){
+			return 0;
+		}
 		$k = new kaikai( KAIKAI_KEY );
 		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
 		$search=$k->search($lat,$lon,$query);
