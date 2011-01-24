@@ -289,6 +289,7 @@ var kk={
 		id:'',
 		name:''
 	},
+	notLoginString:'Not login kaikai!',
 	currentEventPage:1,
 	/**
 	 * 
@@ -307,8 +308,8 @@ var kk={
 		gui.showTip('载入中．．．');
 		$.post("ajax/kk_friends_timeline.php",arg,function(data,textStatus){
 			gui.hideTip();
-			if(data.length==0){
-				kk.login();return;
+			if(data==kk.notLoginString){
+				kk.login();kk.moreEvents();return;
 			}
 			container.append(data);
 			if(textStatus!='success'){
