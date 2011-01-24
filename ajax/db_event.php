@@ -14,7 +14,7 @@
 	
 	function get_db_event($location='beijing',$start_index=1,$max_results=5){
 		$douban=douban_event($location,$start_index,$max_results);
-		print_r($douban);
+		//print_r($douban);
 		
 		foreach($douban['entry'] as $key=>$item){
 			$douban['entry'][$key]['when']['@attributes']['startTime']=db_format_time($item['when']['@attributes']['startTime']);
