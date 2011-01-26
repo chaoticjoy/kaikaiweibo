@@ -3,7 +3,9 @@
 	include_once('../lib/smarty/Smarty.class.php');
 	
 	function get_tuan($city='全国'){
-		$cityid=tuan_get_cityid($city);
+		//$cityid=tuan_get_cityid($city);
+		$cityid=tuan_get_cityid_mc($city);
+		//echo $cityid;
 		$tuan=tuan_city($cityid);
 		
 		//print_r($tuan);
