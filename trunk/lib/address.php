@@ -17,13 +17,15 @@
 			$language='en';
 		$content=fetchurl("http://maps.googleapis.com/maps/api/geocode/json?latlng=".$latlng."&sensor=false&language=".$language);
 		$result=json_decode( $content, true);
+		//return $result;
 		if($result['status']=='OK')
-			return $result['results'][1]['address_components'][0]['long_name'];
+			return $result['results'][0]['address_components'][2]['long_name'];
 		else
-			return 'error!';
+			return $result['status'];
 	}
 
 /* 	print_r(Address_Lookup('23.3570603,116.6645348',0));
 	print_r(Address_Lookup('23.3570603,116.6645348',1)); */
+	//print_r(Address_Lookup('22.914989,112.044335',0));
 
 ?>
