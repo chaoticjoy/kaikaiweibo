@@ -240,6 +240,7 @@ var kk={
 		$('#kk_login_window').hide();
 		gui.hideMask();
 	},
+	loginCallback:null,
 	showLoginWin:function(){
 		gui.showMask();
 		$('#kk_login_window').show();		
@@ -257,6 +258,7 @@ var kk={
 			if(data=='True'){
 				kk.hideLoginWin();
 				kk.logined=true;
+				kk.loginCallback(true);
 			}else {
 				kk.logined=false;
 				alert('登录失败');
@@ -264,25 +266,9 @@ var kk={
 		});		
 	},
 	logined:false,
-	login:function(){
-		if(!this.logined){//如果未登录就查看Cookie
-			var c=document.cookie.split(',');
-			var v=[];
-			for(var i=0;i<c.length;i++){
-				v=c[i].split('=');
-				this.logined=false;
-				if(v[0]=='kk_name'){
-					if (c[i].length > 'kk_name=12345'.length) {
-						this.logined = true;
-						return;
-					}
-				}
-			}
-			//检测Cookie未登录就进行登录操作
-			if(!this.logined){
-				this.showLoginWin();
-			}
-		}
+	login:function(callback){
+		this.loginCallback=callback;
+		this.showLoginWin();
 	},
 	//当前打开的用户
 	userInfo:{
@@ -309,7 +295,7 @@ var kk={
 		$.post("ajax/kk_friends_timeline.php",arg,function(data,textStatus){
 			gui.hideTip();
 			if(data==kk.notLoginString){
-				kk.login();kk.moreEvents();return;
+				kk.login(kk.moreEvents);return;
 			}
 			container.append(data);
 			if(textStatus!='success'){
@@ -415,8 +401,12 @@ var kk={
 		this.checkinPage++;
 		gui.showTip('载入中．．．');
 		$.post("ajax/kk_search.php",arg,function(data,textStatus){
-			$(data).insertBefore("#more-checkin");
 			gui.hideTip();
+			if(data==kk.notLoginString){
+				kk.login(kk.moreCheckin);return;
+			}
+			$(data).insertBefore("#more-checkin");
+			
 			if(textStatus!='success'){
 				gui.showTip('载入失败，请重新载入',500);
 			}
