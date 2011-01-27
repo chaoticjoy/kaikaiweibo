@@ -12,9 +12,9 @@
 	
 	function Address_Lookup($latlng,$language=0){
 		if($language)
-			$language='zh-cn';
-		else
 			$language='en';
+		else
+			$language='zh-cn';
 		$content=fetchurl("http://maps.googleapis.com/maps/api/geocode/json?latlng=".$latlng."&sensor=false&language=".$language);
 		$result=json_decode( $content, true);
 		//return $result;
