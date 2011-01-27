@@ -138,8 +138,24 @@ var gui = {//kaikai weibo
 		//第一次载入或再次点击.
 		if(!this.firstLoadCity||'#city-btn'==this.currentBtn){
 			this.firstLoadCity=true;
-			kk.getWeather();
-			douban.moreEvents(true);
+			var arg={
+				latlng:kk.lat+','+kk.lon,
+				pinying:0
+			}
+			gui.showTip('获取地点...');
+			$.post("ajax/address_lookup.php",arg,function(data,textStatus){
+				kk.getWeather();
+				kk.cityName=data;
+			});
+			arg.pinying=1;
+			$.post("ajax/address_lookup.php",arg,function(data,textStatus){
+				gui.hideTip();
+				douban.moreEvents(true);
+				kk.cityNamePY=data;
+			});
+			
+			
+			
 		}
 		this.changePanel(2, '#city-btn');
     },
