@@ -15,7 +15,8 @@
 	function get_db_event($location='beijing',$start_index=1,$max_results=5){
 		$douban=douban_event($location,$start_index,$max_results);
 		//print_r($douban);
-		
+		if(!$douban)
+			return 0;
 		foreach($douban['entry'] as $key=>$item){
 			$douban['entry'][$key]['when']['@attributes']['startTime']=db_format_time($item['when']['@attributes']['startTime']);
 			$douban['entry'][$key]['when']['@attributes']['endTime']=db_format_time($item['when']['@attributes']['endTime']);
@@ -37,7 +38,7 @@
 	}
 	
 	if($_REQUEST['city']&&$_REQUEST['page'])
-		get_db_event($_REQUEST['city'],5*$_REQUEST['page']);
+		get_db_event($_REQUEST['city'],5*($_REQUEST['page']-1)+1);
 	elseif($_REQUEST['city'])
 		get_db_event($_REQUEST['city']);
 /* 	else
