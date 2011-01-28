@@ -22,6 +22,7 @@
 		$content=fetchurl("http://api.douban.com/event/location/".$location."?apikey=0082e8f57232f6d00188bae05698e470&start-index=".$start_index."&max-results=".$max_results);
 		if(strpos($content,'wrong location id:')!==false)
 			return 0;
+		//RETURN $content;
 		$content=str_replace('gd:','',$content);
 		$content=str_replace('db:','',$content);
 		$xml=simplexml_load_string($content);
@@ -29,7 +30,7 @@
 		return json_decode( $result, true);
 	}
 
-	//print_r(douban_event('Yunfu',5,5));
+	//print_r(douban_event('dasdasdasGuangzhou',1,5));
 	//print_r(douban_event());
 /* 	function Array2Json($array) { 
 		arrayRecursive($array, 'urlencode', true); 
