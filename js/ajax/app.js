@@ -124,26 +124,19 @@ var sinaApp={
 			}
 		});
 	},
-	getUserInfo:function(name){
-		sinaApp.user=name;//标记当前用户信息正在显示的用户名
+	getUserInfo:function(){ 
 		var arg={};
-		if(name)
-			arg.screen_name=name;
+		if(sinaApp.userInfo.name!='')
+			arg.screen_name=sinaApp.userInfo.name;
 		$.post("ajax/userinfo.php",arg,function(data,textStatus){
 			$("#user-panel-header").empty()//清空后插入
 			.append(data);	
 		});
-		//插入后载入动态
-		this.getUserTimeline();
-		$("#user-events").show();
-		$("#user-following").hide();
-		$("#user-followers").hide();
 	},
 	getUserTimeline:function(maxid){
-		//
 		var arg={};
-		//sinaApp.userInfo.id=id;
-		arg.screen_name=sinaApp.userInfo.name;
+		if(sinaApp.userInfo.name!='')
+			arg.screen_name=sinaApp.userInfo.name;
 		if (maxid) {
 			arg.max_id = maxid;
 		}
