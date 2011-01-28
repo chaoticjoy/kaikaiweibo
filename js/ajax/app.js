@@ -2,6 +2,9 @@
  * @author Administrator
  */
 var sinaApp={
+	userInfo:{
+		
+	},
 	user:'',
 	/**
 	 * 
@@ -139,7 +142,8 @@ var sinaApp={
 	getUserTimeline:function(maxid){
 		//
 		var arg={};
-		arg.screen_name=sinaApp.user;
+		//sinaApp.userInfo.id=id;
+		arg.screen_name=sinaApp.userInfo.name;
 		if (maxid) {
 			arg.max_id = maxid;
 		}
@@ -158,7 +162,7 @@ var sinaApp={
 	},
 	getUserFollowing:function(cursor){
 		var arg={
-			screen_name:sinaApp.user,
+			screen_name:sinaApp.userInfo.name,
 			count:20
 		}
 		if(cursor)
@@ -176,7 +180,7 @@ var sinaApp={
 	},
 	getUserFollowers:function(cursor){
 		var arg={
-			screen_name:sinaApp.user,
+			screen_name:sinaApp.userInfo.name,
 			count:20
 		}
 		if(cursor)
@@ -422,7 +426,7 @@ var kk={
 	},
 	city:function(){
 
-	},
+	}
 	
 }
 var douban={
@@ -435,10 +439,12 @@ var douban={
 			this.eventsPage=1;
 		}
 		var morebtn=$('#more-acti');
+		//alert(kk.cityNamePY);
 		var arg={
 			city:kk.cityNamePY,
 			page:this.eventsPage
-		}
+		};
+		//arg.city=kk.cityNamePY;
 		this.eventsPage++;
 		gui.showTip('载入中...');
 		$.post("ajax/db_event.php",arg,function(data,textStatus){

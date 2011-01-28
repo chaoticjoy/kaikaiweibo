@@ -134,7 +134,6 @@ var gui = {//kaikai weibo
 		this.changePanel(1, '#checkin-btn');
     },
     onClickCityBtn: function(id){
-        
 		//第一次载入或再次点击.
 		if(!this.firstLoadCity||'#city-btn'==this.currentBtn){
 			this.firstLoadCity=true;
@@ -144,18 +143,17 @@ var gui = {//kaikai weibo
 			}
 			gui.showTip('获取地点...');
 			$.post("ajax/address_lookup.php",arg,function(data,textStatus){
-				kk.getWeather();
 				kk.cityName=data;
+				//alert('weather:'+kk.cityName);
+				kk.getWeather();
 			});
 			arg.pinying=1;
 			$.post("ajax/address_lookup.php",arg,function(data,textStatus){
 				gui.hideTip();
-				douban.moreEvents(true);
 				kk.cityNamePY=data;
+				//alert('moreEvents:'+kk.cityNamePY);
+				douban.moreEvents(true);
 			});
-			
-			
-			
 		}
 		this.changePanel(2, '#city-btn');
     },
@@ -166,10 +164,11 @@ var gui = {//kaikai weibo
 	 * @param {Object} id
 	 */
     onClickUserBtn: function(id){
-        this.changePanel(3, '#user-btn');
-		//载入当前用户的info.
-		//TOdo
-		sinaApp.getUserInfo();
+		if (!this.firstLoadUser || '#user-btn' == this.currentBtn) {
+			gui.openUserInfo('',sinaApp.user,'sina');
+			this.firstLoadUser=true;
+		}
+		this.changePanel(3, '#user-btn');
     },
     //前进后退按钮
     back: function(){
@@ -410,6 +409,10 @@ var gui = {//kaikai weibo
 		var url="kk_userinfo.php";
 		var arg={};
 		arg.id=id;
+		$("#user-events").hide();
+		$("#user-following").hide();
+		$("#user-followers").hide();
+		$("#user-events").show();
 		if(type=='kk'){
 			this.kkUserInfoLoaded=true;
 			kk.userInfo.id=id;
@@ -417,8 +420,12 @@ var gui = {//kaikai weibo
 			//默认打开用户动态
 			kk.moreUserEvents(true);
 		}else if(type=='sina'){
+			sinaApp.userInfo.id=id;
+			sinaApp.userInfo.name=name;			
 			this.kkUserInfoLoaded=false;
-			url="";
+			url="userinfo.php";
+			//
+			sinaApp.getUserTimeline();
 		}
 		
 		gui.showTip('载入中．．．');
@@ -533,9 +540,12 @@ $(function(){
      * 载入当前的位置
      *
      */
-    navigator.geolocation.getCurrentPosition(function(position){
+    
+	//navigator.geolocation.getCurrentPosition(function(position){
+	navigator.geolocation.watchPosition(function(position){
         kk.lat=position.coords.latitude;
         kk.lon=position.coords.longitude;
+		gui.showTip('已更新你的位置',1000);
 		alert('当前位置->经度:'+kk.lon+' 纬度:'+kk.lat);
     }, function(error){
         switch (error.code) {
