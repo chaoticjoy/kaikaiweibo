@@ -57,7 +57,7 @@ class weibo
 	
 	function user_timeline( $name=0,$max_id=0 ) 
 	{
-		if($name==0){
+		if($name===0){
 			if($max_id==0)
 				return $this->call_method( 'statuses' , 'user_timeline' ,'?count=20');
 			else
