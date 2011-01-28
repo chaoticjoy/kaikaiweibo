@@ -167,7 +167,7 @@ include_once('utility.php');
 	function get_user_info($screen_name=0){
 		$w = new weibo( APP_KEY );
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
-		if($screen_name==0){
+		if($screen_name===0){
 			$screen_name=$w->verify_credentials();
 			$screen_name=$screen_name['screen_name'];
 		}
