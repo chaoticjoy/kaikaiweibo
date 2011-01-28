@@ -165,7 +165,7 @@ var gui = {//kaikai weibo
 	 */
     onClickUserBtn: function(id){
 		if (!this.firstLoadUser || '#user-btn' == this.currentBtn) {
-			gui.openUserInfo('',sinaApp.user,'sina');
+			gui.openUserInfo('','','sina');
 			this.firstLoadUser=true;
 		}
 		this.changePanel(3, '#user-btn');
@@ -406,6 +406,7 @@ var gui = {//kaikai weibo
 	 * @param {Object} type
 	 */
 	openUserInfo:function(id,name,type){
+		gui.changePanel(3, '#user-btn');
 		var url="kk_userinfo.php";
 		var arg={};
 		arg.id=id;
@@ -418,25 +419,25 @@ var gui = {//kaikai weibo
 			kk.userInfo.id=id;
 			kk.userInfo.name=name;
 			//默认打开用户动态
+			gui.showTip('载入中．．．');
+			$.post("ajax/"+url,arg,function(data,textStatus){
+				$("#user-panel-header").empty().append(data);
+				gui.hideTip();
+				if(textStatus!='success'){
+					gui.showTip('载入失败，请重新载入',500);
+				}
+			});
 			kk.moreUserEvents(true);
 		}else if(type=='sina'){
 			sinaApp.userInfo.id=id;
 			sinaApp.userInfo.name=name;			
 			this.kkUserInfoLoaded=false;
-			url="userinfo.php";
 			//
+			sinaApp.getUserInfo();
 			sinaApp.getUserTimeline();
 		}
 		
-		gui.showTip('载入中．．．');
-		$.post("ajax/"+url,arg,function(data,textStatus){
-			gui.changePanel(3, '#user-btn');
-			$("#user-panel-header").empty().append(data);
-			gui.hideTip();
-			if(textStatus!='success'){
-				gui.showTip('载入失败，请重新载入',500);
-			}
-		});
+
 		
 	},
 	hideSend:function(){
@@ -545,8 +546,8 @@ $(function(){
 	navigator.geolocation.watchPosition(function(position){
         kk.lat=position.coords.latitude;
         kk.lon=position.coords.longitude;
-		gui.showTip('已更新你的位置',1000);
 		alert('当前位置->经度:'+kk.lon+' 纬度:'+kk.lat);
+		gui.showTip('已更新你的位置',1000);
     }, function(error){
         switch (error.code) {
             case error.PERMISSION_DENIED:
