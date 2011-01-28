@@ -134,7 +134,8 @@
 		return 9999;
 	}
 
-	//echo tuan_get_cityid_mc($city="广州");
+/* 	$cityid=tuan_get_cityid_mc($city="广州");
+	print_r(tuan_city($cityid));  */
 	//tuan_city_list_mc();
 /*  	$cityid=tuan_get_cityid("北京");
 	print_r(tuan_city($cityid)); 
