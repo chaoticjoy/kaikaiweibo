@@ -375,7 +375,7 @@ var kk={
 	//汉字
 	cityName:"广州",
 	lat:23.1,
-	lon:111.2,
+	lon:113.1,
 	checkinPage:1,
 	lastQuery:'',
 	moreCheckin:function(clear){

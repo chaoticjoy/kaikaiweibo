@@ -15,7 +15,7 @@
 		</p>
 		{if $item['retweeted_status']}
 			<div class="quote">
-				 <a href="#">@{$item['retweeted_status']['user']['screen_name']}</a> : 
+				 <a href="javascript:gui.openUserInfo('','{$item['retweeted_status']['user']['screen_name']}','sina')">@{$item['retweeted_status']['user']['screen_name']}</a> : 
 				  {$item['retweeted_status']['text']}
 				 <br />
 				{if $item['retweeted_status']['thumbnail_pic']}
