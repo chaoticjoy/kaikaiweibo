@@ -419,6 +419,27 @@ var kk={
 	},
 	city:function(){
 
+	},
+	checkin:function(content,id){
+		var arg={
+			id:id
+		}
+		
+		if(content){
+			gui.showTip('正在发布贴士...');
+			arg.text=content;
+			$.post("ajax/kk_tipsupdate.php",arg,function(data,textStatus){
+				gui.hideTip();
+				$('#checkin-'+id).hide();
+			});
+		}else {
+			gui.showTip('正在签到...');
+			$.post("ajax/kk_checkin.php",arg,function(data,textStatus){
+				gui.hideTip();
+				$('#checkin-'+id).hide();
+			});	
+		}
+	
 	}
 	
 }
