@@ -71,6 +71,20 @@ class weibo
 		}
 	}
 	
+	function unread($with_new_status=false,$since_id=0)
+	{
+		if($with_new_status&&$since_id)
+			return $this->call_method( 'statuses' , 'unread' ,'?with_new_status='.$with_new_status.'&since_id='.$since_id );
+		else
+			return $this->call_method( 'statuses' , 'unread' ,'');
+	}
+	
+	function reset_count($type)
+	{
+		$this->postdata[] = 'type='.$type;
+		return $this->call_method( 'statuses' , 'reset_count'  );
+	}
+	
 	function followers( $name,$count = 10 , $cursor = -1  ) 
 	{
 		if(!$name)
