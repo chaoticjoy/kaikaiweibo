@@ -82,6 +82,9 @@ kk_search.php 开开搜索地点：
 	query：(可选)关键词
 	page：(可选)页数
 
+kk_tips.php 获取地点相关贴士列表
+	poi_id: 地点的id 
+	page：(可选)页数
 
 weather.php 天气预报：
 	city：城市名（拼音或者汉字）

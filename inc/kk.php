@@ -273,4 +273,30 @@ include_once('utility.php');
 		$smarty->display('kk_search.tpl');
 	}
 	
+	function get_tips($poi_id,$page=1){
+		if(is_login_kk()){
+			return 0;
+		}
+		$k = new kaikai( KAIKAI_KEY );
+		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
+		$tips=$k->tips($poi_id,$page);
+		
+		//print_r($tips['tips']);
+		//return 0;
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("tips",$tips['tips']);
+		$smarty->display('kk_tips.tpl');
+	}
+	
 ?>
