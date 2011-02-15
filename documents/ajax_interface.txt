@@ -51,6 +51,13 @@ send_direct_messages.php 发送私信：
 follow.php 添加关注：
 	screen_name：微博昵称
 
+unread.php 未读消息数
+	with_new_status：（选填）默认为0。是否有新微博消息，1表示有，0表示没有。
+	since_id：（选填）该参数需配合with_new_status参数使用，返回since_id之后，是否有新微博消息产生
+
+reset_count.php 将当前登录用户的某种新消息的未读数为0
+	type：需要清零的计数类别，值为下列四个之一：1. 评论数，2. @me数，3. 私信数，4. 关注数 
+
 kk_friends_timeline.php 开开动态：
 	page:（选填）页数
 
@@ -99,3 +106,6 @@ tuangou.php 团购：
 address_lookup.php 获取经纬对应城市拼音或汉字：
 	latlng：经纬（格式：23.3570603,116.6645348）
 	pinying：（可选）默认为0，默认返回汉字，为1时返回拼音，为0时返回汉字
+
+personal_page.php 获取个人信息（新浪微博和开开）
+	无参数
