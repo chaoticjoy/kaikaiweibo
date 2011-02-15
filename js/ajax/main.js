@@ -268,6 +268,30 @@ var gui = {//kaikai weibo
 		if(app=='sina')
 			sinaApp.addFavourite(id);
 	},
+	openCheckin:function(node,id){
+		var signBox=
+		'<form>'+
+		'<textarea rows="2"></textarea>'+
+		'<input type="button"  class="submit-button" value="签到" onclick="kk.checkin(this.previousElementSibling.value,'+id+')"/>'+
+		'</form>';
+		var container=$('#checkin-'+id);
+		if(container.length>0){//已加入
+			if(container.css('display') == 'none'){
+				//清空TIPS
+				container.html(signBox);
+				container.show();
+			}else{
+				container.hide();
+			}
+		}else {//新建节点
+			var sign=document.createElement('div');
+			sign.className="checkin";
+			sign.id="checkin-"+id;
+			sign.innerHTML=signBox;
+			node.appendChild(sign);
+		}
+
+	},
     openImage: function(target){
         
         var thumbnail = target.src;
