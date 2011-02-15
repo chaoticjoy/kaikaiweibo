@@ -250,13 +250,13 @@ include_once('utility.php');
 		$smarty->display('kk_friends.tpl');
 	}
 	
-	function get_search($lat,$lon,$query=''){
+	function get_search($lat,$lon,$query='',$page=1){
 		if(is_login_kk()){
 			return 0;
 		}
 		$k = new kaikai( KAIKAI_KEY );
 		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
-		$search=$k->search($lat,$lon,$query);
+		$search=$k->search($lat,$lon,$query,$page);
 
 		$smarty = new Smarty;
 

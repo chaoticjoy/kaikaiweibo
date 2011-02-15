@@ -43,5 +43,6 @@
 		get_db_event($_REQUEST['city']);
 /* 	else
 		get_db_event(); */
+	//get_db_event('guangzhou',$_REQUEST['page']);
 
 ?>
