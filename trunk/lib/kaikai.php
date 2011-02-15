@@ -63,7 +63,7 @@ class kaikai
 		return $this->call_method( 'public' , 'users','followers','?id='.$id.'&page='.$page.'&count=' .$count );
 	}
 
-	function search($lat,$lon,$query='',$rawgps='',$range=5000,$page=1,$count=20,$category='',$certified=true)
+	function search($lat,$lon,$query='',$page=1,$count=20,$rawgps='',$range=5000,$category='',$certified=false)
 	{
 		return $this->call_method( 'public' , 'poi','search','?lat='.$lat.'&lon='.$lon.'&query=' .$query.'&rawgps=' .$rawgps.'&range=' .$range.'&page=' .$page.'&count=' .$count.'&category=' .$category.'&certified=' .$certified );
 	}
