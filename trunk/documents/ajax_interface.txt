@@ -80,6 +80,7 @@ kk_search.php 开开搜索地点：
 	lat：纬度
 	lon：经度 
 	query：(可选)关键词
+	page: 页数
 
 weather.php 天气预报：
 	city：城市名（拼音或者汉字）

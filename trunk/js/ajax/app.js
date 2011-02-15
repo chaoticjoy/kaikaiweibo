@@ -424,7 +424,7 @@ var kk={
 		var arg={
 			id:id
 		}
-		
+		gui.showTip('正在签到...');
 		if(content){
 			gui.showTip('正在发布贴士...');
 			arg.text=content;
@@ -432,13 +432,11 @@ var kk={
 				gui.hideTip();
 				$('#checkin-'+id).hide();
 			});
-		}else {
-			gui.showTip('正在签到...');
-			$.post("ajax/kk_checkin.php",arg,function(data,textStatus){
-				gui.hideTip();
-				$('#checkin-'+id).hide();
-			});	
 		}
+		$.post("ajax/kk_checkin.php",arg,function(data,textStatus){
+			gui.hideTip();
+			$('#checkin-'+id).hide();
+		});	
 	
 	}
 	

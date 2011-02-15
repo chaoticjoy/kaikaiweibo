@@ -431,6 +431,10 @@ var gui = {//kaikai weibo
 	 */
 	openUserInfo:function(id,name,type){
 		gui.changePanel(3, '#user-btn');
+		if(name==''){//个人页面
+			
+			return ;
+		}
 		var url="kk_userinfo.php";
 		var arg={};
 		arg.id=id;

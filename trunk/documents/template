@@ -1,72 +1,42 @@
-/*******************************************************
-*timeline sinaevents 
+kk_tips.php:
+参数: id 地点ID
 
-  friendtimeline.php时  $type为event
-  usertimeline 时 $type 为user
-*
-*******************************************************/
-<div id="sina-$type-$id" class="single">
-	<div class="single-date">1 mins</div>
-	<img src="$src" class="single-avatar"/>
-	<div class="single-name">$name</div>
-	<p class="status">
-		$status
-		//如果有图片
-		<br />
-		<img onClick="gui.openImage(this)" src="$thumbnail" class="thumbnail"/>
-	</p>
-	<div class="quote">
-		转发
-		 <a href="#">@经纬张颖</a> : 
-		  要想在创业板上市的创业者们可以认真读下这篇文章。虽然有些细节过于夸张，但总体来说，在国内上市，不管是创业板，中小板还是主板，都是“千军万马过独木桥”的艰难和未知！其过程对老总的综合素质，全面化，应急，执行和变通能力要求都非常高！《我是这样闯过创业板的》http://sinaurl.cn/h9BiCk
-		 <br />
-		 <img src="http://ss9.sinaimg.cn/thumbnail/69c5ad72t932f08465668&690" class="thumbnail" />
+<p><span class="author">Kavin</span>贴士贴士贴士</p>
+
+
+personal_page.php:
+参数: 无,返回当前用户的相关信息
+	<div id="userinfo">
+			<img src="http://tp1.sinaimg.cn/1640316644/180/1287924377/1" class="avatar"/>
+			<span class="username">Kavin</span><span class="location">广东,汕头</span><br />
+			<div class="btn">绑定开开</div>
+			<!--<div class="btn">开开帐号: Kavin</div>-->
+			<div class="clean"></div>
 	</div>
-	<div class="single-operate">
-		<span onClick="gui.addFavourite('sina','$type','$id')">收藏</span> | 
-		<span onClick="gui.openRetweet('sina','$type','$id')">转发 ($retweet_count)</span> | 
-		<span onClick="gui.openComments('sina','$type','$id')">评论($comment_count)</span>
-	</div>
-	<br class="clean"/>
-
-</div>
-
-/********************************************************
- 
- 评论和转发的模板 ，由JS负责显示
-
-**********************************************************/
-<div class="comments" id="comments-$id" style="display:none">
-	<form>
-	<textarea rows="2" id="comment-content-$id"></textarea>
-	<input type="button" onClick="sinaApp.sendComment('$id')" class="submit-button" value="评论" />
-	</form>
-	<p>
-		<span class="author">$someone</span>
-		$someone_comment
-		<span class="reply" onClick="gui.reply('$id','$name')">回复</span>
-		//....
-	</p>
-	
-	<div class="main-button" onClick="sinaApp.moreComments('$id')">更多评论</div>
-</div>
-
-
-<div class="retweet" id="retweet-$id" style="display:none">
-	<form>
-	<textarea rows="2" id="retweet-content-123456">测试测试测试转发。</textarea>
-	<input type="button" onClick="sinaApp.sendRetweet('123456')" class="submit-button" value="转发" />
-	</form>
-</div>
-
-
-
-/*******************************************************
-*	个人页面的粉丝,关注
-*
-*******************************************************/
-<div class="single">
-	<img src="$src http://tp2.sinaimg.cn/1246147933/50/1281260689/0" class="single-avatar"/>
-	<div class="single-name">$name Kavin</div>
-	<p>$location浙江,杭州</p>
-</div>
+		<ul class="tab-bar"> 
+	        <li onClick="gui.showUser(this,'events')"  class="on">消息</li>        
+	        <li onClick="gui.showUser(this,'following')">动态</li> 
+			<li onClick="gui.showUser(this,'followers')">关系</li> 
+			<div class="clean"></div>
+	    </ul> 
+		<ul id="category-panel">
+			<!-- 消息分类 -->
+			
+			<li class="cat-item">微博评论</li>
+			<li class="cat-item">微博@回复</li>
+			<li class="cat-item">微博私信</li>
+			<!-- 动态分类 -->
+			<!--
+			<li class="cat-item">微博动态</li>
+			<li class="cat-item">微博收藏</li>
+			<li class="cat-item">开开动态</li>
+			-->
+			<!-- 关系分类 -->
+			
+			<li class="cat-item">微博关注</li>
+			<li class="cat-item">微博粉丝</li>
+			<li class="cat-item">开开好友</li>
+			<li class="cat-item">开开粉丝</li>
+			
+		</ul>
+		
