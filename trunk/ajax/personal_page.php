@@ -10,7 +10,7 @@
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 		$sina_user_info=$w->verify_credentials();
 		//$screen_name=$sina_user_info['screen_name'];
-		print_r($sina_user_info);
+		//print_r($sina_user_info);
 		if(!(getEncryptCookie('kk_name') && getEncryptCookie('kk_pw'))){
 			$kk_user_info="";
 		}
@@ -18,7 +18,7 @@
 			$k = new kaikai( KAIKAI_KEY );
 			$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
 			$kk_user_info=$k->user_info();
-			print_r($kk_user_info);
+			//print_r($kk_user_info);
 		}
 		
 		$smarty = new Smarty;

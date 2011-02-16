@@ -136,6 +136,25 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 		<div id="user-panel-header">
 			
 		</div>
+		<div id="personal-page-content" style="display:none"></div>
+		<div id="personal-page">
+			<div id="personal-message">
+				<li class="cat-item">微博评论</li>
+				<li class="cat-item">微博@回复</li>
+				<li class="cat-item">微博私信</li>
+			</div>
+			<div id="personal-event">
+				<li class="cat-item" onclick="gui.showPersonalItem('sinaevent')">微博动态</li>
+				<li class="cat-item" >微博收藏</li>
+				<li class="cat-item" onclick="gui.showPersonalItem('kkevent')">开开动态</li>
+			</div>
+			<div id="personal-rel">
+				<li class="cat-item">微博关注</li>
+				<li class="cat-item">微博粉丝</li>
+				<li class="cat-item">开开好友</li>
+				<li class="cat-item">开开粉丝</li>
+			</div>
+		</div>
 		<div id="user-events" >
 			<div id="user-events-content"></div>
 			<div class="more-button" onclick="sinaApp.moreUserEvents()">更多动态</div>
