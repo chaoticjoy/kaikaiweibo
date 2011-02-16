@@ -280,6 +280,10 @@ var gui = {//kaikai weibo
 				//清空TIPS
 				container.html(signBox);
 				container.show();
+				var arg={poi_id:id};
+				$.post("ajax/kk_tips.php",arg,function(data,textStatus){
+					container.append(data);
+				});
 			}else{
 				container.hide();
 			}
@@ -289,6 +293,11 @@ var gui = {//kaikai weibo
 			sign.id="checkin-"+id;
 			sign.innerHTML=signBox;
 			node.appendChild(sign);
+			
+			var arg={poi_id:id};
+			$.post("ajax/kk_tips.php",arg,function(data,textStatus){
+				sign.innerHTML=signBox+data;
+			});			
 		}
 
 	},
@@ -422,6 +431,62 @@ var gui = {//kaikai weibo
                 break;
         }
     },
+	openPersonalPage:function(){
+		$('#personal-page').show();
+		$.post("ajax/personal_page.php",null,function(data,textStatus){
+			$("#user-panel-header").empty().append(data);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});
+		$('#personal-message').show();
+		$('#personal-event').hide();
+		$('#personal-rel').hide();
+		this.lastPersonalPage='message';
+	},
+	showPersonal:function(node,type){
+		$('#personal-page').show();
+		$('#personal-page-content').hide();
+		$('#personal-'+this.lastPersonalPage).hide();
+		$('#personal-'+type).show();
+		this.lastPersonalPage=type;
+		node.className='on';
+		switch(type){
+			case 'message':
+				var next=node.nextElementSibling;
+				next.className='';
+				next.nextElementSibling.className='';
+				break;
+			case 'event':
+				node.nextElementSibling.className='';
+				node.previousElementSibling.className='';
+				break;
+			case 'rel':
+				var pre=node.previousElementSibling;
+				pre.className='';
+				pre.previousElementSibling.className='';
+				break;
+		}
+		
+	},
+	showPersonalItem:function(type){
+		$('#personal-page').hide();
+		var container=$('#personal-page-content');
+		container.show();
+		switch(type){
+			case 'kkevent':
+				gui.showTip('载入中．．．');
+				$.post("ajax/kk_user_timeline.php",null,function(data,textStatus){
+					container.empty().append(data);
+					gui.hideTip();
+					if(textStatus!='success'){
+						gui.showTip('载入失败，请重新载入',500);
+					}
+				});	
+				break;
+		}
+	},
 	/**
 	 * 点击用户的头像进而打开Userinfo面板
 	 * 包括新浪的和开开的.
@@ -431,16 +496,17 @@ var gui = {//kaikai weibo
 	 */
 	openUserInfo:function(id,name,type){
 		gui.changePanel(3, '#user-btn');
+		$("#user-events").hide();
+		$("#user-following").hide();
+		$("#user-followers").hide();
 		if(name==''){//个人页面
-			
+			this.openPersonalPage();
 			return ;
 		}
 		var url="kk_userinfo.php";
 		var arg={};
 		arg.id=id;
-		$("#user-events").hide();
-		$("#user-following").hide();
-		$("#user-followers").hide();
+		$('#personal-page').hide();
 		$("#user-events").show();
 		if(type=='kk'){
 			this.kkUserInfoLoaded=true;
@@ -574,7 +640,7 @@ $(function(){
 	navigator.geolocation.watchPosition(function(position){
         kk.lat=position.coords.latitude;
         kk.lon=position.coords.longitude;
-		alert('当前位置->经度:'+kk.lon+' 纬度:'+kk.lat);
+		//alert('当前位置->经度:'+kk.lon+' 纬度:'+kk.lat);
 		gui.showTip('已更新你的位置',1000);
     }, function(error){
         switch (error.code) {
