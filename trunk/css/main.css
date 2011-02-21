@@ -32,6 +32,8 @@ body {
 	-moz-box-sizing:border-box;
 	padding:45px 10px 15px 10px;	
 }
+
+
 #kk_login_window textarea{
 	width:100%;
 	font-size: 18px;
@@ -133,6 +135,26 @@ a:visited {
 	padding:8px 0px;
 	list-style-type:none;
 	cursor:pointer;
+	position:relative;
+}
+
+#main-menu span{
+	position:absolute;
+	left:50%;
+	margin-left:8px;
+	margin-top:5px;
+	height:20px;
+	width:20px;
+	background:#EC0000;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	font-size:12px;
+	line-height:20px;
+	text-align:center;
+	font-weight:bold;
+	-webkit-box-shadow:0 0 4px #999;
+	-moz-box-shadow:0 0 4px #999;
+	color:#fff;
 }
 
 #main-menu img{
