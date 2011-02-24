@@ -473,7 +473,7 @@ var gui = {//kaikai weibo
 	showPersonalItem:function(type){
 		$('#personal-page').hide();
 		var container=$('#personal-page-content');
-		container.show();
+		container.empty().show();
 		switch(type){
 			case 'kkevent':
 				gui.showTip('载入中．．．');
@@ -485,6 +485,13 @@ var gui = {//kaikai weibo
 					}
 				});	
 				break;
+			case 'sinaevent':
+				sinaApp.personalEvent();				
+				break;	
+			case 'fav':
+				sinaApp.personalFav(1);				
+				break;	
+			
 		}
 	},
 	/**

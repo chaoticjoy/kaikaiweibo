@@ -145,7 +145,7 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 			</div>
 			<div id="personal-event">
 				<li class="cat-item" onclick="gui.showPersonalItem('sinaevent')">微博动态</li>
-				<li class="cat-item" >微博收藏</li>
+				<li class="cat-item" onclick="gui.showPersonalItem('fav')">微博收藏</li>
 				<li class="cat-item" onclick="gui.showPersonalItem('kkevent')">开开动态</li>
 			</div>
 			<div id="personal-rel">
