@@ -82,7 +82,7 @@ kk_followers.php 开开粉丝列表：
 	page:（选填）页数
 
 kk_user_timeline.php 开开用户动态：
-	username：用户名
+	username：（选填）用户名，默认为当前用户
 	page:（选填）页数
 
 kk_userinfo.php 开开用户信息：
