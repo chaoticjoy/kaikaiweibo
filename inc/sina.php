@@ -275,5 +275,146 @@ include_once('utility.php');
 		else $smarty->assign("hasMore",true);
 		
 		$smarty->display('comments_list.tpl');
+	}
+
+	function get_mentions($max_id=0){
+		$w = new weibo( APP_KEY );
+		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+		$mentions=$w->mentions($max_id);
+		if($max_id)
+			array_shift($mentions);
+		
+		//$emotions=$w->emotions();
+		$ids=get_ids($mentions);
+		$counts=$w->counts($ids);
+		
+		foreach($mentions as $key=>$msg){
+		
+			foreach($counts as $count){			
+				if($count['id']==$msg['id']){
+					$mentions[$key]['comments_count']=$count['comments'];
+					$mentions[$key]['rt_count']=$count['rt'];
+				}				
+			}
+			
+			$mentions[$key]['created_at']=formatTime($msg['created_at']);
+			$mentions[$key]['text']=formatText($msg['text']);
+			
+			if($msg['retweeted_status'])
+				$mentions[$key]['retweeted_status']['text']=formatText($msg['retweeted_status']['text']);
+			 
+		}
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("mentions",$mentions);
+		$smarty->display('mentions.tpl');
+	}
+
+	function get_direct_messages($max_id=0){
+		$w = new weibo( APP_KEY );
+		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+		$direct_messages=$w->direct_messages($max_id);
+		if($max_id)
+			array_shift($direct_messages);
+		
+		foreach($direct_messages as $key=>$msg){
+			
+			$direct_messages[$key]['created_at']=formatTime($msg['created_at']);
+			$direct_messages[$key]['text']=formatText($msg['text']);
+			 
+		}
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("direct_messages",$direct_messages);
+		$smarty->display('direct_messages.tpl');
+	}
+
+	function get_comments_timeline($page=1){
+		$w = new weibo( APP_KEY );
+		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+		$comments_timeline=$w->comments_timeline($page);
+		
+		foreach($comments_timeline as $key=>$msg){
+			
+			$comments_timeline[$key]['created_at']=formatTime($msg['created_at']);
+			$comments_timeline[$key]['text']=formatText($msg['text']);
+			$comments_timeline[$key]['status']['text']=formatText($msg['status']['text']);
+			 
+		}
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("comments_timeline",$comments_timeline);
+		$smarty->display('comments_timeline.tpl');
+	}
+
+	function get_favorites($page=1){
+		$w = new weibo( APP_KEY );
+		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+		$favorites=$w->get_favorites($page);
+		//print_r($favorites);
+		
+		$ids=get_ids($favorites);
+		$counts=$w->counts($ids);
+		
+		foreach($favorites as $key=>$msg){
+			
+			foreach($counts as $count){			
+				if($count['id']==$msg['id']){
+					$favorites[$key]['comments_count']=$count['comments'];
+					$favorites[$key]['rt_count']=$count['rt'];
+				}				
+			}
+			
+			$favorites[$key]['created_at']=formatTime($msg['created_at']);
+			$favorites[$key]['text']=formatText($msg['text']);
+			
+			if($msg['retweeted_status'])
+				$favorites[$key]['retweeted_status']['text']=formatText($msg['retweeted_status']['text']);
+			 
+		}
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("favorites",$favorites);
+		$smarty->display('favorites.tpl');
 	}	
 ?>

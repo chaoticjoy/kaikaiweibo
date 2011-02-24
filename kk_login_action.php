@@ -13,6 +13,8 @@ include_once('inc/utility.php');
 			$time = $remember ? time()+3600*24*365 : 0;
 			setEncryptCookie('kk_name', $username, $time, '/');
 			setEncryptCookie('kk_pw', $password, $time, '/');
+			setcookie('kk_screen_name', $user['login']['user']['screen_name'], $time,'/',COOKIE_DOMAIN);
+			setcookie('kk_id', $user['login']['user']['id'], $time,'/',COOKIE_DOMAIN);
 			return 1;
 		} else {
 			return 0;

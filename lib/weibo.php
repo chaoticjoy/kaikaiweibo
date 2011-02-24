@@ -112,12 +112,23 @@ class weibo
 		//return $this->call_method( 'users' , 'show' , '?user_id=' . $user_id   );
 	}
 	
-	function mentions( $count = 10 , $page = 1 ) 
+	function mentions(  $max_id=0,$count = 20 ) 
 	{
-		return $this->call_method( 'statuses' , 'mentions' , '?count=' . $count . '&page=' . $page  );
+		if($max_id)
+			return $this->call_method( 'statuses' , 'mentions' , '?count=' . $count . '&max_id=' . $max_id );
+		else
+			return $this->call_method( 'statuses' , 'mentions' , '?count=' . $count );
 	}
 	
-	function comments_timeline( $count = 10 , $page = 1 )
+	function direct_messages(  $max_id=0,$count = 20 ) 
+	{
+		if($max_id)
+			return $this->call_method( '' , 'direct_messages' , '?count=' . $count . '&max_id=' . $max_id );
+		else
+			return $this->call_method( '' , 'direct_messages' , '?count=' . $count );
+	}	
+	
+	function comments_timeline(  $page =1,$count = 20 )
 	{
 		return $this->call_method( 'statuses' , 'comments_timeline' , '?count=' . $count . '&page=' . $page  );
 	}
@@ -275,7 +286,7 @@ class weibo
 	
 	// add favorites supports
 	
-	function get_favorites( $page = false ) 
+	function get_favorites( $page = 1 ) 
     { 
         return $this->call_method( '' , 'favorites' , '?page=' . $page  );
     } 

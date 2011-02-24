@@ -13,6 +13,8 @@ include_once('inc/utility.php');
 			$time = $remember ? time()+3600*24*365 : 0;
 			setEncryptCookie('sina_name', $username, $time, '/');
 			setEncryptCookie('sina_pw', $password, $time, '/');
+			setcookie('sina_screen_name', $user['screen_name'], $time,'/',COOKIE_DOMAIN);
+			setcookie('sina_id', $user['id'], $time,'/',COOKIE_DOMAIN);
 			return 1;
 		} else {
 			return 0;
