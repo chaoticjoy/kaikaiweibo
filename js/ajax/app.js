@@ -5,6 +5,47 @@ var sinaApp={
 	userInfo:{
 		
 	},
+	personalEvent:function(){
+		var container=document.getElementById('personal-page-content');
+		var arg={}
+		if(container.childNodes.length>0){	
+			var id=container.lastElementChild.previousElementSibling.id;
+			id=id.substring('sina-user-'.length,id.length);
+			arg.max_id=id;
+			
+		}else{
+			container.innerHTML='<div onclick="sinaApp.personalEvent()" class="more-button">更多动态</div>';
+		}
+		gui.showTip('载入中．．．');
+		$.post("ajax/user_timeline.php",arg,function(data,textStatus){
+			$(data).insertBefore(container.lastElementChild);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});		
+		
+	},
+	personalFav:function(page){
+		var container=document.getElementById('personal-page-content');
+		var arg={page:page};
+		if(container.childNodes.length>0){
+			container.removeChild(container.lastElementChild);
+			var div =document.createElement('div');
+			div.innerHTML='<div onclick="sinaApp.personalFav('+ ++page+')" class="more-button">更多</div>';
+			container.appendChild(div);
+		}else{
+			container.innerHTML='<div onclick="sinaApp.personalFav(2)" class="more-button">更多</div>';
+		}
+		gui.showTip('载入中．．．');
+		$.post("ajax/favorites.php",arg,function(data,textStatus){
+			$(data).insertBefore(container.lastElementChild);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});	
+	},
 	user:'',
 	/**
 	 * 
