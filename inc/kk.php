@@ -299,4 +299,39 @@ include_once('utility.php');
 		$smarty->display('kk_tips.tpl');
 	}
 	
+	function get_user_timeline2($page=1,$id=''){
+		if(is_login_kk()){
+			return 0;
+		}
+		$k = new kaikai( KAIKAI_KEY );
+		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
+		$user_timeline=$k->user_timeline2($page,$id);
+		print_r($user_timeline);
+		$user_timeline=$user_timeline['statuses'];
+		
+
+		if($user_timeline)
+		foreach($user_timeline as $key1=>$item)
+		foreach($item as $key=>$msg)
+		{
+			
+			$user_timeline[$key1][$key]['create_at']=formatTime($msg['create_at']);
+			$user_timeline[$key1][$key]['text']=formatText($msg['text']);
+			 
+		}
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("user_timeline",$user_timeline);
+		$smarty->display('kk_user_timeline2.tpl');
+	}
 ?>
