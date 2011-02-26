@@ -53,6 +53,12 @@ class kaikai
 		return $this->call_method( 'public' , 'statuses','user_timeline','?username='.urlencode($username).'&page='.$page.'&count=' .$count );
 	}
 	
+	//获取用户的动态2
+	function user_timeline2($page=1,$id='',$user_concise=true,$achievement=false,$status=true,$friends=false,$following=false,$follower=false,$count=20,$common_friends=false,$common_friends_count=false)
+	{
+		return $this->call_method( 'public' , 'users','show','?id='.$id.'&user_concise='.$user_concise.'&achievement=' .$achievement.'&status='.$status.'&friends='.$friends.'&following='.$following.'&follower='.$follower.'&page='.$page.'&count='.$count.'&common_friends='.$common_friends.'&common_friends_count='.$common_friends_counts);
+	}	
+	
 	function friends($id,$page=1,$count=20)
 	{
 		return $this->call_method( 'public' , 'users','friends','?id='.$id.'&page='.$page.'&count=' .$count );
