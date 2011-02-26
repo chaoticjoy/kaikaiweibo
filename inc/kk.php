@@ -306,7 +306,7 @@ include_once('utility.php');
 		$k = new kaikai( KAIKAI_KEY );
 		$k->setUser( getEncryptCookie('kk_name') , getEncryptCookie('kk_pw') );
 		$user_timeline=$k->user_timeline2($page,$id);
-		print_r($user_timeline);
+		//print_r($user_timeline);
 		$user_timeline=$user_timeline['statuses'];
 		
 
