@@ -66,10 +66,11 @@ include_once('utility.php');
 		if($max_id)
 			array_shift($friends_timeline);
 		//$emotions=$w->emotions();
+		if($friends_timeline){
 		$ids=get_ids($friends_timeline);
 		$counts=$w->counts($ids);
 		
-	foreach($friends_timeline as $key=>$msg){
+		foreach($friends_timeline as $key=>$msg){
 		
 		/*
 			foreach($emotions as $emotion){
@@ -95,6 +96,7 @@ include_once('utility.php');
 				$friends_timeline[$key]['retweeted_status']['text']=formatText($msg['retweeted_status']['text']);
 			 
 		}
+		}
 
 		$smarty = new Smarty;
 
@@ -119,6 +121,7 @@ include_once('utility.php');
 			array_shift($user_timeline);
 		
 		//$emotions=$w->emotions();
+		if($user_timeline){
 		$ids=get_ids($user_timeline);
 		$counts=$w->counts($ids);
 		
@@ -147,6 +150,7 @@ include_once('utility.php');
 			if($msg['retweeted_status'])
 				$user_timeline[$key]['retweeted_status']['text']=formatText($msg['retweeted_status']['text']);
 			 
+		}
 		}
 
 		$smarty = new Smarty;
@@ -237,7 +241,7 @@ include_once('utility.php');
 		$comments_list=$w->comments($id,$count,$page);
 		
 		//$emotions=$w->emotions();
-		
+		if($comments_list)
 		foreach($comments_list as $key=>$msg){
 		
 		/*
@@ -285,6 +289,7 @@ include_once('utility.php');
 			array_shift($mentions);
 		
 		//$emotions=$w->emotions();
+		if($mentions){
 		$ids=get_ids($mentions);
 		$counts=$w->counts($ids);
 		
@@ -303,6 +308,7 @@ include_once('utility.php');
 			if($msg['retweeted_status'])
 				$mentions[$key]['retweeted_status']['text']=formatText($msg['retweeted_status']['text']);
 			 
+		}
 		}
 
 		$smarty = new Smarty;
@@ -327,11 +333,13 @@ include_once('utility.php');
 		if($max_id)
 			array_shift($direct_messages);
 		
+		if($direct_messages){
 		foreach($direct_messages as $key=>$msg){
 			
 			$direct_messages[$key]['created_at']=formatTime($msg['created_at']);
 			$direct_messages[$key]['text']=formatText($msg['text']);
 			 
+		}
 		}
 
 		$smarty = new Smarty;
@@ -354,12 +362,14 @@ include_once('utility.php');
 		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
 		$comments_timeline=$w->comments_timeline($page);
 		
+		if($comments_timeline){
 		foreach($comments_timeline as $key=>$msg){
 			
 			$comments_timeline[$key]['created_at']=formatTime($msg['created_at']);
 			$comments_timeline[$key]['text']=formatText($msg['text']);
 			$comments_timeline[$key]['status']['text']=formatText($msg['status']['text']);
 			 
+		}
 		}
 
 		$smarty = new Smarty;
@@ -383,6 +393,7 @@ include_once('utility.php');
 		$favorites=$w->get_favorites($page);
 		//print_r($favorites);
 		
+		if($favorites){
 		$ids=get_ids($favorites);
 		$counts=$w->counts($ids);
 		
@@ -401,6 +412,7 @@ include_once('utility.php');
 			if($msg['retweeted_status'])
 				$favorites[$key]['retweeted_status']['text']=formatText($msg['retweeted_status']['text']);
 			 
+		}
 		}
 
 		$smarty = new Smarty;
