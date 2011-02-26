@@ -5,6 +5,114 @@ var sinaApp={
 	userInfo:{
 		
 	},
+	personalComments:function(page){
+		var container=document.getElementById('personal-page-content');
+		var arg={page:page};
+		if(container.childNodes.length>0){
+			container.removeChild(container.lastElementChild);
+			var div =document.createElement('div');
+			div.innerHTML='<div onclick="sinaApp.personalComments('+ ++page+')" class="more-button">更多</div>';
+			container.appendChild(div);
+		}else{
+			container.innerHTML='<div onclick="sinaApp.personalComments(2)" class="more-button">更多</div>';
+		}
+		gui.showTip('载入中．．．');
+		$.post("ajax/comments_timeline.php",arg,function(data,textStatus){
+			$(data).insertBefore(container.lastElementChild);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});			
+	},
+	personalMentions:function(){
+		
+		var container=document.getElementById('personal-page-content');
+		var arg={}
+		if(container.childNodes.length>0){	
+			var id=container.lastElementChild.previousElementSibling.id;
+			id=id.substring('sina-user-'.length,id.length);
+			arg.max_id=id;
+			
+		}else{
+			container.innerHTML='<div onclick="sinaApp.personalMentions()" class="more-button">更多</div>';
+		}
+		gui.showTip('载入中．．．');
+		$.post("ajax/mentions.php",arg,function(data,textStatus){
+			$(data).insertBefore(container.lastElementChild);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});		
+			
+	},
+	personalDms:function(){
+		var container=document.getElementById('personal-page-content');
+		var arg={}
+		if(container.childNodes.length>0){	
+			var id=container.lastElementChild.previousElementSibling.id;
+			id=id.substring('sina-dms-'.length,id.length);
+			arg.max_id=id;
+			
+		}else{
+			container.innerHTML='<div onclick="sinaApp.personalDms()" class="more-button">更多</div>';
+		}
+		gui.showTip('载入中．．．');
+		$.post("ajax/direct_messages.php",arg,function(data,textStatus){
+			$(data).insertBefore(container.lastElementChild);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});		
+				
+	},
+	personalFollowing:function(cursor){
+		
+		var container=document.getElementById('personal-page-content');
+		var arg={cursor:cursor,count:20};
+		if(container.childNodes.length>0){
+			container.removeChild(container.lastElementChild);
+			var div =document.createElement('div');
+			div.innerHTML='<div onclick="sinaApp.personalFollowing('+ (cursor+20) +')" class="more-button">更多</div>';
+			container.appendChild(div);
+		}else{
+			container.innerHTML='<div onclick="sinaApp.personalFollowing(20)" class="more-button">更多</div>';
+		}
+		gui.showTip('载入中．．．');
+		$.post("ajax/friends.php",arg,function(data,textStatus){			
+			//因为在约定接口时,返回了多一个Button,粉丝接口一样
+			$(data).insertBefore(container.lastElementChild);
+			container.removeChild(container.lastElementChild.previousElementSibling);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});	
+	},
+	personalFollowers:function(cursor){
+		
+		var container=document.getElementById('personal-page-content');
+		var arg={cursor:cursor,count:20};
+		if(container.childNodes.length>0){
+			container.removeChild(container.lastElementChild);
+			var div =document.createElement('div');
+			div.innerHTML='<div onclick="sinaApp.personalFollowers('+ (cursor+20) +')" class="more-button">更多</div>';
+			container.appendChild(div);
+		}else{
+			container.innerHTML='<div onclick="sinaApp.personalFollowers(20)" class="more-button">更多</div>';
+		}
+		gui.showTip('载入中．．．');
+		$.post("ajax/followers.php",arg,function(data,textStatus){
+			$(data).insertBefore(container.lastElementChild);
+			container.removeChild(container.lastElementChild.previousElementSibling);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});		
+	},
 	personalEvent:function(){
 		var container=document.getElementById('personal-page-content');
 		var arg={}
@@ -14,7 +122,7 @@ var sinaApp={
 			arg.max_id=id;
 			
 		}else{
-			container.innerHTML='<div onclick="sinaApp.personalEvent()" class="more-button">更多动态</div>';
+			container.innerHTML='<div onclick="sinaApp.personalEvent()" class="more-button">更多</div>';
 		}
 		gui.showTip('载入中．．．');
 		$.post("ajax/user_timeline.php",arg,function(data,textStatus){
@@ -479,6 +587,60 @@ var kk={
 			$('#checkin-'+id).hide();
 		});	
 	
+	},
+	personalFriends:function(page){
+
+		var id=getCookie('kk_id');
+		if(!id){
+			//未登录
+			kk.login(kk.personalFriends);
+			return;
+		}
+		
+		var container=document.getElementById('personal-page-content');
+		var arg={page:page,id:id};
+		if(container.childNodes.length>0){
+			container.removeChild(container.lastElementChild);
+			var div =document.createElement('div');
+			div.innerHTML='<div onclick="kk.personalFriends('+ ++page+')" class="more-button">更多</div>';
+			container.appendChild(div);
+		}else{
+			container.innerHTML='<div onclick="kk.personalFriends(2)" class="more-button">更多</div>';
+		}
+		gui.showTip('载入中．．．');
+		$.post("ajax/kk_friends.php",arg,function(data,textStatus){
+			$(data).insertBefore(container.lastElementChild);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});			
+	},
+	personalFollowers:function(page){
+		var id=getCookie('kk_id');
+		if(!id){
+			//未登录
+			kk.login(kk.personalFollowers);
+			return;
+		}
+		var container=document.getElementById('personal-page-content');
+		var arg={page:page,id:id};
+		if(container.childNodes.length>0){
+			container.removeChild(container.lastElementChild);
+			var div =document.createElement('div');
+			div.innerHTML='<div onclick="kk.personalFollowers('+ ++page+')" class="more-button">更多</div>';
+			container.appendChild(div);
+		}else{
+			container.innerHTML='<div onclick="kk.personalFollowers(2)" class="more-button">更多</div>';
+		}
+		gui.showTip('载入中．．．');
+		$.post("ajax/kk_followers.php",arg,function(data,textStatus){
+			$(data).insertBefore(container.lastElementChild);
+			gui.hideTip();
+			if(textStatus!='success'){
+				gui.showTip('载入失败，请重新载入',500);
+			}
+		});			
 	}
 	
 }
@@ -527,4 +689,42 @@ var lashou={
 			container.append(data);
 		});		
 	}
+}
+
+function getCookie(cookie_name)
+
+{
+
+var allcookies = document.cookie;
+
+var cookie_pos = allcookies.indexOf(cookie_name);
+
+// 如果找到了索引，就代表cookie存在，
+
+// 反之，就说明不存在。
+
+if (cookie_pos != -1)
+
+{
+
+// 把cookie_pos放在值的开始，只要给值加1即可。
+
+cookie_pos += cookie_name.length + 1;
+
+var cookie_end = allcookies.indexOf(";", cookie_pos);
+
+if (cookie_end == -1)
+
+{
+
+cookie_end = allcookies.length;
+
+}
+
+var value = unescape(allcookies.substring(cookie_pos, cookie_end));
+
+}
+
+return value;
+
 }

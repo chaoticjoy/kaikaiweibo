@@ -491,7 +491,27 @@ var gui = {//kaikai weibo
 			case 'fav':
 				sinaApp.personalFav(1);				
 				break;	
-			
+			case 'comments':
+				sinaApp.personalComments(1);				
+				break;	
+			case 'mentions':
+				sinaApp.personalMentions(1);				
+				break;	
+			case 'dms':
+				sinaApp.personalDms(1);				
+				break;	
+			case 'sinafl':
+				sinaApp.personalFollowing(-1);				
+				break;	
+			case 'sinafans':
+				sinaApp.personalFollowers(-1);				
+				break;	
+			case 'kkfri':
+				kk.personalFriends(1);				
+				break;	
+			case 'kkfl':
+				kk.personalFollowers(1);				
+				break;	
 		}
 	},
 	/**
@@ -506,6 +526,7 @@ var gui = {//kaikai weibo
 		$("#user-events").hide();
 		$("#user-following").hide();
 		$("#user-followers").hide();
+		$('#personal-page-content').hide();
 		if(name==''){//个人页面
 			this.openPersonalPage();
 			return ;
