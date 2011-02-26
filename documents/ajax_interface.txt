@@ -37,6 +37,9 @@ send_comment.php 发布评论：
 
 add_to_favorites.php 添加收藏：
 	id：添加收藏微博id
+
+remove_from_favorites.php 删除收藏：
+	id：删除收藏微博id
 	
 comments_list.php 评论列表：
 	id:（必填）获取评论微博id
