@@ -1,6 +1,6 @@
 {foreach from=$followers item=user}
 <div class="single">
-	<img src="{$user['profile_image_url']}" class="single-avatar"/>
+	<img onclick="gui.openUserInfo('{$user['id']}','{$user['screen_name']}','sina')" src="{$user['profile_image_url']}" class="single-avatar"/>
 	<div class="single-name">{$user['screen_name']}</div>
 	<p>{$user['location']}</p>
 </div>
