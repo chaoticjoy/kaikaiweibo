@@ -667,6 +667,10 @@ var douban={
 		gui.showTip('载入中...');
 		$.post("ajax/db_event.php",arg,function(data,textStatus){
 			gui.hideTip();
+			if(data.length==0){
+				container.html('<div id="more-acti" class="more-button">没有活动</div>');
+			}
+			else
 			$(data).insertBefore(morebtn);
 		});
 	},
@@ -689,7 +693,12 @@ var lashou={
 		this.groupBuyPage++;
 		$.post("ajax/tuangou.php",arg,function(data,textStatus){
 			gui.hideTip();
-			container.append(data);
+			
+			if(data.length==0){
+				container.html('<div id="more-acti" class="more-button">没有活动</div>');
+			}else{
+				container.append(data);
+			}
 		});		
 	}
 }
