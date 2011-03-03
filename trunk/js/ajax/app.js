@@ -257,6 +257,22 @@ var sinaApp={
 			}
 		});
 	},
+	//个人页面的回复
+	sendReply:function(id,text){
+		var arg={};
+		arg.id=id;	
+		arg.status=text;	
+		gui.showTip('评论发送中....');		
+		$.post("ajax/send_comment.php",arg,function(data,textStatus){
+			gui.hideTip();
+			if(textStatus=='success'){
+				gui.hideSend();
+				gui.showTip('评论成功!',500);
+			}else {
+				gui.showTip('评论失败',500);
+			}
+		});		
+	},
 	sendRetweet:function(id){
 		//var content=$('#retweet-content-'+id).val();
 		var arg={};
@@ -555,7 +571,7 @@ var kk={
 				kk.login(kk.moreCheckin);return;
 			}
 			if(data.length==0){
-				container.html('<div id="more-checkin" class="more-button">没找到地点</div>');
+				container.html('<div id="more-checkin" class="no-found">没找到地点</div>');
 			}else
 			$(data).insertBefore("#more-checkin");
 			
@@ -671,7 +687,7 @@ var douban={
 		$.post("ajax/db_event.php",arg,function(data,textStatus){
 			gui.hideTip();
 			if(data.length==0){
-				container.html('<div id="more-acti" class="more-button">没有活动</div>');
+				container.html('<div class="no-found">没有活动</div>');
 			}
 			else
 			$(data).insertBefore(morebtn);
@@ -698,7 +714,7 @@ var lashou={
 			gui.hideTip();
 			
 			if(data.length==0){
-				container.html('<div id="more-acti" class="more-button">没有活动</div>');
+				container.html('<div class="no-found">没有团购</div>');
 			}else{
 				container.append(data);
 			}
