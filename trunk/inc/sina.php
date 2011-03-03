@@ -423,6 +423,7 @@ include_once('utility.php');
 		$smarty->cache_lifetime = 120;
 
 		$smarty->assign("comments_timeline",$comments_timeline);
+		$smarty->assign("me",$_COOKIE['sina_screen_name']);
 		$smarty->display('comments_timeline.tpl');
 	}
 
