@@ -111,6 +111,11 @@ class weibo
 		return $this->call_method( 'friendships' , 'destroy' , '?screen_name=' . urlencode( $screen_name));
 	}
 	
+	function is_follow( $target_screen_name )
+	{
+		return $this->call_method( 'friendships' , 'show' , '?target_screen_name=' . urlencode( $target_screen_name));
+	}	
+	
 	function user_info( $name )
 	{
 		return $this->call_method( 'users' , 'show' , '?screen_name=' . urlencode( $name )   );

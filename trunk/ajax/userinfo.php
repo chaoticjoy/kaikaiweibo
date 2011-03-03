@@ -6,7 +6,7 @@
 		get_user_info($_REQUEST['screen_name']);
 	else{
 		
-		get_user_info();	
+		get_user_info($_COOKIE['sina_screen_name']);	
 	}
 
 
