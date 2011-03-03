@@ -5,6 +5,6 @@
 	<div class="single-name">{$item['user']['screen_name']}</div>
 	<p>{$item['text']}</p>
 	<p class="quote"><b>回复原文：</b>{$item['status']['text']}</p>
-	<div class="single-operate"><span>回复TA</span></div>
+	<div class="single-operate" ><span onclick="gui.sendMsg('comment','{$item['status']['id']}','{$item['user']['screen_name']}')">回复TA</span></div>
 </div>
 {/foreach}

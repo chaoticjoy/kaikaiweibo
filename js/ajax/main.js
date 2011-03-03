@@ -165,10 +165,8 @@ var gui = {//kaikai weibo
 	 */
     onClickUserBtn: function(id){
 		
-		if (!this.firstLoadUser || '#user-btn' == this.currentBtn) {
-			gui.openUserInfo('','','sina');
-			this.firstLoadUser=true;
-		}
+		gui.openUserInfo('','','sina');
+
 		this.changePanel(3, '#user-btn');
 		
     },
@@ -581,33 +579,40 @@ var gui = {//kaikai weibo
 	sendMsg:function(type,id,name){
 		this.showMask();
         $("#send").show();
-		
-		$("#send-content").val('')[0].focus();
+		var send=$("#send-content");
+		send.val('')[0].focus();
 		
 		if(type=='normal'){
 			$('#send-title').text('说说你的新鲜事');
 			$("#send-btn")[0].onclick=function(){
-		        //alert('发普通消息'+$("#send-content").val()+'nor');
-				sinaApp.sendMessage($("#send-content").val());
+		        //alert('发普通消息'+send.val()+'nor');
+				sinaApp.sendMessage(send.val());
 		    }
 		}else if(type=='dm'){
 			$('#send-title').text('发送私信给: '+name);
 			$("#send-btn")[0].onclick=function(){
-		        //alert('发私信给：'+$("#send-content").val());
-				sinaApp.sendDirectMessage($("#send-content").val(),name);
+		        //alert('发私信给：'+send.val());
+				sinaApp.sendDirectMessage(send.val(),name);
 		    }
 		}else if(type=='douban'){
-			$("#send-content").val('分享活动:'+id+' '+name+' ');
+			send.val('分享活动:'+id+' '+name+' ');
 			$('#send-title').text('分享一个活动');
 			$("#send-btn")[0].onclick=function(){
-				sinaApp.sendMessage($("#send-content").val());
+				sinaApp.sendMessage(send.val());
 		    }
-		}else if(type='tuangou'){
-			$("#send-content").val('分享团购:'+id+' ');
+		}else if(type=='tuangou'){
+			send.val('分享团购:'+id+' ');
 			$('#send-title').text('分享一个团购');
 			$("#send-btn")[0].onclick=function(){
-				sinaApp.sendMessage($("#send-content").val());
+				sinaApp.sendMessage(send.val());
 		    }
+		}else if(type=='comment'){
+			//send.val('回复 '+name+' 的评论 ');
+			send.val('');
+			$('#send-title').text('回复 '+name+' 的评论 ');		
+			$("#send-btn")[0].onclick=function(){
+				sinaApp.sendReply(id,send.val());
+		    }	
 		}
 	},
 	getCityEvent:function(node,type){
