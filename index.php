@@ -32,7 +32,7 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 <div class="tips" id='send-title'>说说你的新鲜事</div>
 <form>
 	<textarea id="send-content" rows="5"></textarea>
-	<input id="send-btn" type="button" class="main-button" value="发布围脖" />
+	<input id="send-btn" type="button" class="main-button" value="发布" />
 </form>
 </div>
 <div id="mask"></div>

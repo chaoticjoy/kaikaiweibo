@@ -17,7 +17,7 @@ var sinaApp={
 			container.innerHTML='<div onclick="sinaApp.personalComments(2)" class="more-button">更多</div>';
 		}
 		gui.showTip('载入中．．．');
-		$.post("ajax/comments_timeline.php",arg,function(data,textStatus){
+		$.post("ajax/comments_to_me.php",arg,function(data,textStatus){
 			$(data).insertBefore(container.lastElementChild);
 			gui.hideTip();
 			if(textStatus!='success'){
@@ -554,6 +554,9 @@ var kk={
 			if(data==kk.notLoginString){
 				kk.login(kk.moreCheckin);return;
 			}
+			if(data.length==0){
+				container.html('<div id="more-checkin" class="more-button">没找到地点</div>');
+			}else
 			$(data).insertBefore("#more-checkin");
 			
 			if(textStatus!='success'){
