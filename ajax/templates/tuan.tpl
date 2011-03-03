@@ -5,7 +5,7 @@
 	<p>原价：￥{$tuan['goods']['goods_value']} 现价：￥{$tuan['goods']['goods_price']} 折扣：{$tuan['goods']['goods_rebate']}折</p>
 	<p>电话：{$tuan['goods']['goods_phone']}</p>
 	<p class="quote">{$tuan['goods']['goods_title']}<br /><img src="{$tuan['goods']['goods_image_url']}" class="thumbnail" /></p>
-	<div class="single-operate"><span><a href="{$tuan['goods']['goods_site_url']}" target="_blank">详情</a></span> | <span>分享</span></div>
+	<div class="single-operate"><span><a href="{$tuan['goods']['goods_site_url']}" target="_blank">详情</a></span> | <span onclick="gui.sendMsg('tuangou','{$tuan['goods']['goods_sp_name']}'+' '+'{$tuan['goods']['goods_site_url']}');">分享</span></div>
 	<br class="clean"/>
 </div>
 {else}

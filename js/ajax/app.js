@@ -368,9 +368,12 @@ var sinaApp={
 				gui.showTip('载入失败，请重新载入',1500);	
 			}
 			//$("#moreComments-"+id).remove();
-			$("#comment-list-"+id).empty();
+			var temp=$("#comment-list-"+id)
+			temp.empty();
 			$("#comment-list-"+id).append(data);
 			//bug:因为评论在不断刷新，评论的页数也在变化，造成上一条和下一条重复．
+			scrollToElement(temp[0],-100);
+
 		});
 	},
 	moreFollowers:function(cursor){
@@ -691,40 +694,39 @@ var lashou={
 	}
 }
 
-function getCookie(cookie_name)
-
-{
-
-var allcookies = document.cookie;
-
-var cookie_pos = allcookies.indexOf(cookie_name);
-
-// 如果找到了索引，就代表cookie存在，
-
-// 反之，就说明不存在。
-
-if (cookie_pos != -1)
-
-{
-
-// 把cookie_pos放在值的开始，只要给值加1即可。
-
-cookie_pos += cookie_name.length + 1;
-
-var cookie_end = allcookies.indexOf(";", cookie_pos);
-
-if (cookie_end == -1)
-
-{
-
-cookie_end = allcookies.length;
-
+function getCookie(cookie_name){
+    var allcookies = document.cookie;
+    var cookie_pos = allcookies.indexOf(cookie_name);
+    // 如果找到了索引，就代表cookie存在，
+    // 反之，就说明不存在。
+    if (cookie_pos != -1) {
+        // 把cookie_pos放在值的开始，只要给值加1即可。
+        cookie_pos += cookie_name.length + 1;   
+        var cookie_end = allcookies.indexOf(";", cookie_pos);
+        if (cookie_end == -1) {
+            cookie_end = allcookies.length;
+        }
+        var value = unescape(allcookies.substring(cookie_pos, cookie_end));
+    }
+    return value;
 }
-
-var value = unescape(allcookies.substring(cookie_pos, cookie_end));
-
+/**
+ * 
+ * @param {Object} node  要滚到的HTML节点
+ * @param {Object} ex  额外多滚一点的值
+ */
+function scrollToElement(node,ex){
+	if(!node)return;
+	if(ex==undefined)ex=0;
+	var top=getElementTop(node)+ex;
+	document.body.scrollTop=top;
+	document.documentElement.scrollTop=top;
 }
-
-return value;
-
+function getElementTop(node){
+	var top=0;
+	while(node.offsetParent){
+		top+=node.offsetTop;
+		node=node.offsetParent;
+	}
+	return top;
 }

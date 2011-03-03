@@ -164,11 +164,13 @@ var gui = {//kaikai weibo
 	 * @param {Object} id
 	 */
     onClickUserBtn: function(id){
+		
 		if (!this.firstLoadUser || '#user-btn' == this.currentBtn) {
 			gui.openUserInfo('','','sina');
 			this.firstLoadUser=true;
 		}
 		this.changePanel(3, '#user-btn');
+		
     },
     //前进后退按钮
     back: function(){
@@ -262,7 +264,10 @@ var gui = {//kaikai weibo
         var contentArea = $('#comment-content-' + id);
         var content = contentArea.val();
         contentArea.val('回复:@' + name + ' ' + content);
+		content=contentArea.val();
         contentArea[0].focus();
+		contentArea[0].setSelectionRange(content.length,content.length);
+		scrollToElement(contentArea[0],-5);
     },
 	addFavourite:function(app,type,id){
 		if(app=='sina')
@@ -522,6 +527,7 @@ var gui = {//kaikai weibo
 	 * @param {Object} type
 	 */
 	openUserInfo:function(id,name,type){
+		scrollToElement(document.body);
 		gui.changePanel(3, '#user-btn');
 		$("#user-events").hide();
 		$("#user-following").hide();
@@ -588,11 +594,17 @@ var gui = {//kaikai weibo
 			$('#send-title').text('发送私信给: '+name);
 			$("#send-btn")[0].onclick=function(){
 		        //alert('发私信给：'+$("#send-content").val());
-				sinaApp.sendDirectMessage($("#send-content").val());
+				sinaApp.sendDirectMessage($("#send-content").val(),name);
 		    }
 		}else if(type=='douban'){
-			$("#send-content").val('我分享了一个活动:'+id+' '+name+' ');
+			$("#send-content").val('分享活动:'+id+' '+name+' ');
 			$('#send-title').text('分享一个活动');
+			$("#send-btn")[0].onclick=function(){
+				sinaApp.sendMessage($("#send-content").val());
+		    }
+		}else if(type='tuangou'){
+			$("#send-content").val('分享团购:'+id+' ');
+			$('#send-title').text('分享一个团购');
 			$("#send-btn")[0].onclick=function(){
 				sinaApp.sendMessage($("#send-content").val());
 		    }
