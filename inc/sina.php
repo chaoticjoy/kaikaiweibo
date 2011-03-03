@@ -183,7 +183,6 @@ include_once('utility.php');
 			$is_follow=$w->is_follow($screen_name);
 			//print_r($is_follow);
 			$is_follow=$is_follow['source']['following'];
-			echo $is_follow;
 		}
 
 		$smarty = new Smarty;
