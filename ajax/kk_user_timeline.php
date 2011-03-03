@@ -6,8 +6,10 @@
 	elseif($_REQUEST['username'])
 		get_user_timeline($_REQUEST['username']);
 	else{
+	//echo $_COOKIE['kk_screen_name'];
 		get_user_timeline($_COOKIE['kk_screen_name']);
 		}
+		//get_user_timeline('kavin');
 /* 	else
 		get_user_timeline('kavin'); */
 ?>

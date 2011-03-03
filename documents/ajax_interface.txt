@@ -54,6 +54,9 @@ send_direct_messages.php 发送私信：
 follow.php 添加关注：
 	screen_name：微博昵称
 
+unfollow.php 取消关注：
+	screen_name：微博昵称
+
 unread.php 未读消息数
 	with_new_status：（选填）默认为0。是否有新微博消息，1表示有，0表示没有。
 	since_id：（选填）该参数需配合with_new_status参数使用，返回since_id之后，是否有新微博消息产生
