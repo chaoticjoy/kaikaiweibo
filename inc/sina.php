@@ -176,6 +176,15 @@ include_once('utility.php');
 			$screen_name=$screen_name['screen_name'];
 		}
 		$user=$w->user_info($screen_name);
+		if($screen_name==$_COOKIE['sina_screen_name']){
+			$is_follow=1;
+		}
+		else{
+			$is_follow=$w->is_follow($screen_name);
+			//print_r($is_follow);
+			$is_follow=$is_follow['source']['following'];
+			echo $is_follow;
+		}
 
 		$smarty = new Smarty;
 
@@ -189,6 +198,7 @@ include_once('utility.php');
 		$smarty->cache_lifetime = 120;
 
 		$smarty->assign("user",$user);
+		$smarty->assign("is_follow",$is_follow);
 		//$smarty->assign("emotions",$emotions[1]);
 
 		$smarty->display('userinfo.tpl');
