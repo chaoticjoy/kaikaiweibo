@@ -386,6 +386,36 @@ include_once('utility.php');
 		$smarty->assign("comments_timeline",$comments_timeline);
 		$smarty->display('comments_timeline.tpl');
 	}
+	
+	function get_comments_to_me($page=1){
+		$w = new weibo( APP_KEY );
+		$w->setUser( getEncryptCookie('sina_name') , getEncryptCookie('sina_pw') );
+		$comments_timeline=$w->comments_to_me($page);
+		
+		if($comments_timeline){
+		foreach($comments_timeline as $key=>$msg){
+			
+			$comments_timeline[$key]['created_at']=formatTime($msg['created_at']);
+			$comments_timeline[$key]['text']=formatText($msg['text']);
+			$comments_timeline[$key]['status']['text']=formatText($msg['status']['text']);
+			 
+		}
+		}
+
+		$smarty = new Smarty;
+
+		$smarty->compile_dir = 'saemc://smartytpl/';
+		$smarty->cache_dir = 'saemc://smartytpl/';
+		$smarty->compile_locking = false; // 防止调用touch,saemc会自动更新时间，不需要touch
+
+		//$smarty->force_compile = true;
+		$smarty->debugging = false;
+		$smarty->caching = false;
+		$smarty->cache_lifetime = 120;
+
+		$smarty->assign("comments_timeline",$comments_timeline);
+		$smarty->display('comments_timeline.tpl');
+	}
 
 	function get_favorites($page=1){
 		$w = new weibo( APP_KEY );

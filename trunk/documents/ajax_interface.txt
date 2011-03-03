@@ -70,6 +70,9 @@ direct_messages.php 获取当前用户的所有私信列表
 comments_timeline.php 获取当前用户的所有评论列表
 	page：（选填）页数
 
+comments_to_me.php 获取当前用户的所有评论列表
+	page：（选填）页数
+
 favorites.php 获取当前用户的收藏列表
 	page：（选填）页数
 

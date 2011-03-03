@@ -133,6 +133,11 @@ class weibo
 		return $this->call_method( 'statuses' , 'comments_timeline' , '?count=' . $count . '&page=' . $page  );
 	}
 	
+	function comments_to_me(  $page =1,$count = 20 )
+	{
+		return $this->call_method( 'statuses' , 'comments_to_me' , '?count=' . $count . '&page=' . $page  );
+	}
+	
 	function comments_by_me( $count = 10 , $page = 1 )
 	{
 		return $this->call_method( 'statuses' , 'comments_by_me' , '?count=' . $count . '&page=' . $page  );
