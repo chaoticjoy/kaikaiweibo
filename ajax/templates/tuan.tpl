@@ -1,5 +1,4 @@
-{if $tuan['goods']['goods_title']}
-<div class="single">
+{if $tuan['goods']['goods_title']}<div class="single">
 	<img src="../image/tuangou.png" class="acti-avatar"/>
 	<div class="single-name">{$tuan['goods']['goods_sp_name']}</div>
 	<p>原价：￥{$tuan['goods']['goods_value']} 现价：￥{$tuan['goods']['goods_price']} 折扣：{$tuan['goods']['goods_rebate']}折</p>

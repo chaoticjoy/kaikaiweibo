@@ -127,8 +127,7 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 	</div> 
 	<!-- 活动结束 -->
 	<!-- 团购开始 -->
-	<div id="group-buy" class="group-buy" style="display:none">
-	</div>
+	<div id="group-buy" class="group-buy" style="display:none"></div>
 
 </div> 
 	

@@ -712,7 +712,7 @@ var lashou={
 		this.groupBuyPage++;
 		$.post("ajax/tuangou.php",arg,function(data,textStatus){
 			gui.hideTip();
-			
+			container.empty();
 			if(data.length==0){
 				container.html('<div class="no-found">没有团购</div>');
 			}else{

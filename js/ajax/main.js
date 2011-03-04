@@ -164,11 +164,7 @@ var gui = {//kaikai weibo
 	 * @param {Object} id
 	 */
     onClickUserBtn: function(id){
-		
 		gui.openUserInfo('','','sina');
-
-		this.changePanel(3, '#user-btn');
-		
     },
     //前进后退按钮
     back: function(){
@@ -261,7 +257,7 @@ var gui = {//kaikai weibo
     reply: function(id, name){
         var contentArea = $('#comment-content-' + id);
         var content = contentArea.val();
-        contentArea.val('回复:@' + name + ' ' + content);
+        contentArea.val('回复@' + name + ': ' + content);
 		content=contentArea.val();
         contentArea[0].focus();
 		contentArea[0].setSelectionRange(content.length,content.length);
