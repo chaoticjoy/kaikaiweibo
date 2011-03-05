@@ -5,6 +5,31 @@ var sinaApp={
 	userInfo:{
 		
 	},
+	follow:function(name,node){
+		var arg={};
+		arg.screen_name=name;
+		$.post("ajax/follow.php",arg,function(data,textStatus){
+			if(textStatus!='success'){
+				gui.showTip('网络出错',500);
+			}else{
+				node.innerHTML='取消关注';
+				gui.showTip('已关注',1000);
+			}
+		});		
+	},
+	unfollow:function(name,node){
+		
+		var arg={};
+		arg.screen_name=name;
+		$.post("ajax/unfollow.php",arg,function(data,textStatus){
+			if(textStatus!='success'){
+				gui.showTip('网络出错',500);
+			}else{
+				node.innerHTML="加关注";
+				gui.showTip('已取消关注',1000);
+			}
+		});
+	},
 	personalComments:function(page){
 		var container=document.getElementById('personal-page-content');
 		var arg={page:page};
@@ -271,7 +296,7 @@ var sinaApp={
 			}else {
 				gui.showTip('评论失败',500);
 			}
-		});		
+		});
 	},
 	sendRetweet:function(id){
 		//var content=$('#retweet-content-'+id).val();

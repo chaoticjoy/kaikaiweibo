@@ -3,9 +3,9 @@
 	<span class="username">{$user['screen_name']}</span>
 	<span class="location">{$user['location']}</span><br />
 	{if $is_follow}
-	<div class="btn">取消关注</div>
+	<div class="btn" onclick="sinaApp.unfollow('{$user['screen_name']}',this)">取消关注</div>
 	{else}
-	<div class="btn">加关注</div>
+	<div class="btn" onclick="sinaApp.follow('{$user['screen_name']}',this)">加关注</div>
 	{/if}
 	<div class="btn" onClick="gui.sendMsg('dm','{$user['id']}','{$user['screen_name']}')">私信</div>
 	<div class="clean"></div>
