@@ -95,7 +95,7 @@ a:visited {
 	color:#f1f1f1;
 	position:relative;
 	height:33px;
-	padding-top:3px;
+	padding-top:6px;
 }
 
 #header .back{
@@ -617,9 +617,9 @@ input:focus{
 }
 
 
-#send{
+#send,#about-box{
 	width:90%;
-	position:absolute;
+	position:fixed;
 	top:50%;
 	left:50%;
 	margin-left:-45%;
@@ -638,26 +638,7 @@ input:focus{
 	padding:45px 10px 15px 10px;
 }
 
-#about-box{
-	display:none;
-	width:90%;
-	position:absolute;
-	top:50%;
-	left:50%;
-	margin-left:-45%;
-	margin-top:-100px;
-	z-index:200;
-	border:1px black solid;
-	background:#222;
-	opacity:0.85;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	padding:45px 10px 15px 10px;
-}
+
 
 
 #image{
