@@ -567,9 +567,9 @@ var kk={
 		});
 	},
 	//当前用户的City
-	cityNamePY:"guangzhou",
+	cityNamePY:"beijing",
 	//汉字
-	cityName:"广州",
+	cityName:"北京",
 	lat:23.1,
 	lon:113.1,
 	checkinPage:1,
