@@ -23,10 +23,11 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 <script src="js/ajax/main.js"></script>
 <script src="js/ajax/app.js"></script>
 
-<title>开开围脖</title> 
+<title>团团</title> 
 </head>
 <body>
-<div id="pop-msg"><p>发送成功!</p></div>	
+<div id="pop-msg"><p>发送成功!</p></div>
+	
 <div id="send">
 <img id="close-btn" src="image/close.png" class="close" />
 <div class="tips" id='send-title'>说说你的新鲜事</div>
@@ -51,12 +52,12 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 		<label class="password-label" for="password">密码</label>
 		<input id="kk_pw" type="password" tabindex="2" autocapitalize="off" autocorrect="off" class="main-field" id="password" name="password">
 		</p>
-		<input  onclick="kk.startLogin()" class="main-button" value="登陆开开" />
+		<input  onclick="kk.startLogin()" class="main-button" value="登陆开开" readonly/>
 </form>
 </div>
 <div id="header">
-开开围脖1.0
-<img src="image/arrow_left.png" id="back" onClick="gui.back()" class="back"/>
+团团 beta
+<img src="image/about.png" id="topBtn" onClick="gui.about()" class="about"/>
 <a href="logout.php"><img border=0 src="image/exit.png" id="exit" class="exit"/></a>
 </div>
 
@@ -167,6 +168,17 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 			<div  id="morefollowers" class="more-button" onclick="sinaApp.moreFollowers()">更多粉丝</div>
 		</div>
   </div> 
+
+</div>
+<div id="about-box">
+<img src="image/close.png" class="close" onclick="gui.hideAbout()"/>
+<div class="tips">关于团团</div>
+	<p>爱微博，爱签到。<br/>爱Party，更爱团购。<br/>
+	我不是御宅一族，不是到此一游的旅客。<br/>
+	我是城市家。<br/>
+	我掌握我的城市，记录我的生活<br/>
+	这里是团团，有我的你的大城小事</p>
+	<input onclick="gui.tellFriends()" type="button" class="main-button" value="告诉我的微博好友" readonly/>
 
 </div>
 </body>
