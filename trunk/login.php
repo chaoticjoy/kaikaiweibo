@@ -25,7 +25,7 @@
 <div id="header"></div>
 <div id="wrapper"> 
 
-
+	<h1 id="intro">开始分享你的大城小事</h1>
 	<form onsubmit="return onSubmit()" class="loginform" method="post" action="login_action.php"> 
 		<p>
 		<label class="username-label" for="username">帐号</label>
