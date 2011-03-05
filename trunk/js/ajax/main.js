@@ -606,13 +606,13 @@ var gui = {
 				sinaApp.sendDirectMessage(send.val(),name);
 		    }
 		}else if(type=='douban'){
-			send.val('分享活动:'+id+' '+name+' ');
+			send.val('分享活动:'+id+' '+name+' @团团官方');
 			$('#send-title').text('分享一个活动');
 			$("#send-btn")[0].onclick=function(){
 				sinaApp.sendMessage(send.val());
 		    }
 		}else if(type=='tuangou'){
-			send.val('分享团购:'+id+' ');
+			send.val('分享团购:'+id+' @团团官方');
 			$('#send-title').text('分享一个团购');
 			$("#send-btn")[0].onclick=function(){
 				sinaApp.sendMessage(send.val());
