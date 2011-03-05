@@ -103,12 +103,20 @@ class weibo
 	
 	function follow( $screen_name )
 	{
-		return $this->call_method( 'friendships' , 'create' , '?screen_name=' . urlencode( $screen_name));
+		$this->postdata[] = 'screen_name=' .$screen_name;
+		return $this->call_method( 'friendships' , 'create');
+	}
+	
+	function follow_id( $user_id  )
+	{
+		$this->postdata[] = 'user_id=' .$user_id;
+		return $this->call_method( 'friendships' , 'create' );
 	}
 	
 	function unfollow( $screen_name )
 	{
-		return $this->call_method( 'friendships' , 'destroy' , '?screen_name=' . urlencode( $screen_name));
+		$this->postdata[] = 'screen_name=' .$screen_name;
+		return $this->call_method( 'friendships' , 'destroy');
 	}
 	
 	function is_follow( $target_screen_name )

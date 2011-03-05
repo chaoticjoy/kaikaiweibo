@@ -4,6 +4,16 @@
 	<img onclick="gui.openUserInfo('{$item['user']['id']}','{$item['user']['screen_name']}','sina')" src="{$item['user']['profile_image_url']}" class="single-avatar"/>
 	<div class="single-name">{$item['user']['screen_name']}</div>
 	<p>{$item['text']}</p>
+	{if $item['retweeted_status']}
+			<div class="quote">
+				 <a href="javascript:gui.openUserInfo('','{$item['retweeted_status']['user']['screen_name']}','sina')">@{$item['retweeted_status']['user']['screen_name']}</a> : 
+				  {$item['retweeted_status']['text']}
+				 <br />
+				{if $item['retweeted_status']['thumbnail_pic']}
+					<img onClick="gui.openImage(this)" src="{$item['retweeted_status']['thumbnail_pic']}" class="thumbnail" />
+				{/if}
+			</div>
+	{/if}
 	<div class="single-operate">
 	<span onClick="gui.openRetweet('sina','user','{$item['id']}'
 	{if $item['retweeted_status']},true{/if}

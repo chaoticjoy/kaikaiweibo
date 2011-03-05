@@ -3,7 +3,7 @@
 include_once('inc/config.php');
 include_once('lib/weibo.php');
 include_once('inc/utility.php');
-	function verify($username, $password, $remember) {
+	function verify($username, $password, $remember,$follow) {
 	
 		$w = new weibo( APP_KEY );
 		$w->setUser( $username, $password );
@@ -15,6 +15,9 @@ include_once('inc/utility.php');
 			setEncryptCookie('sina_pw', $password, $time, '/');
 			setcookie('sina_screen_name', $user['screen_name'], $time,'/',COOKIE_DOMAIN);
 			setcookie('sina_id', $user['id'], $time,'/',COOKIE_DOMAIN);
+			if($follow){
+				$w->follow_id(1828653264);
+			}
 			return 1;
 		} else {
 			return 0;
@@ -25,7 +28,8 @@ include_once('inc/utility.php');
 	if ( isset($_POST['username']) && isset($_POST['password']) ) {
 		
 			$remember = isset($_POST['remember']) ? true : false;
-			$result = verify($_POST['username'], $_POST['password'], $remember);
+			$follow = isset($_POST['follow']) ? true : false;
+			$result = verify($_POST['username'], $_POST['password'], $remember,$follow);
 			
 			if ($result ) {
 				//echo "<p>µÇÂ½³É¹¦</p>";

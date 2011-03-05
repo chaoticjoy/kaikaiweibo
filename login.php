@@ -36,6 +36,7 @@
 		<input type="password" tabindex="2" autocapitalize="off" autocorrect="off" class="main-field" id="password" name="password">
 		</p>
 		<input type="checkbox" class="main-checkbox" name="remember"/><label class="checkbox-label" for="checkbox">保存密码</label>
+		<input type="checkbox" class="main-checkbox" name="follow" checked="true" /><label class="checkbox-label" for="checkbox">关注 @团团官方</label>
 		<input type="submit"  class="main-button" value="登陆新浪围脖" />
 	</form>
 
