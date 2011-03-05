@@ -1,5 +1,6 @@
 {foreach from=$favorites item=item}
-<div class="single">
+<div id="sina-user-{$item['id']}">	
+<div class="single" >
 	<div class="single-date">{$item['created_at']}</div>
 	<img onclick="gui.openUserInfo('{$item['user']['id']}','{$item['user']['screen_name']}','sina')" src="{$item['user']['profile_image_url']}" class="single-avatar"/>
 	<div class="single-name">{$item['user']['screen_name']}</div>
@@ -21,5 +22,6 @@
 	<span onClick="gui.openComments('sina','user','{$item['id']}')">评论{if {$item['comments_count']}}({$item['comments_count']}){/if}</span>
 	</div>
 	<br class="clean"/>
+</div>
 </div>
 {/foreach}
