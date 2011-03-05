@@ -184,6 +184,12 @@ a:visited {
 	display:none;
 }
 
+#intro{
+	padding: 30px 20px 0px 20px;
+	color:#446aab;
+	font-size:20px;
+	text-align:center;
+}
 
 .loginform{
 	margin-bottom: 0;
