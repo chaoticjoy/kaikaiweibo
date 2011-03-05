@@ -204,7 +204,7 @@ var gui = {//kaikai weibo
 			comment.innerHTML=
 			"<form>"+
 				"<textarea rows='2' id='comment-content-"+id+"'></textarea>"+
-				"<input type='button' onClick='sinaApp.sendComment(\""+id+"\")' class='submit-button' value='评论' />"+
+				"<input type='button' onClick='sinaApp.sendComment(this,\""+id+"\")' class='submit-button' value='评论' />"+
 			"</form>"+
 			"<div id=\"comment-list-"+id+ "\">" +
 			"</div>";
@@ -241,7 +241,7 @@ var gui = {//kaikai weibo
 			var retStr=
 			"<form>"+
 				"<textarea rows='2' id='retweet-content-"+id+"'></textarea>"+
-				"<input type='button' onClick='sinaApp.sendRetweet(\""+id+"\")' class='submit-button' value='转发' />"+
+				"<input type='button' onClick='sinaApp.sendRetweet(this,\""+id+"\")' class='submit-button' value='转发' />"+
 			"</form>";
 			retweet.innerHTML=retStr;
 			status.append(retweet);			

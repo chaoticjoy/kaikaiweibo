@@ -263,9 +263,8 @@ var sinaApp={
 			}
 		});
 	},
-	sendComment:function(id){
-		var content=$('#comment-content-'+id).val();
-		
+	sendComment:function(node,id){
+		var content=node.previousElementSibling.value;
 		var arg={};
 		arg.id=id;
 		if(content=='')return;
@@ -298,11 +297,12 @@ var sinaApp={
 			}
 		});
 	},
+	
 	sendRetweet:function(node,id){
 		//var content=$('#retweet-content-'+id).val();
 		var arg={};
 		arg.id=id;
-		arg.status=$('#retweet-content-'+id).val();
+		arg.status=node.previousElementSibling.value;
 		gui.showTip('发送中....');
 		$.post("ajax/repost.php",arg,function(data,textStatus){
 			gui.hideTip();
