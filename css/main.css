@@ -706,13 +706,15 @@ input:focus{
 	font-weight:bold;
 }
 
-#about-box p{
+#send span,#about-box p{
+	display:block;
 	font-size:16px;
 	color:#f1f1f1;
 	font-weight:bold;
 	margin:0px 10px 5px 10px;
 	line-height:170%;
 }
+
 
 
 
