@@ -298,7 +298,7 @@ var sinaApp={
 			}
 		});
 	},
-	sendRetweet:function(id){
+	sendRetweet:function(node,id){
 		//var content=$('#retweet-content-'+id).val();
 		var arg={};
 		arg.id=id;
