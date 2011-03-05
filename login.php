@@ -19,10 +19,10 @@
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <script src="js/jquery/jquery-1.4.2.js"></script>
 <script src="js/ajax/index.js"></script>
-<title>开开围脖</title> 
+<title>团团</title> 
 </head>
 <body>
-<div id="header"></div>
+<div id="header">团团 beta</div>
 <div id="wrapper"> 
 
 	<h1 id="intro">开始分享你的大城小事</h1>
