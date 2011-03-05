@@ -14,26 +14,20 @@
 <div id="header"></div>
 <div id="wrapper"> 
 
-<div id="send"  style="display:block;">
-<img id="close-btn" src="image/close.png" class="close" />
-<div class="tips" id='send-title'>登陆开开 </div>
-<span>开开k.ai是新一代的地理位置签到服务，帮助你与朋友们分享位置交流心得，<a href="http://k.ai">注册地址</a></span>
-<form class="loginform" method="post" action="login_action.php"> 
 
-
+	<form onsubmit="return onSubmit()" class="loginform" method="post" action="login_action.php"> 
+		<p>
 		<label class="username-label" for="username">帐号</label>
 		<input type="text" tabindex="1" autocapitalize="off" autocorrect="off" class="main-field" id="username" name="username">
-
+		</p>
 	  	<p>
 		<label class="password-label" for="password">密码</label>
 		<input type="password" tabindex="2" autocapitalize="off" autocorrect="off" class="main-field" id="password" name="password">
 		</p>
-		<input type="submit" class="main-button" value="登陆开开" />
-
-		
-</form>
-</div>
-	
+		<input type="checkbox" class="main-checkbox" name="remember"/><label class="checkbox-label" for="checkbox">保存密码</label>
+		<input type="checkbox" class="main-checkbox" name="follow" checked="true" /><label class="checkbox-label" for="checkbox">关注 @团团官方</label>
+		<input type="submit"  class="main-button" value="登陆新浪围脖" />
+	</form>
 
 </div> 
 
