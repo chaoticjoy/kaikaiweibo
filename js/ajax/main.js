@@ -197,8 +197,8 @@ var gui = {
 				//加截评论内容
 				
 				$("#comment-list-"+id).empty();
-				var temp=$("#comment-"+id).remove();
-				status.append(temp);
+				commentContainer.remove();
+				status.append(commentContainer);
 				sinaApp.getCommentList(id);
 				//显示
 				commentContainer.show();
@@ -272,7 +272,16 @@ var gui = {
     reply: function(id, name){
         var contentArea = $('#comment-content-' + id);
         var content = contentArea.val();
-        contentArea.val('回复@' + name + ': ' + content);
+		var pattern=/^回复@.*?:/ ;
+		
+		if(!pattern.exec(content)){//找不到
+			content='回复@'+name+':'+content;
+		}else{
+            var left = RegExp.leftContext;
+            var right = RegExp.rightContext;
+            content=left+'回复@'+name+':'+right;		
+		}
+        contentArea.val(content);
 		content=contentArea.val();
         contentArea[0].focus();
 		contentArea[0].setSelectionRange(content.length,content.length);
