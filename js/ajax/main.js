@@ -2,8 +2,17 @@
  * @author Administrator
  */
 var toggle = 1;
-var gui = {//kaikai weibo
-
+var gui = {
+	tellFriends:function(){
+		this.hideAbout();
+		this.sendMsg('tl');
+	},
+	hideAbout:function(){
+		$('#about-box').hide();
+	},
+	about:function(){
+		$('#about-box').show();
+	},
     history: [[0, "#events-btn"]],
     currentHistory: 0,///当前历史的Index
     currentPanel: 0,//
@@ -180,12 +189,16 @@ var gui = {//kaikai weibo
     },
     //查看评论,
     openComments: function(app,type,id){
+		var status=$('#'+app+'-'+type+'-'+id);		
 		$('#retweet-' + id).hide();
         var commentContainer = $('#comments-' + id);
 		if (commentContainer.length > 0) {//已经加入，也就是第二次点击评论了。
 			if (commentContainer.css('display') == 'none') {
 				//加截评论内容
+				
 				$("#comment-list-"+id).empty();
+				var temp=$("#comment-"+id).remove();
+				status.append(temp);
 				sinaApp.getCommentList(id);
 				//显示
 				commentContainer.show();
@@ -194,8 +207,7 @@ var gui = {//kaikai weibo
 				commentContainer.hide();
 			}
 		}else{//如果还没有加入
-			//获取微博节点
-			var status=$('#'+app+'-'+type+'-'+id);
+
 			//根据模板创建节点
 			var comment=document.createElement('div');
 			comment.className='comments'
@@ -222,18 +234,21 @@ var gui = {//kaikai weibo
      * @param {Boolean} isRT　本条微博是否转自他人．
      */
     openRetweet: function(app,type,id,isRT){
-		
+		var status=$('#'+app+'-'+type+'-'+id);		
         var retweetContainer = $('#retweet-' + id);
 		$('#comments-' + id).hide();
 		if (retweetContainer.length > 0) {
+			
 			if (retweetContainer.css('display') == 'none') {
+				retweetContainer.remove();
+				status.append(retweetContainer);				
 				retweetContainer.show();
 			}
 			else {
 				retweetContainer.hide();
 			}
 		}else{
-			var status=$('#'+app+'-'+type+'-'+id);
+
 			var retweet=document.createElement('div');
 			retweet.className='retweet';
 			retweet.id='retweet-'+id;
@@ -603,12 +618,23 @@ var gui = {//kaikai weibo
 				sinaApp.sendMessage(send.val());
 		    }
 		}else if(type=='comment'){
-			//send.val('回复 '+name+' 的评论 ');
-			send.val('');
-			$('#send-title').text('回复 '+name+' 的评论 ');		
+			$('#send-title').text('回复 '+name+' 的评论 ');	
+			var temp=id.split('+');
+			if(temp.length==1)cid=null;
+			else {
+				id=temp[0];
+				cid=temp[1];
+			}
 			$("#send-btn")[0].onclick=function(){
-				sinaApp.sendReply(id,send.val());
-		    }	
+				sinaApp.sendReply(id,send.val(),cid);
+		    }
+		}else if(type=='tl'){
+			$('#send-title').text('分享 团团 给好友们:');
+			var n=getCookie('sina_screen_name')
+			send.val('爱微博，爱checkin，更爱探索。你好，我是城市家'+n+'，我已入驻团团，邀请你一起签到  http://kaikai.sinaapp.com/ @团团官方');
+			$("#send-btn")[0].onclick=function(){
+				sinaApp.sendMessage(send.val());
+		    }				
 		}
 	},
 	getCityEvent:function(node,type){

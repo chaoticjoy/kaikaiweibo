@@ -639,6 +639,7 @@ input:focus{
 }
 
 #about-box{
+	display:none;
 	width:90%;
 	position:absolute;
 	top:50%;

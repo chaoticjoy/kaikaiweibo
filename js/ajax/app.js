@@ -274,6 +274,7 @@ var sinaApp={
 		$.post("ajax/send_comment.php",arg,function(data,textStatus){
 			gui.hideTip();
 			if(textStatus=='success'){
+				node.previousElementSibling.value='';
 				gui.showTip('评论成功!',500);
 				$("#comments-"+id).hide();
 			}else {
@@ -282,10 +283,11 @@ var sinaApp={
 		});
 	},
 	//个人页面的回复
-	sendReply:function(id,text){
+	sendReply:function(id,text,cid){
 		var arg={};
 		arg.id=id;	
 		arg.status=text;	
+		if(cid)arg.cid=cid;
 		gui.showTip('评论发送中....');		
 		$.post("ajax/send_comment.php",arg,function(data,textStatus){
 			gui.hideTip();
@@ -308,6 +310,7 @@ var sinaApp={
 			gui.hideTip();
 			if(textStatus=='success'){
 				gui.showTip('发送成功!',500);
+				node.previousElementSibling.value='';
 				$("#retweet-"+id).hide();
 			}else {
 				gui.showTip('发送失败',1500);
