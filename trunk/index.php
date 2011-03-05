@@ -44,6 +44,7 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 <div id="kk_login_window">
 <img id="close-btn" src="image/close.png" class="close" onclick="kk.hideLoginWin()"/>
 <div class="tips" id='send-title'>登陆开开</div>
+<span>开开k.ai是新一代的地理位置签到服务，帮助你与朋友们分享位置交流心得，<a href="http://k.ai" target="_blank">注册地址</a></span>
 <form class="loginform" method="post" > 
 		<label class="username-label" for="username">帐号</label>
 		<input id="kk_un" type="text" tabindex="1" autocapitalize="off" autocorrect="off" class="main-field" id="username" name="username">

@@ -226,7 +226,6 @@ var sinaApp={
 			gui.hideTip();
 			if(textStatus=='success'){
 				gui.showTip('收藏成功!',500);
-				$("#comments-"+id).hide();
 			}else {
 				gui.showTip('收藏失败',500);
 			}
@@ -234,6 +233,10 @@ var sinaApp={
 	},
 	
 	sendDirectMessage:function(msg,name){
+		if (msg == '') {
+			gui.showTip('发送内容不能为空',500);
+			return;
+		}		
 		var arg={};
 		arg.screen_name=name;
 		arg.text=msg;
@@ -250,6 +253,10 @@ var sinaApp={
 		});
 	},
 	sendMessage:function(status){
+		if (status == '') {
+			gui.showTip('发送内容不能为空',500);
+			return;
+		}
 		var arg={};
 		arg.status=status;
 		gui.showTip('发送中．．．')
