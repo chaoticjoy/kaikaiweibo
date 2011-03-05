@@ -94,7 +94,7 @@ a:visited {
 	font-size:18px;
 	color:#f1f1f1;
 	position:relative;
-	height:30px;
+	height:33px;
 	padding-top:3px;
 }
 
@@ -107,11 +107,20 @@ a:visited {
 	display:none;
 }
 
+#header .about{
+	position:absolute;
+	left:13px;
+	top:4px;
+	height:23px;
+	cursor:pointer;
+}
+
+
 #header .exit{
 	position:absolute;
 	right:13px;
-	top:7px;
-	height:15px;
+	top:6px;
+	height:20px;
 	cursor:pointer;
 }
 
@@ -392,6 +401,7 @@ input:focus{
 	text-align:center;
 	padding:0px 5px;
 	cursor:pointer;
+	color:#446AAB;
 }
 
 
@@ -628,6 +638,26 @@ input:focus{
 	padding:45px 10px 15px 10px;
 }
 
+#about-box{
+	width:90%;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-45%;
+	margin-top:-100px;
+	z-index:200;
+	border:1px black solid;
+	background:#222;
+	opacity:0.85;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	padding:45px 10px 15px 10px;
+}
+
 
 #image{
 	position:absolute;
@@ -657,7 +687,7 @@ input:focus{
 	padding:5px;
 }
 
-#send .close,#image .close{
+#send .close,#image .close,#about-box .close{
 	position:absolute;
 	top:-10px;
 	right:-10px;
@@ -667,7 +697,7 @@ input:focus{
 }
 
 
-#send .tips{
+#send .tips,#about-box .tips{
 	position:absolute;
 	top:9px;
 	left:13px;
@@ -675,6 +705,16 @@ input:focus{
 	color:#f1f1f1;
 	font-weight:bold;
 }
+
+#about-box p{
+	font-size:16px;
+	color:#f1f1f1;
+	font-weight:bold;
+	margin:0px 10px 5px 10px;
+	line-height:170%;
+}
+
+
 
 
 
@@ -808,5 +848,10 @@ clear:both;
 	font-weight:bold;
 	color:#446aab;
 	cursor:pointer;
+}
+
+#group-buy .thumbnail{
+	max-width:200px;
+	width:90%;
 }
 
