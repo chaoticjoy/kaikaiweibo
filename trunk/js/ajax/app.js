@@ -447,7 +447,11 @@ var sinaApp={
 var kk={
 	loginFromPersonalPage:function(node){
 		this.login(function(){
-			node.innerHTML="已登录开开";
+			node.innerHTML="已登录开开:"
+			setTimeout(function(){
+				node.innerHTML += getCookie('kk_screen_name')
+			},1000);
+			node.onclick="";
 		});
 	},
 	hideLoginWin:function(){

@@ -54,7 +54,7 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 		<label class="password-label" for="password">密码</label>
 		<input id="kk_pw" type="password" tabindex="2" autocapitalize="off" autocorrect="off" class="main-field" id="password" name="password">
 		</p>
-		<input  onclick="kk.startLogin()" class="main-button" value="登陆开开" readonly/>
+		<div  onclick="kk.startLogin()" class="main-button" value="登陆开开"  />
 </form>
 </div>
 <div id="header">
@@ -100,7 +100,9 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 	<div id="checkin-panel" class="wrapper"> 
 		<div id="search-box">
 			<form>
-				 <input id="checkin-query" type="text" class="content" onFocus="if (this.value == '查找地点') {this.value = '';}" onBlur="if (this.value == '') {this.value = '查找地点';}"  value="查找地点"><input onclick="kk.moreCheckin(true)" class="search-button" value=""/>
+				 
+				 <input id="checkin-query" type="text" class="content" placeholder="查找地点">
+				 <input disabled="true" onclick="kk.moreCheckin(true)" class="search-button" />
 			</form>
 		</div>
 		<div id="checkin-panel-content">
@@ -113,9 +115,9 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 	<div id="weather-box">
 		<img src="image/weather/sunny.png" class="weather-icon"/>
 		<div class="weather-content">
-		<h2>未知</h2>
-		<p>实时：xxxxx</p>
-		<p>明天：xxxxx</p>
+		<h2>城市载入中...</h2>
+		<p>实时：载入中...</p>
+		<p>明天：载入中...</p>
 		</div>
 	</div>
 	<!-- 天气结束 -->
@@ -180,7 +182,7 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 	我是城市家。<br/>
 	我掌握我的城市，记录我的生活<br/>
 	这里是团团，有我的你的大城小事</p>
-	<input onclick="gui.tellFriends()" type="button" class="main-button" value="告诉我的微博好友" readonly/>
+	<input onclick="gui.tellFriends()" type="button" class="main-button" value="告诉我的微博好友"  disabled="true"/>
 
 </div>
 </body>
