@@ -773,6 +773,7 @@ input:focus{
 	-moz-border-radius: 10px;
 	padding:8px;
 	outline:none;
+	color:#999;
 }
 
 #search-box .content:focus{

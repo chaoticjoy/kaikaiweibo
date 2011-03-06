@@ -99,7 +99,7 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 	<div id="checkin-panel" class="wrapper"> 
 		<div id="search-box">
 			<form>
-				 <input id="checkin-query" type="text" class="content" ><input onclick="kk.moreCheckin(true)" class="search-button" value=""/>
+				 <input id="checkin-query" type="text" class="content" onFocus="if (this.value == '查找地点') {this.value = '';}" onBlur="if (this.value == '') {this.value = '查找地点';}"  value="查找地点"><input onclick="kk.moreCheckin(true)" class="search-button" value=""/>
 			</form>
 		</div>
 		<div id="checkin-panel-content">
