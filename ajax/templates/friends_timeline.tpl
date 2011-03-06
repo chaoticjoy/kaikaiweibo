@@ -3,7 +3,7 @@
 	<div class="single">
 		<div class="single-date">{$item['created_at']}</div>
 		<img onclick="gui.openUserInfo('{$item['user']['id']}','{$item['user']['screen_name']}','sina')" src="{$item['user']['profile_image_url']}" class="single-avatar"/>
-		<div class="single-name">{$item['user']['screen_name']}</div>
+		<div class="single-name"><a href="javascript:gui.openUserInfo('{$item['user']['id']}','{$item['user']['screen_name']}','sina')">{$item['user']['screen_name']}</a></div>
 		<p class="status">
 			<span id="sina-status-{$item['id']}">
 			{$item['text']}
