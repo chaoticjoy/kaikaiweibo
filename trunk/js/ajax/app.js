@@ -276,7 +276,16 @@ var sinaApp={
 		arg.id=id;
 		if(content=='')return;
 		arg.status=content;
-
+		var cid=node.getAttribute('cid');
+	
+		if(cid){//如果有CID,肯定有Name
+			var name=node.getAttribute('name');
+			//判断内容是否含这个Name,如果包含则表示有CID,无则表示不是回复这条评论
+			var pat=new RegExp("回复@"+name+":");
+			if(pat.test(content)){
+				arg.cid=cid;
+			}
+		}
 		gui.showTip('评论发送中....');		
 		$.post("ajax/send_comment.php",arg,function(data,textStatus){
 			gui.hideTip();
@@ -436,6 +445,11 @@ var sinaApp={
 
 }
 var kk={
+	loginFromPersonalPage:function(node){
+		this.login(function(){
+			node.innerHTML="已登录开开";
+		});
+	},
 	hideLoginWin:function(){
 		$('#kk_login_window').hide();
 		gui.hideMask();
@@ -458,6 +472,7 @@ var kk={
 			if(data=='True'){
 				kk.hideLoginWin();
 				kk.logined=true;
+				if(kk.loginCallback)
 				kk.loginCallback(true);
 			}else {
 				kk.logined=false;

@@ -3,9 +3,9 @@
 	<span class="username">{$sina_user_info['screen_name']}</span>
 	<span class="location">{$sina_user_info['location']}</span><br />
 	{if $kk_user_info}
-	<div class="btn">已绑定开开: {$kk_user_info['userspace']['user']['screen_name']}</div>
+	<div class="btn">已登录开开: {$kk_user_info['userspace']['user']['screen_name']}</div>
 	{else}
-	<div class="btn">绑定开开</div>
+	<div class="btn" onclick="kk.loginFromPersonalPage(this)">登录开开</div>
 	{/if}
 	<div class="clean"></div>
 </div>

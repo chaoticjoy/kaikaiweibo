@@ -269,7 +269,7 @@ var gui = {
 			content[0].focus();
 		}
     },
-    reply: function(id, name){
+    reply: function(id, name,cid){
         var contentArea = $('#comment-content-' + id);
         var content = contentArea.val();
 		var pattern=/^回复@.*?:/ ;
@@ -281,11 +281,14 @@ var gui = {
             var right = RegExp.rightContext;
             content=left+'回复@'+name+':'+right;		
 		}
+		var btn=document.getElementById('comment-content-'+id).nextElementSibling;
+		btn.setAttribute('cid',cid);
+		btn.setAttribute('name',name);
         contentArea.val(content);
 		content=contentArea.val();
         contentArea[0].focus();
 		contentArea[0].setSelectionRange(content.length,content.length);
-		scrollToElement(contentArea[0],-5);
+		scrollToElement(contentArea[0],-15);
     },
 	addFavourite:function(app,type,id){
 		if(app=='sina')
