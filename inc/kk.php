@@ -101,8 +101,20 @@ include_once('utility.php');
 			$friends_timeline[$key1][$key]['create_at']=formatTime($msg['create_at']);
 			$friends_timeline[$key1][$key]['text']=formatText($msg['text']);
 			
-			if($msg['in_reply_to_status'])
+			//修开开url bug
+			if($msg['photo_thumb_url']){
+				$photo_thumb_url=str_replace("/big/","/",$msg['photo_thumb_url']);
+				$friends_timeline[$key1][$key]['photo_thumb_url']=$photo_thumb_url;
+			}
+			
+			if($msg['in_reply_to_status']){
 				$friends_timeline[$key1][$key]['in_reply_to_status']['text']=formatText($msg['in_reply_to_status']['text']);
+				//修开开url bug
+				if($msg['in_reply_to_status']['photo_thumb_url']){
+					$photo_thumb_url=str_replace("/big/","/",$msg['in_reply_to_status']['photo_thumb_url']);
+					$friends_timeline[$key1][$key]['in_reply_to_status']['photo_thumb_url']=$photo_thumb_url;
+				}
+			}
 			 
 		}
 //print_r($friends_timeline);
@@ -158,8 +170,20 @@ include_once('utility.php');
 			$user_timeline[$key1][$key]['create_at']=formatTime($msg['create_at']);
 			$user_timeline[$key1][$key]['text']=formatText($msg['text']);
 			
-			if($msg['in_reply_to_status'])
+			//修开开url bug
+			if($msg['photo_thumb_url']){
+				$photo_thumb_url=str_replace("/big/","/",$msg['photo_thumb_url']);
+				$user_timeline[$key1][$key]['photo_thumb_url']=$photo_thumb_url;
+			}
+			
+			if($msg['in_reply_to_status']){
 				$user_timeline[$key1][$key]['in_reply_to_status']['text']=formatText($msg['in_reply_to_status']['text']);
+				//修开开url bug
+				if($msg['in_reply_to_status']['photo_thumb_url']){
+					$photo_thumb_url=str_replace("/big/","/",$msg['in_reply_to_status']['photo_thumb_url']);
+					$user_timeline[$key1][$key]['in_reply_to_status']['photo_thumb_url']=$photo_thumb_url;
+				}
+			}
 			 
 		}
 
