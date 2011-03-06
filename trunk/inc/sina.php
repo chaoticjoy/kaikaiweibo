@@ -407,6 +407,8 @@ include_once('utility.php');
 			$comments_timeline[$key]['created_at']=formatTime($msg['created_at']);
 			$comments_timeline[$key]['text']=formatText($msg['text']);
 			$comments_timeline[$key]['status']['text']=formatText($msg['status']['text']);
+			if($msg['reply_comment']['text'])
+				$comments_timeline[$key]['reply_comment']['text']=formatText($msg['reply_comment']['text']);
 			 
 		}
 		}

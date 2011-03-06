@@ -1,5 +1,5 @@
 {foreach from=$comments_list item=item}
-	<p><span class="author">{$item['user']['screen_name']}</span>{$item['text']}<span class="reply" onClick="gui.reply('{$id}','{$item['user']['screen_name']}','{$item['id']}')">回复</span></p>
+	<p><span class="author"><a href="javascript:gui.openUserInfo('{$item['user']['id']}','{$item['user']['screen_name']}','sina')">{$item['user']['screen_name']}</a></span>{$item['text']}<span class="reply" onClick="gui.reply('{$id}','{$item['user']['screen_name']}','{$item['id']}')">回复</span></p>
 {/foreach}
 {if $hasMore  || ($cpage>1)}
 	<ul class="comment-bar">         
