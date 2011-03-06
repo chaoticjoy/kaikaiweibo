@@ -775,12 +775,37 @@ var lashou={
 		});		
 	}
 }
+function setCookie(cookie_name,value){
+    var allcookies = document.cookie;
+	var x=new String();
+
+	var cookie_pos = allcookies.indexOf(cookie_name);
+	if (cookie_pos != -1) {//存在
+        cookie_pos += cookie_name.length + 1;   
+        var cookie_end = allcookies.indexOf(";", cookie_pos);
+		var newCookie;
+		newCookie=allcookies.substring(0, cookie_pos)+value;
+        if (cookie_end == -1) {
+            cookie_end = allcookies.length;
+        }
+		newCookie+=allcookies.substring(cookie_end, cookie_pos);
+		document.cookie=newCookie;
+		
+	}else{///不存在
+		document.cookie+=name+"="+value+";";
+	}
+	alert(document.cookie);
+}
+setCookie('mycookie','yeah');
+setCookie('mycookie2','yeah2');
+setCookie('mycookie','yeah3');
 
 function getCookie(cookie_name){
     var allcookies = document.cookie;
     var cookie_pos = allcookies.indexOf(cookie_name);
     // 如果找到了索引，就代表cookie存在，
     // 反之，就说明不存在。
+	var value=null;
     if (cookie_pos != -1) {
         // 把cookie_pos放在值的开始，只要给值加1即可。
         cookie_pos += cookie_name.length + 1;   
@@ -788,7 +813,7 @@ function getCookie(cookie_name){
         if (cookie_end == -1) {
             cookie_end = allcookies.length;
         }
-        var value = unescape(allcookies.substring(cookie_pos, cookie_end));
+        value = unescape(allcookies.substring(cookie_pos, cookie_end));
     }
     return value;
 }
