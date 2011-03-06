@@ -76,7 +76,7 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 	
 	<div id="events-panel"  class="wrapper"> 
 		<ul class="tab-bar"> 
-	        <li onClick="gui.showEvents(this,'sina',event);" class="on" id="eventsTagWidth">围脖动态</li>        
+	        <li onClick="gui.showEvents(this,'sina',event);" class="on" id="eventsTagWidth">微博动态</li>        
 	        <li onClick="gui.showEvents(this,'kk',event);" id="eventsTagWidth">开开动态</li> 
 			<div class="clean"></div>
 	    </ul>
