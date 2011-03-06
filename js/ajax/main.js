@@ -297,7 +297,7 @@ var gui = {
 	openCheckin:function(node,id){
 		var signBox=
 		'<form>'+
-		'<textarea rows="2"></textarea>'+
+		'<textarea rows="2" placeholder="写写小贴士吧"></textarea>'+
 		'<input type="button"  class="submit-button" value="签到" onclick="kk.checkin(this.previousElementSibling.value,'+id+')"/>'+
 		'</form>';
 		var container=$('#checkin-'+id);
