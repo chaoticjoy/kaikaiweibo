@@ -16,6 +16,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" /> 
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />  
 <meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/> 
+<link href="image/favicon.ico" rel="shortcut icon" type="image/x-icon"> 
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <script src="js/jquery/jquery-1.4.2.js"></script>
 <script src="js/ajax/index.js"></script>
