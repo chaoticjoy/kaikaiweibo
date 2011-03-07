@@ -99,11 +99,11 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 	
 	<div id="checkin-panel" class="wrapper"> 
 		<div id="search-box">
-			<form>
+			<div>
 				 
 				 <input id="checkin-query" type="text" class="content" placeholder="查找地点">
 				 <input type="button" onclick="kk.moreCheckin(true)" class="search-button" />
-			</form>
+			</div>
 		</div>
 		<div id="checkin-panel-content">
 			<div id="more-checkin" onclick="kk.moreCheckin(false)" class="more-button">更多地点</div>

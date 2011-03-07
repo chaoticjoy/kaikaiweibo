@@ -327,10 +327,18 @@ var gui = {
 		}
 
 	},
-    openImage: function(target){
+    openImage: function(target,type){
         
         var thumbnail = target.src;
-        var bmiddle = thumbnail.replace('thumbnail', 'bmiddle');
+		var bmiddle;
+		if(type=='kk'){
+			thumbnail = thumbnail.replace('tiny', 'thumb');
+			bmiddle = thumbnail.replace('images/badges', 'images/badges/big');
+			
+		}else{
+			bmiddle = thumbnail.replace('thumbnail', 'bmiddle');
+		}
+        
         //---
 		var img=$('#image-content');
 		img[0].src=bmiddle;
