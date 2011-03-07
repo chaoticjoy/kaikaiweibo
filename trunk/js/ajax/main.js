@@ -715,14 +715,16 @@ $(function(){
      * 载入当前的位置
      *
      */
-    kk.lat=39.9;
-	kk.lon=116.3
+    kk.lat=getCookie('lat')||39.9;
+	kk.lon=getCookie('lon')||116.3
 	//navigator.geolocation.getCurrentPosition(function(position){
 	navigator.geolocation.watchPosition(function(position){
         kk.lat=position.coords.latitude;
         kk.lon=position.coords.longitude;
 		//alert('当前位置->经度:'+kk.lon+' 纬度:'+kk.lat);
 		//gui.showTip('已更新你的位置',1000);
+		setCookie('lat',kk.lat,60*60*24*7);
+		setCookie('lon',kk.lon,60*60*24*7);
     }, function(error){
         switch (error.code) {
             case error.PERMISSION_DENIED:

@@ -787,7 +787,7 @@ var lashou={
 }
 
 function setCookie(name, value, seconds){
-    seconds = seconds || 0; //seconds有值就直接赋值，没有为0，这个根php不一样。  
+    seconds = seconds || 0; //seconds有值就直接赋值，没有为0
     var expires = "";
     if (seconds != 0) { //设置cookie生存时间  
         var date = new Date();
