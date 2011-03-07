@@ -236,6 +236,11 @@ var sinaApp={
 		if (msg == '') {
 			gui.showTip('发送内容不能为空',500);
 			return;
+		}
+		var len=getByteLength(status);
+		if(len>300){
+			alert('当前字数:'+len+',超过300');
+			return ;
 		}		
 		var arg={};
 		arg.screen_name=name;
@@ -256,6 +261,11 @@ var sinaApp={
 		if (status == '') {
 			gui.showTip('发送内容不能为空',500);
 			return;
+		}
+		var len=getByteLength(status);
+		if(len>140){
+			alert('当前字数:'+len+',超过140');
+			return ;
 		}
 		var arg={};
 		arg.status=status;
@@ -775,31 +785,17 @@ var lashou={
 		});		
 	}
 }
-function setCookie(cookie_name,value){
-    var allcookies = document.cookie;
-	var x=new String();
 
-	var cookie_pos = allcookies.indexOf(cookie_name);
-	if (cookie_pos != -1) {//存在
-        cookie_pos += cookie_name.length + 1;   
-        var cookie_end = allcookies.indexOf(";", cookie_pos);
-		var newCookie;
-		newCookie=allcookies.substring(0, cookie_pos)+value;
-        if (cookie_end == -1) {
-            cookie_end = allcookies.length;
-        }
-		newCookie+=allcookies.substring(cookie_end, cookie_pos);
-		document.cookie=newCookie;
-		
-	}else{///不存在
-		document.cookie+=name+"="+value+";";
-	}
-	alert(document.cookie);
+function setCookie(name, value, seconds){
+    seconds = seconds || 0; //seconds有值就直接赋值，没有为0，这个根php不一样。  
+    var expires = "";
+    if (seconds != 0) { //设置cookie生存时间  
+        var date = new Date();
+        date.setTime(date.getTime() + (seconds * 1000));
+        expires = "; expires=" + date.toGMTString();
+    }
+    document.cookie = name + "=" + escape(value) + expires + "; path=/"; //转码并赋值  
 }
-setCookie('mycookie','yeah');
-setCookie('mycookie2','yeah2');
-setCookie('mycookie','yeah3');
-
 function getCookie(cookie_name){
     var allcookies = document.cookie;
     var cookie_pos = allcookies.indexOf(cookie_name);
@@ -813,8 +809,9 @@ function getCookie(cookie_name){
         if (cookie_end == -1) {
             cookie_end = allcookies.length;
         }
-        value = unescape(allcookies.substring(cookie_pos, cookie_end));
+        value = decodeURI(allcookies.substring(cookie_pos, cookie_end));
     }
+	
     return value;
 }
 /**
@@ -836,4 +833,18 @@ function getElementTop(node){
 		node=node.offsetParent;
 	}
 	return top;
+}
+function getByteLength(str){/*
+	var l=0;
+	for(var i=str.length-1;i>-1;i--){
+		if(str.charCodeAt(i)>255){
+			l+=1;
+		}else{
+			l+=0.5;
+		}
+	}
+	return Math.round(l);
+	*/
+	var aMatch = str.match(/[^\x00-\x80]/g);
+    return (str.length + (!aMatch ? 0: aMatch.length))
 }
