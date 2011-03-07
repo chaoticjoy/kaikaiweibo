@@ -40,7 +40,7 @@
 		<input type="checkbox" class="main-checkbox" name="follow" checked="true" /><label class="checkbox-label" for="checkbox">关注 @团团官方</label>
 		<input type="submit"  class="main-button" value="登陆新浪微博" readonly/>
 	</form>
-	<p id="meta">请用Firefox、Chrome浏览器，或使用智能手机访问 | <a href="http://kaikai.sinaapp.com/app/TuanTuan.apk" target="_blank">下载Android版团团</a></p>
+	<p id="meta">请用Firefox、Chrome浏览器，或使用智能手机访问 | <a href="http://kaikai.sinaapp.com/apk/TuanTuan.apk" target="_blank">下载Android版团团</a></p>
 
 </div> 
 
