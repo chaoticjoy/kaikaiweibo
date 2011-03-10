@@ -736,17 +736,16 @@ $(function(){
     }, function(error){
         switch (error.code) {
             case error.PERMISSION_DENIED:
-                alert("你的浏览器不允许获取地理位置");
+                //alert("你的浏览器不允许获取地理位置");
                 break;
             case error.POSITION_UNAVAILABLE:
-                alert("获取不到你当前的位置");
+                //alert("获取不到你当前的位置");
                 break;
             case error.TIMEOUT:
-                alert("获取地理位置超时");
+               // alert("获取地理位置超时");
                 break;
-                
             default:
-                alert("获取地理位置时发生未知错误");
+                //alert("获取地理位置时发生未知错误");
                 break;
         }
     });
