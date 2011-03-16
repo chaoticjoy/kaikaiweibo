@@ -610,8 +610,9 @@ var gui = {
 	sendMsg:function(type,id,name){
 		this.showMask();
         $("#send").show();
+		//$('#tabpanel').hide();
 		var send=$("#send-content");
-		send.val('')[0].focus();
+		//send.val('')[0].focus();
 		
 		if(type=='normal'){
 			$('#send-title').text('说说你的新鲜事');
@@ -753,5 +754,6 @@ $(function(){
 		gui.about();
 		setCookie('firstlogin','false',60*60*24*30);
 	}
+	
 	
 });

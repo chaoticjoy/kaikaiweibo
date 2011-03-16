@@ -21,6 +21,9 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 <link href="image/favicon.ico" rel="shortcut icon" type="image/x-icon"> 
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <script src="js/jquery/jquery-1.4.2.js"></script>
+<!--<script src="js/jquery/jquery.mobile-1.0a3.min.js"/>
+<link rel="stylesheet" href="js/jquery/jquery.mobile-1.0a3.min.css" type="text/css">-->
+
 <script src="js/ajax/main.js"></script>
 <script src="js/ajax/app.js"></script>
 
@@ -32,10 +35,9 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 <div id="send">
 <img id="close-btn" src="image/close.png" class="close" />
 <div class="tips" id='send-title'>说说你的新鲜事</div>
-<form>
-	<textarea id="send-content" rows="5"></textarea>
+
+	<p id="fixbug"><textarea id="send-content" rows="5"></textarea><p>
 	<input id="send-btn" type="button" class="main-button" value="发布" />
-</form>
 </div>
 <div id="mask"></div>
 <div id="image">

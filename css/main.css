@@ -638,22 +638,22 @@ input:focus{
 	position:absolute;
 	background:#ccc;
 	opacity:0.5;
-	z-index:199;
+	z-index:1;
 	display:none;
 }
 
 
 #send,#about-box{
-	width:90%;
+	width:90%;   
 	position:fixed;
 	top:50%;
 	left:50%;
+	display:none;
 	margin-left:-45%;
 	margin-top:-100px;
-	z-index:200;
-	display:none;
 	border:1px black solid;
 	background:#222;
+	z-index:2;
 	opacity:0.85;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -665,26 +665,30 @@ input:focus{
 }
 
 
-
-
 #image{
 	position:absolute;
 	top:50%;
 	left:50%;
 	margin-left:0px;
 	margin-top:0px;
-	z-index:200;
 	display:none;
+	z-index:20;
 }
 
-#send textarea{
+
+#fixbug{
+	position:relative;
+	width:100%;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+}
+
+#send-content{
 	width:100%;
 	font-size: 18px;
 	outline:none;
 	color:#72A6FC;
-	box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#CCC), color-stop(5%, #EEEEEE), to(#FFFFFF));
 	background: -moz-linear-gradient(top, #CCC, #EEEEEE 5%, #FFFFFF);
 	border: 2px solid #ccc;
@@ -692,7 +696,7 @@ input:focus{
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	font-weight:bold;
-	padding:5px;
+	z-index:20;
 }
 
 #send .close,#image .close,#about-box .close{
@@ -701,7 +705,7 @@ input:focus{
 	right:-10px;
 	height:40px;
 	cursor:pointer;
-
+	z-index:20;
 }
 
 
