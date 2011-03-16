@@ -20,10 +20,11 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 <meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/> 
 <link href="image/favicon.ico" rel="shortcut icon" type="image/x-icon"> 
 <link rel="stylesheet" href="css/main.css" type="text/css">
-<script src="js/jquery/jquery-1.4.2.js"></script>
-<!--<script src="js/jquery/jquery.mobile-1.0a3.min.js"/>
+<!--<script src="js/jquery/jquery-1.4.2.js"></script>
+<script src="js/jquery/jquery.mobile-1.0a3.min.js"/>
 <link rel="stylesheet" href="js/jquery/jquery.mobile-1.0a3.min.css" type="text/css">-->
 
+<script src="js/jquery/jquery-1.5.1.min.js"></script>
 <script src="js/ajax/main.js"></script>
 <script src="js/ajax/app.js"></script>
 
