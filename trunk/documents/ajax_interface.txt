@@ -76,8 +76,9 @@ comments_timeline.php 获取当前用户的所有评论列表
 comments_to_me.php 获取给当前用户的评论列表
 	page：（选填）页数
 
-upload_tuantuan.php 发布带团团logo图片的微博
+upload_tuantuan.php 发布带团团图片的微博
 	status：微博内容
+	url：（可选）图片的url，不填直接发布团团logo图片
 
 favorites.php 获取当前用户的收藏列表
 	page：（选填）页数
