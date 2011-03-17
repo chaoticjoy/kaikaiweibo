@@ -612,7 +612,7 @@ var gui = {
         $("#send").show();
 		//$('#tabpanel').hide();
 		var send=$("#send-content");
-		//send.val('')[0].focus();
+		send.val('');
 		
 		if(type=='normal'){
 			$('#send-title').text('说说你的新鲜事');
@@ -651,7 +651,6 @@ var gui = {
 		    }
 		}else if(type=='tl'){
 			$('#send-title').text('分享 团团 给好友们:');
-			
 			var n=getCookie('sina_screen_name');
 			send.val('爱微博，爱checkin，更爱探索。你好，我是城市家'+n+'，我已入驻团团，邀请你一起签到  http://kaikai.sinaapp.com/ @团团官方');
 			$("#send-btn")[0].onclick=function(){
