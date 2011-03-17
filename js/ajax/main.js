@@ -3,6 +3,7 @@
  */
 var toggle = 1;
 var gui = {
+
 	tellFriends:function(){
 		this.hideAbout();
 		this.sendMsg('tl');
@@ -605,7 +606,7 @@ var gui = {
 	 * 
 	 * @param {Object} type
 	 * @param {Object} id
-	 * @param {Object} name
+	 * @param {Object} name 
 	 */
 	sendMsg:function(type,id,name){
 		this.showMask();
@@ -636,7 +637,7 @@ var gui = {
 			send.val('我在团团分享了一个'+kk.cityName+'团购:'+id+' @团团官方');
 			$('#send-title').text('分享一个团购');
 			$("#send-btn")[0].onclick=function(){
-				sinaApp.sendMessage(send.val());
+				sinaApp.sendWithPic(send.val(),name);
 		    }
 		}else if(type=='comment'){
 			$('#send-title').text('回复 '+name+' 的评论 ');	
@@ -652,9 +653,9 @@ var gui = {
 		}else if(type=='tl'){
 			$('#send-title').text('分享 团团 给好友们:');
 			var n=getCookie('sina_screen_name');
-			send.val('爱微博，爱checkin，更爱探索。你好，我是城市家'+n+'，我已入驻团团，邀请你一起签到  http://kaikai.sinaapp.com/ @团团官方');
+			send.val('爱微博，爱checkin，更爱探索。你好，我是城市家 '+n+'，我已入驻团团，邀请你一起签到  http://kaikai.sinaapp.com/ @团团官方');
 			$("#send-btn")[0].onclick=function(){
-				sinaApp.sendMessage(send.val());
+				sinaApp.sendWithPic(send.val());
 		    }				
 		}
 	},

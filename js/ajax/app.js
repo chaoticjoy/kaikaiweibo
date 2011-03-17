@@ -2,6 +2,30 @@
  * @author Administrator
  */
 var sinaApp={
+	sendWithPic:function(status,url){
+		if (status == '') {
+			gui.showTip('发送内容不能为空',500);
+			return;
+		}
+		var len=getByteLength(status);
+		if(len>140){
+			alert('当前字数:'+len+',超过140');
+			return ;
+		}
+		var arg={};
+		arg.status=status;
+		if(url)arg.url=url;
+		gui.showTip('发送中．．．')
+		$.post("ajax/upload_tuantuan.php",arg,function(data,textStatus){
+			gui.hideTip();
+			if(textStatus=='success'){
+				gui.showTip('发送成功!',500);
+				gui.hideSend();
+			}else {
+				gui.showTip('发送失败',500);
+			}
+		});		
+	},
 	userInfo:{
 		
 	},
@@ -801,7 +825,7 @@ function getCookie(cookie_name){
     var cookie_pos = allcookies.indexOf(cookie_name);
     // 如果找到了索引，就代表cookie存在，
     // 反之，就说明不存在。
-	var value=null;
+	var value='';
     if (cookie_pos != -1) {
         // 把cookie_pos放在值的开始，只要给值加1即可。
         cookie_pos += cookie_name.length + 1;   
