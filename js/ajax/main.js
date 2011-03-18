@@ -22,7 +22,6 @@ var gui = {
     
     //组件，
     components: {},
-    
     init: function(){
         this.components.mask = $("#mask");
         this.components.image = $("#image");
@@ -628,13 +627,13 @@ var gui = {
 				sinaApp.sendDirectMessage(send.val(),name);
 		    }
 		}else if(type=='douban'){
-			send.val('我在团团分享了一个'+kk.cityName+'活动:'+id+' '+name+' @团团官方');
+			send.val('我在团团分享了一个 '+kk.cityName+' 豆瓣活动:'+id+' '+name+' @团团官方');
 			$('#send-title').text('分享一个活动');
 			$("#send-btn")[0].onclick=function(){
 				sinaApp.sendMessage(send.val());
 		    }
 		}else if(type=='tuangou'){
-			send.val('我在团团分享了一个'+kk.cityName+'团购:'+id+' @团团官方');
+			send.val('我在团团分享了一个  '+kk.cityName+' 拉手团购:'+id+' @团团官方');
 			$('#send-title').text('分享一个团购');
 			$("#send-btn")[0].onclick=function(){
 				sinaApp.sendWithPic(send.val(),name);
