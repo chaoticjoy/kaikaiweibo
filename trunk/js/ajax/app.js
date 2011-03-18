@@ -26,9 +26,7 @@ var sinaApp={
 			}
 		});		
 	},
-	userInfo:{
-		
-	},
+	userInfo:{},
 	follow:function(name,node){
 		var arg={};
 		arg.screen_name=name;
