@@ -188,6 +188,9 @@ echo "<script language=\"javascript\">location.href='kk_login.php';</script>"; *
 	<input onclick="gui.tellFriends()" type="button" class="main-button" value="告诉我的微博好友" />
 
 </div>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb2bf01d6c3c46625530024bc7b3907a5' type='text/javascript'%3E%3C/script%3E"));
+</script>
 </body>
 </html>
-<?php sae_xhprof_start();?>
