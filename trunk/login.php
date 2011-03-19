@@ -43,6 +43,9 @@
 	<p id="meta">请用Firefox、Chrome浏览器，或使用智能手机访问 | <a href="http://kaikai.sinaapp.com/apk/TuanTuan.apk" target="_blank">下载Android版团团</a></p>
 
 </div> 
-
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb2bf01d6c3c46625530024bc7b3907a5' type='text/javascript'%3E%3C/script%3E"));
+</script>
 </body>
 </html>
